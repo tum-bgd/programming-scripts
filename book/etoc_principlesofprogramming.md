@@ -1,4 +1,8 @@
 # Principles of Programming - Extended Table of Contents
+## Material
+- [The Disk Operating System (DOS)](basics/mswindows/dos)
+
+
 ## Background and Context
 
 Principles of Programming is an advanced (master) course in the study program Geodesy and Geoinformation. This course assumes very good knowledge of at least one object-oriented programming language (typically Java), object-oriented design and data modeling (UML, etc.), as well as geospatial data and basic geodata algortihms.

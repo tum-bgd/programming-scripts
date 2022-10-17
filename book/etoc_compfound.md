@@ -1,6 +1,10 @@
 # Computational Foundations - Extended Table of Contents
 
 ## Computational Foundations I
+### Material
+- [The Disk Operating System (DOS)](basics/mswindows/dos)
+
+
 ### Time Plan
 
 This lecture is organized into thirteen units out of which you can influence quite a few depending
