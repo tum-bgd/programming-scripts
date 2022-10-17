@@ -13,3 +13,6 @@ parts:
   - caption: Basic Knowledge
     chapters:
     - file: basics/mswindows/dos
+    - file: basics/mswindows/windows
+    - file: basics/unix/unix
+

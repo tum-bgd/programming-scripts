@@ -1,4 +1,4 @@
-Windows
+The Disk Operating System (DOS)
 =======
 
 In order to fully understand Microsoft Windows and in order to get to

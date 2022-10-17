@@ -1,6 +1,8 @@
 # Principles of Programming - Extended Table of Contents
 ## Material
 - [The Disk Operating System (DOS)](basics/mswindows/dos)
+- [Microsoft Windows](basics/mswindows/windows)
+- [Unix and Linux](basics/unix/unix)
 
 
 ## Background and Context

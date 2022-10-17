@@ -3,6 +3,8 @@
 ## Computational Foundations I
 ### Material
 - [The Disk Operating System (DOS)](basics/mswindows/dos)
+- [Microsoft Windows](basics/mswindows/windows)
+- [Unix and Linux](basics/unix/unix)
 
 
 ### Time Plan
