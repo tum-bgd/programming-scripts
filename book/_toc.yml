@@ -3,8 +3,13 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: etoc_principlesofprogramming
-- file: etoc_compfound
-- file: unit01_lecture
-- file: unit01_tasks
+parts:
+  - caption: Lecture and Tutorial Information
+    chapters:
+    - file: etoc_principlesofprogramming
+    - file: etoc_compfound
+    - file: unit01_lecture
+    - file: unit01_tasks
+  - caption: Basic Knowledge
+    chapters:
+    - file: basics/mswindows/dos
