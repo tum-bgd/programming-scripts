@@ -1,0 +1,10 @@
+# Simple C++ IN-File
+
+
+text before
+
+@cppgroup 00_helloworld
+
+text after
+
+@cppgroup 01_oldhelloworld
