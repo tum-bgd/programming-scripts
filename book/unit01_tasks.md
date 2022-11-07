@@ -3,25 +3,25 @@
 
 Answer the following questions with yes or no:
 
-# Basic Computer Knowledge
-## Hardware
+## Basic Computer Knowledge
+### Hardware
 - Do you know how disk (block devices) can be cut into partitions
 - Do you know what the role of the Basic Input Output System (BIOS) is in starting up your computer
 - What is the MBR
 - Did you replace a component of your computer yourself (e.g., a drive, a harddisk, the graphics card)
 - Did you build a computer from scratch (starting with the mainboard, adding memory and CPU, etc.)
 
-## The Windows Operating System
+### The Windows Operating System
 - Did you already install a Windows operating system to a computer
 
-## The Linux Operating System
+### The Linux Operating System
 
 - Have you used a Linux computer
 - Have you installed a Linux computer (or virtual machine running Linux)
 - Did you rent a Linux-based virtual server
 - Did you write a program dedicated for running on a Linux computer
 
-## The Internet
+### The Internet
 - Did you use a web browser
 - Did you use a command line tool for accessing the web (wget, curl,...)
 - Do you know the inner workings of at least one text-based Internet protocol like SMTP, POP3, or FTP
@@ -31,7 +31,7 @@ Answer the following questions with yes or no:
 - Did you use web service
 
 
-# Spatial Data Exposure
+## Spatial Data Exposure
 - Do you have experience with geospatial simple feature data?
 - Do you have experience with point clouds
 - Do you have experience with OpenStreetMap data
@@ -45,7 +45,7 @@ Answer the following questions with yes or no:
 - Are you able to reproject a GeoTIFF file into another projection
 
 
-# Spatial Tools
+## Spatial Tools
 
 - Did you create an online map in HTML/Javascript using the Leaflet Framework
 - Do you know the mapnik rendering toolkit
@@ -58,7 +58,7 @@ Answer the following questions with yes or no:
 - Did you work with ArcGIS
 
 
-# Algorithms Knowledge
+## Algorithms Knowledge
 
 - Do you know the Dijkstra Algorithm
 - Do you know the Algorithm of Floyd
@@ -68,6 +68,6 @@ Answer the following questions with yes or no:
 - Do you know what the Fréchet Distance of Spatial Trajectories is
 - Do you know a means to compare sets of points with each other. If so, which one?
 
-# Special Aspects you want to see covered
+## Special Aspects you want to see covered
 
 (just write up to a single paragraph here)

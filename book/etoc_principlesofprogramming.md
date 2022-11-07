@@ -1,8 +1,15 @@
 # Principles of Programming - Extended Table of Contents
 ## Material
-- [The Disk Operating System (DOS)](basics/mswindows/dos)
-- [Microsoft Windows](basics/mswindows/windows)
-- [Unix and Linux](basics/unix/unix)
+- Lecture 1: Basics / States / Operating Systems / Command Line
+  - [The Disk Operating System (DOS)](basics/mswindows/dos)
+  - [Microsoft Windows](basics/mswindows/windows)
+  - [Unix and Linux](basics/unix/unix)
+- Lecture 2: Imperative Programming
+  - [Imperative Programming](imperative_programming)
+  - [Python](Python_basics)
+  
+Preview Material:
+- [The Notion of an Algorithm](algorithm.md)
 
 
 ## Background and Context

@@ -32,15 +32,22 @@ function render_tabset(){
     
     echo '````` '
 }
+function render_include(){
+    echo '`````{tab-set}'
+    include_tabitem_from_file "" "$1" "$2"
+    echo '````` '
+}
 
 
 cat "$1" | while read LINE; do
     
     if [[ $LINE == @cppgroup* ]]; then
 	render_tabset $(echo $LINE |cut -d" " -f2)
+    elif [[ $LINE == @include* ]]; then
+	render_include $(echo $LINE |cut -d" " -f2) $(echo $LINE |cut -d" " -f3)
     else
 	echo $LINE
     fi
-        
+      
 done
 

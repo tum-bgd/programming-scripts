@@ -2,9 +2,17 @@
 
 ## Computational Foundations I
 ### Material
-- [The Disk Operating System (DOS)](basics/mswindows/dos)
-- [Microsoft Windows](basics/mswindows/windows)
-- [Unix and Linux](basics/unix/unix)
+- Lecture 1: Basics / States / Operating Systems / Command Line
+  - [The Disk Operating System (DOS)](basics/mswindows/dos)
+  - [Microsoft Windows](basics/mswindows/windows)
+  - [Unix and Linux](basics/unix/unix)
+- Lecture 2: Imperative Programming
+  - [Imperative Programming](imperative_programming)
+  - [C++ - First Steps](cppintro)
+
+Preview Material:
+- [The Notion of an Algorithm](algorithm.md)
+
 
 
 ### Time Plan

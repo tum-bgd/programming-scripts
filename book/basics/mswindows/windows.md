@@ -9,7 +9,7 @@ The Windows operating system has then emerged as a graphical user interface (GUI
 
 In fact, a Window today looks like this editor window from the integrated Windows Editor Notepad:
 
-![](http://martin.icaml.org/hedgedoc/uploads/upload_448afbae534828e14ed0c58cc5039caa.png)
+![](upload_448afbae534828e14ed0c58cc5039caa.png)
 
 Windows typically have more standardized aspects such as the following ones. Each Window has a **Title** line which contains an optional Icon (which is a menu) followed by a text (the Window title) and the three buttons on the right for minimizing, maximizing and closing the Window.
 Below the Title, a **menu bar** is located in which multiple text fields are displayed. When you click on them, a window is opened and can be navigated to send a command to the application. The bottom line (optional) is known as a status line and typically contains a few controls, at least one text. The remainder is called the Client Area and is used by the application.
