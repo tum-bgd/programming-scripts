@@ -1,0 +1,8 @@
+# happly and boost geometry - Load Point Clouds in C++11
+
+The happly library is a nice header-only library for reading and writing PLY files.
+The Boost Geometry library is an efficient OGC Simple Features comaptible spatial computing framework.
+
+They can be bound together nicely as illustrated in the following snippet:
+
+@include Source libs_pcl_happly_boost_geometry.cpp

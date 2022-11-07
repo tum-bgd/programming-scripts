@@ -1,0 +1,10 @@
+# Reading and Writing PLY files (point cloud example)
+
+It has been complicated and annoying to support a sensible subset of 3D file formats.
+But modern C++ comes to the rescue, see how easy the
+
+happily reading PLY files (happly)
+
+header-only library makes reading and working (in this case using Eigen3) with point clouds.
+
+@cppgroup libs_pcl_happly
