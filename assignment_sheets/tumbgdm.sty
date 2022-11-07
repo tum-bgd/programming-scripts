@@ -1,0 +1,1897 @@
+% =============================================================================
+% Global Style file for tumbgdm / Martin Werner documents
+% This includes styles for
+% - exercises (Uebungsblaetter)
+% - notes (Merkblaetter)
+% - exams (Klausuren)
+%
+% This style is only supported by LaTeX2e!
+% =============================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tumbgdm}[2021/11/18 v2]
+%
+% =============================================================================
+% Package selection
+% -----------------------------------------------------------------------------
+%
+
+\RequirePackage[utf8]{inputenc}
+%\RequirePackage[T1]{fontenc}
+\RequirePackage{a4wide}   % use more space
+\RequirePackage{float}
+\RequirePackage{color}
+\RequirePackage{tabularx}
+\RequirePackage{amsthm}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+%\RequirePackage{bbm}
+%\RequirePackage{boxedminipage}
+%\RequirePackage{forloop}
+%\RequirePackage{eucal}
+%\RequirePackage{euler}    % uncomment in order to use defaults
+%\RequirePackage{charter}  % uncomment in order to use defaults
+%\RequirePackage{mathpple}
+%\RequirePackage{avant}
+\RequirePackage{multicol} % multiple columns in a cell
+\renewcommand{\columnseprule}{0pt}
+%\RequirePackage{comment}
+\RequirePackage{calc}
+%\RequirePackage[absolute]{textpos}
+\RequirePackage{tikz}
+\RequirePackage{xargs}    % command def with more than one optional parameter
+\RequirePackage{courier}
+%\RequirePackage{moreverb}
+\RequirePackage{enumitem}
+\RequirePackage{ifthen}   % conditional processing
+\RequirePackage{graphicx} % include graphics (PDF-Latex: .pdf und .png 
+                          % (.jpg possible but not recommended)
+%\RequirePackage{wrapfig} % for wrapping 
+\RequirePackage{url}      % URL's (better formatting)
+\RequirePackage{cmap}     % to produce searchable PDF
+\RequirePackage{hyperref} % hyperlinks
+\pdfcompresslevel=9       % pdf compression
+
+  \setlength{\headheight}{13pt}
+
+%%%%%%%%%%%% TUM Colors with overwrite of defaluts
+% primary colors
+\definecolor{TUMBlue}        {RGB/cmyk}{  0,101,189 / 1.  ,0.43,0.  ,0.  }
+\definecolor{TUMWhite}       {RGB/cmyk}{255,255,255 / 0.  ,0.  ,0.  ,0.  }
+\definecolor{TUMBlack}       {RGB/cmyk}{  0,  0,  0 / 0.  ,0.  ,0.  ,1.  }
+
+% secondary colors
+\definecolor{TUMBlueDark}    {RGB/cmyk}{  0, 82,147 / 1.  ,0.54,0.04,0.19}
+\definecolor{TUMBlueDarker}  {RGB/cmyk}{  0, 51, 89 / 1.  ,0.57,0.12,0.7 }
+\definecolor{TUMGrayDark}    {RGB/cmyk}{ 88, 88, 90 / 0.  ,0.  ,0.  ,0.8 }
+\definecolor{TUMGray}        {RGB/cmyk}{156,157,159 / 0.  ,0.  ,0.  ,0.5 }
+\definecolor{TUMGrayLight}   {RGB/cmyk}{217,218,219 / 0.  ,0.  ,0.  ,0.2 }
+
+% accent colors
+\definecolor{TUMGreen}       {RGB/cmyk}{162,173,  0 / 0.35,0.  ,1.  ,0.2 }
+\definecolor{TUMOrange}      {RGB/cmyk}{227,114, 34 / 0.  ,0.65,0.95,0.  }
+\definecolor{TUMIvory}       {RGB/cmyk}{218,215,203 / 0.03,0.04,0.14,0.08}
+\definecolor{TUMBlueLight}   {RGB/cmyk}{100,160,200 / 0.65,0.19,0.01,0.04}
+\definecolor{TUMBlueLighter} {RGB/cmyk}{152,198,234 / 0.42,0.09,0.  ,0.  }
+
+% extended colors
+\definecolor{TUMExtViolet}   {RGB/cmyk}{105,  8, 90 / 0.5 ,1.  ,0.  ,0.4 }
+\definecolor{TUMExtNavy}     {RGB/cmyk}{ 15, 27, 95 / 1.  ,1.  ,0.  ,0.4 }
+\definecolor{TUMExtTeal}     {RGB/cmyk}{  0,119,138 / 1.  ,0.03,0.3 ,0.3 }
+\definecolor{TUMExtForest}   {RGB/cmyk}{  0,124, 48 / 1.  ,0.  ,1.  ,0.2 }
+\definecolor{TUMExtLime}     {RGB/cmyk}{103,154, 29 / 0.6 ,0.  ,1.  ,0.2 }
+\definecolor{TUMExtYellow}   {RGB/cmyk}{255,220,  0 / 0.  ,0.1 ,1.  ,0.  }
+\definecolor{TUMExtGoldenrod}{RGB/cmyk}{249,186,  0 / 0.  ,0.3 ,1.  ,0.  }
+\definecolor{TUMExtPumpkin}  {RGB/cmyk}{214, 76, 19 / 0.  ,0.8 ,1.  ,0.1 }
+\definecolor{TUMExtRed}      {RGB/cmyk}{196,  7, 27 / 0.1 ,1.  ,1.  ,0.1 }
+\definecolor{TUMExtMaroon}   {RGB/cmyk}{156, 13, 22 / 0.  ,1.  ,1.  ,0.4 }
+
+
+% .:: Redefinition of standard colors
+% ----------------------------------------------------------------------------
+
+\colorlet{black}      {TUMBlack}
+\colorlet{blue}       {TUMBlue}
+\colorlet{darkgray}   {TUMGrayDark}
+\colorlet{gray}       {TUMGray}
+\colorlet{green}      {TUMGreen}
+\colorlet{lightgray}  {TUMGrayLight}
+\colorlet{lime}       {TUMExtLime}
+\colorlet{orange}     {TUMOrange}
+\colorlet{red}        {TUMExtRed}
+\colorlet{teal}       {TUMExtTeal}
+\colorlet{violet}     {TUMExtViolet}
+\colorlet{white}      {TUMWhite}
+\colorlet{yellow}     {TUMExtYellow}
+\colorlet{ForestGreen}{TUMExtForest}
+\colorlet{Goldenrod}  {TUMExtGoldenrod}
+\colorlet{Maroon}     {TUMExtMaroon}
+\colorlet{NavyBlue}   {TUMExtNavy}
+\colorlet{RedOrange}  {TUMExtPumpkin}
+
+
+%%%%%%%%%%%% TUM LOGO
+% File: tumlogo.sty Copyright (C) 2019 The LaTeX4EI Team
+% Provides the TUM Corporate Design logo.
+%
+% It may be distributed and/or modified under the conditions of the
+% LaTeX Project Public License (LPPL), either version 1.3c of this
+% license or (at your option) any later version. The latest version
+% of this license is in the file
+%
+%    https://www.latex-project.org/lppl.txt
+%
+% This file is part of the "tum-templates bundle" (The Work in LPPL)
+% and all files in that bundle must be distributed together.
+%
+%
+% ----------------------------------------------------------------------------
+%
+% The development version of the bundle can be found at
+%
+%    https://gitlab.lrz.de/latex4ei/tum-templates
+%
+% for those people who are interested.
+%
+% ----------------------------------------------------------------------------
+%
+% Version history:
+% v1.0 2020/10/01 Initial version.
+% v2.0 2021/04/19 No changes.
+%
+% .:: Required packages
+% ----------------------------------------------------------------------------
+
+\RequirePackage{pgfkeys}
+\RequirePackage{pgfopts}
+\RequirePackage{tikz}
+
+
+% .:: Options for TUM logo
+% ----------------------------------------------------------------------------
+% height: a tex length
+% color: TUMBlue, TUMBlack, TUMWhite
+
+\newcommand{\@tum@logo@color@}{TUMBlue}
+
+\pgfqkeys{/TUM/logo}{
+  height/.initial = 10mm,
+  color/.is choice,
+  color/TUMBlue/.code = {\renewcommand{\@tum@logo@color@}{TUMBlue}},
+  color/TUMBlack/.code = {\renewcommand{\@tum@logo@color@}{TUMBlack}},
+  color/TUMWhite/.code = {\renewcommand{\@tum@logo@color@}{TUMWhite}},
+}
+
+% process package options
+%\ProcessPgfOptions{/TUM/logo}
+
+% print debug info to logfile
+\typeout{Global options after tumlogo option parsing.}
+\typeout{classoptions: \@classoptionslist}
+\typeout{unused classoptions: \@unusedoptionlist}
+
+
+
+
+
+
+
+
+
+
+
+% .:: TUM logo
+% ----------------------------------------------------------------------------
+
+\newcommand{\theTUMLogo}[1][]{%
+  % start new group to avoid storage of options
+  \begingroup%
+  % parse options
+  \pgfqkeys{/TUM/logo}{#1}%
+  % draw logo
+  \resizebox{!}{\pgfkeysvalueof{/TUM/logo/height}}{%
+    \begin{tikzpicture}[x=1pt, y=1pt]%
+      \path[fill=\@tum@logo@color@]%
+        ( 0, 39) -- ( 0, 32) -- ( 7, 32) -- ( 7,  0) -- (14,  0) --
+        (14, 32) -- (22, 32) -- (22,  0) -- (44,  0) -- (44, 32) --
+        (52, 32) -- (52,  0) -- (59,  0) -- (59, 32) -- (67, 32) --
+        (67,  0) -- (74,  0) -- (74, 39) -- (37, 39) -- (37,  7) --
+        (29,  7) -- (29, 39) -- cycle;
+    \end{tikzpicture}%
+  }%
+  \endgroup%
+}
+
+
+
+
+
+
+\hypersetup{              % styling of links, properties, ...
+    % pdftitle={Title},
+    % pdffitwindow=true,
+    % pdfviewarea,
+    % pdfpagetransition=Box,
+    pdfstartview=Fit,
+    pdfpagelayout=SinglePage,
+    pdfpagemode=UseThumbs,
+    pdfauthor={\textcopyright\ 
+       Technical University of Munich, Professorship Big Geospatial Data Management - All rights reserved.},
+    pdfpagetransition=Dissolve,
+%    bookmarks=true, not needed, raises warning
+%    pdftex=true, not needed, raises warning
+    pdfdisplaydoctitle,
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    breaklinks=true,
+    %colorlinks=true, 
+    %citecolor={0 1 0},
+    %linkcolor={0 1 0},
+    %filecolor={0 1 0},
+    %urlcolor={0 1 0},
+    citebordercolor={0 1 0},
+    filebordercolor={0 1 0},
+    urlbordercolor={0 1 0},
+    linkbordercolor={0 1 0},
+    runbordercolor={0 1 0},
+    pdfborder={0 0 1},
+    %backref=false
+}
+\RequirePackage[all]{hypcap} % correct captions problem (point at the beginning of the
+                             % captions and not below...)
+\RequirePackage{hyphenat}    % proper hyphenation for bla_bla_bla into bla_-bla_-bla
+\RequirePackage{appendix}
+%\RequirePackage{rotating}
+%\RequirePackage{multirow}
+\RequirePackage{subfig}      % here: to allow for side by side graphics (subfloats)
+%\RequirePackage{flafter}     % force floats to appear after their reference!
+%\RequirePackage{pdflscape}   % enable rotation of landscape pages
+\RequirePackage{fancyhdr}    % header and footer formatting
+%\RequirePackage{eso-pic,graphicx} % for watermark inside sample solution
+
+%\newcounter{chapter}         % this is necessary for listings package!
+\RequirePackage{listings}    % nice print for program code
+\lstloadlanguages{}          % load all languages and dialekts
+
+
+\lstset{ 
+basicstyle=\footnotesize,
+%keywordstyle=\color{red}\bfseries\underbar, %Keywords farbig...
+%commentstyle=\color{blue},
+breaklines=true,
+backgroundcolor=\color{white},
+frame=single,
+%framer ound=ffff,
+stringstyle=\ttfamily,
+extendedchars=true,
+%numbers=left, %links Zeilennummern
+numberstyle=\footnotesize, %kleine Schrift für Nummern
+numbersep=5pt,
+stepnumber=2,%alle 2 Zeilen anzeigen
+tabsize=3,
+showstringspaces=false, %keine Leerzeilen anzeigen
+literate=%
+{Ö}{{\"O}}1
+{Ä}{{\"A}}1
+{Ü}{{\"U}}1
+{ß}{{\ss}}2
+{ü}{{\"u}}1
+{ä}{{\"a}}1
+{ö}{{\"o}}1
+} 
+
+%
+% =============================================================================
+% Definition of MIPS language
+% -----------------------------------------------------------------------------
+%
+\lstdefinelanguage{MIPS}
+  {morekeywords={add,move,div,divu,mult,multu,mul,mulo,mulou,%
+      addu,addiu,subu,addi,sub,%
+      abs,neg,negu,rem,remu,%
+      and,andi,nor,or,ori,xor,xori,not,rol,ror,%
+      sll,sllv,srl,srlv,sra,srav,%
+      seq,sne,sge,sgeu,sgt,sgtu,sle,sleu,slt,stlu,%
+      sltu,stli,sltui,%
+      b,j,beq,beqz,bne,bnez,bge,bgeu,bgez,bgt,bgtu,%
+      bgtz,ble,bleu,blez,blt,bltu,bltz,%
+      jr,jal,jalr,bgezal,bltzal,la,lwc,l.d,l.s,%
+      swc,s.d,s.s,mfc,mfcl.d,mtc,mov.d,mov.s,%
+      add.d,add.s,sub.d,sub.s,mul.d,mul.s,div.d,%
+      div.s,abs.d,abs.s,neg.d,neg.s,bct,bcf,%
+      c.eq.d,c.eq.s,c.le.d,c.le.s,c.lt.d,c.lt.s,%
+      rfe,break,%
+      lw,li,lb,lbu,lh,lhu,ld,ulw,ulh,ulhu,lwr,lwl,lui,%
+      sw,sb,sh,sd,swl,swr,ush,usw,%
+      mfhi,mflo,mthi,mtlo,bclt,%
+      syscall,%
+      .word,.data,.text,.ascii,.asciiz,.half,.double,.space,%
+      diff,store,load,add,push,pop%
+      },%
+   sensitive=true,%
+   morecomment=[l][\color{blue}]{\#},%
+   morestring=[b]",%
+  }%
+%
+% standard formatting for program code
+\lstset{basicstyle=\small\ttfamily, keywordstyle=\bfseries,
+  commentstyle=\slshape, stringstyle=\itshape,
+  extendedchars=true}
+
+
+%
+% =============================================================================
+% Color definitions 
+% -----------------------------------------------------------------------------
+%
+\definecolor{textgrau}{gray}{0.3}
+\definecolor{hellgrau}{gray}{0.7}
+\definecolor{gelb}    {cmyk}{0,0,1,0}
+\definecolor{weiss}   {rgb} {1,1,1}
+\definecolor{schwarz} {rgb} {0,0,0}
+\definecolor{rot}{rgb}{1,0,0}
+\definecolor{gruen}{rgb}{0,1,0}
+\definecolor{blau}{rgb}{0,0,1}
+
+%
+% =============================================================================
+% Font definitions TODO notwendig?
+% -----------------------------------------------------------------------------
+%
+% 1. Serifen-Schriften:
+%    PANDORA-Font aus LaTeX-Base
+%\DeclareTextFontCommand{\panfont}{\fontfamily{panr}\selectfont}
+%\newcommand{\panfamily}{\fontfamily{panr}\selectfont}
+
+%    Concrete-Mathematics Font
+%\DeclareTextFontCommand{\ccfont}{\fontfamily{ccr}\selectfont}
+%\newcommand{\ccfamily}{\fontfamily{ccr}\selectfont}
+
+%    Palatino-Roman Font
+%\DeclareTextFontCommand{\palfont}{\fontfamily{ppl}\selectfont}
+%\newcommand{\palfamily}{\fontfamily{ppl}\selectfont}
+
+%    Charter Font
+%\DeclareTextFontCommand{\chartfont}{\fontfamily{bch}\selectfont}
+%\newcommand{\chartfamily}{\fontfamily{bch}\selectfont}
+
+%    New Century Schoolbook
+%\DeclareTextFontCommand{\ncsfont}{\fontfamily{pnc}\selectfont}
+%\newcommand{\ncsfamily}{\fontfamily{pnc}\selectfont}
+
+%    Bookman Old Style
+%\DeclareTextFontCommand{\bkmfont}{\fontfamily{pbk}\selectfont}
+%\newcommand{\bkmfamily}{\fontfamily{pbk}\selectfont}
+
+%    Times New Romand
+%\DeclareTextFontCommand{\tnrfont}{\fontfamily{ptm}\selectfont}
+%\newcommand{\tnrfamily}{\fontfamily{ptm}\selectfont}
+
+
+% 2. Serifenlose-Schriften:
+%    PANDORASF-Font aus LaTeX-Base
+%\DeclareTextFontCommand{\pansf}{\fontfamily{pss}\selectfont}
+%\newcommand{\pansffamily}{\fontencoding{T1}\fontfamily{pss}\selectfont}
+
+%    CMBright-Font: Sehr schön zu Palatino-Schrift für meinen
+%    Geschmack. Bietet den Vorteil einer eigenen OML (Mathematik)-Fontdefinition
+\DeclareTextFontCommand{\cmbr}{\fontfamily{cmbr}\selectfont}
+%%%\newcommand{\cmbrfamily}{\mathversion{mathcmbr}\fontfamily{cmbr}\selectfont}
+\newcommand{\cmbrfamily}{\sffamily}
+\renewcommand{\sfdefault}{phv}
+
+
+\DeclareMathVersion{mathcmbr}
+
+\SetSymbolFont{operators}{mathcmbr}{OT1}{cmbr}{m}{n}
+\SetSymbolFont{letters}{mathcmbr}{OML}{cmbrm}{m}{it}
+\SetSymbolFont{symbols}{mathcmbr}{OMS}{cmbrs}{m}{n}
+\SetMathAlphabet{\mathit}{mathcmbr}{OT1}{cmbr}{m}{sl}
+\SetMathAlphabet{\mathbf}{mathcmbr}{OT1}{cmbr}{bx}{n}
+\SetMathAlphabet{\mathtt}{mathcmbr}{OT1}{cmtl}{m}{n}
+\SetMathAlphabet{\mathrm}{mathcmbr}{OT1}{cmbr}{m}{n}
+
+%    Helvetica
+%\DeclareTextFontCommand{\helvsf}{\fontfamily{phv}\selectfont}
+%\newcommand{\helvsffamily}{\fontfamily{phv}\selectfont}
+
+%    Avantgard
+%\DeclareTextFontCommand{\avantsf}{\fontfamily{pag}\selectfont}
+%\newcommand{\avantsffamily}{\fontfamily{pag}\selectfont}
+
+%
+% =============================================================================
+% Symbol abbrevations
+% -----------------------------------------------------------------------------
+%
+\newcommand{\mal}{\cdot}
+\newcommand{\plus}{+}
+\newcommand{\und}{\wedge}
+\newcommand{\Und}{\bigwedge}
+\newcommand{\oder}{\vee}
+\newcommand{\Oder}{\bigvee}
+\newcommand{\folgt}{\ensuremath{\Rightarrow}}
+\newcommand{\aequ}{\Leftrightarrow}
+\newcommand{\non}{\neg}
+\newcommand{\N}{\mathbbm{N}}
+\newcommand{\NO}{\mathbbm{N}_0}
+\newcommand{\R}{\mathbbm{R}}
+\newcommand{\Q}{\mathbbm{Q}}
+\newcommand{\Z}{\mathbbm{Z}}
+\newcommand{\abbm}{\longrightarrow}
+\newcommand{\Menge}[1]{\ensuremath{\mathbbm{#1}}}
+\newcommand{\schnitt}{\cap}
+\newcommand{\verein}{\cup}
+\newcommand{\vereinm}{\bigcup}
+\newcommand{\schnittm}{\bigcap}
+\newcommand{\leer}{\emptyset}
+\newcommand{\teilm}{\subset}
+\newcommand{\oberm}{\supset}
+\newcommand{\teilmg}{\subseteq}
+\newcommand{\obermg}{\supseteq}
+\newcommand{\vm}{\bigcup}
+\newcommand{\sm}{\bigcap}
+\newcommand{\potm}[1]{\ensuremath{\mathcal{P}(#1)}}
+\newcommand{\abb}{\longmapsto}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1\right\rceil}
+\newcommand{\orth}{\perp} % oder \bot !!??
+\newcommand{\fremd}[1]{\textsl{#1}}
+\newcommand{\nin}{\not\in}
+\newcommand{\weniger}{\setminus}
+\newcommand{\folge}{\ensuremath{(x_n: n\in \N)} }
+\newcommand{\gegen}{\rightarrow}
+\newcommand{\wider}{\lightning\mbox{}}
+\newcommand{\ok}{\checked}
+\newcommand{\xyover}[2]{\ensuremath{\begin{smallmatrix}#1\\%
+                        #2\end{smallmatrix}}}
+\newcommand{\C}{\mathbbm{C}}
+\newcommand{\kongr}{\equiv}     % Kongruenz
+\newcommand{\normt}{\lhd}       % Normalteiler
+\newcommand{\limn}{\lim_{n\gegen\infty}}
+\newcommand{\limx}{\lim_{x\gegen\infty}}
+\newcommand{\sumn}{\sum_{n\in\N}}
+\newcommand{\sumno}{\sum_{n\in\N_0}}
+\newcommand{\gegenpkt}{\xrightarrow{\text{pkt.}}}     % pkt.weise Konv.
+\newcommand{\gegengl}{\xrightarrow{\text{gleichm.}}}  % gleichm. Konv.
+\newcommand{\isom}{\simeq}
+\newcommand{\komp}{\complement}
+\newcommand{\symdiff}{\vartriangle}
+\newcommand{\injabb}{\hookrightarrow}
+\newcommand{\surjabb}{\rightarrowtail}
+\newcommand{\bijabb}{\longleftrightarrow}
+\newcommand{\spklamm}[1]{\ensuremath{\langle #1\rangle}}
+\newcommand{\V}[1]{\ensuremath{\mathfrak{#1}}}
+\newcommand{\dreieck}{\bigtriangleup}
+\newcommand{\ideal}[1]{\mathbf{#1}}
+\newcommand{\vektor}[1]{\left(\begin{matrix}#1\end{matrix}\right)}
+\newcommand{\dirs}{\oplus}
+\newcommand{\Dirs}{\bigoplus}
+\newcommand{\Winkel}{\measuredangle}
+\newcommand{\D}{\partial}
+\newcommand{\trp}{^{\text{{\tiny$\top$}}}}
+\newcommand{\wellpfeil}{\curvearrowright}
+\newcommand{\downto}{\searrow}
+\newcommand{\upto}{\nearrow}
+\newcommand{\ident}{\equiv}
+\newcommand{\spann}[1]{\left\langle #1\right\rangle{}}
+\newcommand{\skprod}[1]{\left\langle #1\right\rangle{}}
+\newcommand{\trans}{\,^{\mathrm{t}}\hspace{-0.1em}}
+\newcommand{\K}{\mathbbm{K}}
+\newcommand{\upint}{\sideset{}{^*}\int}
+\newcommand{\downint}{\sideset{}{_*}\int}
+\newcommand{\tm}[2]{\genfrac{\{}{\}}{0pt}{}{#1}{#2}}
+\newcommand{\zyk}[2]{\genfrac{[}{]}{0pt}{}{#1}{#2}}
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\gl}[1]{\dot{#1}}
+\newcommand{\xor}{\nleftrightarrow}
+\newcommand{\circm}{\circledcirc}
+\newcommand{\mat}{\SC{M}}
+\newcommand{\admat}{\SC{MA}}
+\newcommand{\inzmat}{\SC{IM}}
+\newlength{\inv@length}
+%\newcommand{\inv}[1]{\settoheight{\inv@length}{A}%
+%  \overline{\makebox[0pt]{\textcolor{white}{|}}#1}}
+\newcommand{\inv}[1]{- #1}
+
+\newlength{\oslength}
+\newcommand{\orths}{\settowidth{\oslength}{$\bigcirc$}
+      \bigcirc\hspace*{-1.135\oslength}\orth}
+
+\newcommand{\begr}[1]{\textbf{#1}\index{#1}}
+
+% TODO hier gehts weiter
+
+%
+%\def\oldstylenums#1{%
+%   \begingroup
+%    \spaceskip\fontdimen\tw@\font
+%    \usefont{OML}{xcm}{\f@series}{it}%
+%    \mathgroup\symletters #1%
+%   \endgroup
+%}
+
+%
+% =============================================================================
+% Command coding TODO notwendig?
+% -----------------------------------------------------------------------------
+%
+%\newcommand{\fullbefehl}[3]{\code{{\color{blau}\bfseries #1}}%
+%  \  \ensuremath{\langle}\code{#2}%
+%  \ensuremath{\rangle}\ \ensuremath{#3}}
+%\newcommand{\argbefehl}[2]{\code{{\color{blau}\bfseries #1}}\ \ensuremath{#2}}
+%\newcommand{\typbefehl}[2]{\code{{\color{blau}\bfseries #1}}\
+%  \ensuremath{\langle}\code{#2}%
+%\ensuremath{\rangle}}
+%\newcommand{\befehl}[1]{\code{{\color{blau}\bfseries #1}}}
+%
+%\newcommand{\boxbefehl}[1]{\par\medskip\noindent%
+%  \fbox{#1\hspace*{1em}}\par\smallskip\nopagebreak}
+%
+\newcommand{\NOR}{\,\mcode{NOR}\,}
+
+%
+% =============================================================================
+% Math operators (in essence shortcuts of \textrm{...} TODO notwendig?
+% -----------------------------------------------------------------------------
+%
+%\DeclareMathOperator{\sign}{sign}
+%\DeclareMathOperator{\ggT}{ggT}
+%\DeclareMathOperator{\entier}{entier}
+%\DeclareMathOperator{\id}{id}
+%\DeclareMathOperator{\Hom}{Hom}
+%\DeclareMathOperator{\Abb}{Abb}
+%\DeclareMathOperator{\KER}{ker}
+%\DeclareMathOperator{\SRg}{SRg}
+%\DeclareMathOperator{\ZRg}{ZRg}
+%\DeclareMathOperator{\Rg}{Rg}
+%\DeclareMathOperator{\im}{im}
+%\DeclareMathOperator{\GL}{GL}
+%\DeclareMathOperator{\Char}{char}
+%\DeclareMathOperator{\pr}{pr}
+%\DeclareMathOperator{\grad}{grad}
+%\DeclareMathOperator{\Div}{Div}
+%\DeclareMathOperator{\rot}{rot}
+%\DeclareMathOperator{\End}{End}
+%\DeclareMathOperator{\Eig}{Eig}
+%\DeclareMathOperator{\Spur}{Sp}
+%\DeclareMathOperator{\Hess}{Hess}
+%\DeclareMathOperator{\Aut}{Aut}
+%\DeclareMathOperator{\rd}{rd}
+%\DeclareMathOperator{\Fib}{Fib}
+%\DeclareMathOperator{\Lip}{Lip}
+%\DeclareMathOperator{\Pol}{Pol}
+%\DeclareMathOperator{\adr}{adr}
+%\DeclareMathOperator{\ld}{ld}
+
+%------------------------------------------------
+% Einige Anpassungen an mathematischen Symbolen
+%------------------------------------------------
+%\renewcommand{\phi}{\varphi}
+%\renewcommand{\epsilon}{\varepsilon}
+%\renewcommand{\theta}{\vartheta}
+%\renewcommand{\komp}{^\sharp}
+%\DeclareMathSymbol{\vareps}{\mathord}{letters}{"0F}
+
+% Verbesserung des Standard PROOF-Environments
+\renewenvironment{proof}[1][\proofname]{\par\begingroup\cmbrfamily\small
+  \topsep6\p@\@plus6\p@ \trivlist
+  \item[\hskip\labelsep\slshape
+    #1\@addpunct{.}]\ignorespaces}{
+  \qed\endtrivlist\endgroup
+}
+
+%------------------------------------------------
+% Neue Environments u. Floatings
+%------------------------------------------------
+\floatstyle{ruled}
+\newfloat{prog}{tbhp}{lop}
+\floatname{prog}{Program}
+\newfloat{aufg}{tbhp}{log}
+\floatname{aufg}{Task}
+\newfloat{Algorithmus}{bthp}{loh}
+\floatstyle{plain}
+\newfloat{Schaubild}{tbhp}{los}
+\newfloat{Abbildung}{tbhp}{loa}
+\newfloat{kommdiag}{H}{lok}
+\floatname{kommdiag}{Komm.-Diagr.}
+
+\DeclareOption{nonums}{
+  \setcounter{secnumdepth}{0}
+  \setcounter{tocdepth}{0}
+}
+
+%------------------------------------------------
+% Neue Multiple Choice Environment
+%
+% Verwendung:
+% \begin{mclist}{Thema}
+%  \mcquestion{Eine wahr oder falsch Frage}{X fuer wahr}{X fuer falsch}
+%\end{mclist}
+%
+% Beispiel:
+% \begin{mclist}{Virtueller Speicher}
+% \mcquestion{Die Frames (Seitenrahmen) des physischen Speichers
+%   haben immer die gleiche Gr"o"se wie die Pages (Seiten)
+%   des virtuellen Speichers.}{X}{}{Kommentar}
+% \mcquestion{...}{X}{}{}
+% ...
+% \end{mclist}
+%------------------------------------------------
+\newcounter{mccounter}
+\newcommand{\mcitem}{\alph{mccounter} \stepcounter{mccounter}}
+\newcommand{\mcquestion}[4]{%
+  \mcitem & #1 %
+          & \ifthenelse{\boolean{inAntwort}}{#2}{} %
+          & \ifthenelse{\boolean{inAntwort}}{#3}{} %
+  % falls antwort Umgebung gewuenscht...
+  \ifthenelse{\boolean{inAntwort}}{%
+    % ...und falls ein Kommentar zur Loesung gegeben ist, schreibe diesen unter die Frage
+    \@ifemptyarg{#4}{}{%
+      \\
+      \hline
+      & \multicolumn{3}{X|}{\textit{#4}}}%
+    }{%
+    }
+    \\ \hline
+  }
+\newcommand{\startmctable}
+  {\setcounter{mccounter}{1} \centering \tabularx{\textwidth}{|p{1ex}|X|p{5ex}|p{5ex}|}}
+\newcommand{\stopmctable}
+  {\endtabularx}
+\newenvironment{mclist}
+  {%
+    \startmctable \hline 
+    \multicolumn{2}{|X|}{%
+       Are the following statements true or false?} &
+       True & 
+       False \\ \hline%
+  }
+  {\stopmctable \vspace{3mm}}
+
+
+  
+%------------------------------------------------
+% Neue Gnatt  Chart  Environment
+%
+% Verwendung:
+% \begin{ganttchart}{breite}{#spalten}
+%  \ganttcol{Seite}
+%\end{ganttchart}
+%
+% Beispiel:
+%  \begin{ganttchart}{11cm}{21}
+%   \ganttcol{A}  &
+%   \ganttcol{A}  &
+%   \ganttcol{A}  &
+%   \ganttcol{B}  &
+%   ...
+%   \ganttcolend{B}
+%  \end{ganttchart}
+%
+%------------------------------------------------
+\newcount\ganttcolnum
+\newlength{\ganttwidth}
+\newlength{\ganttcolwidth}
+\newcounter{ganttct}
+\newcommand{\ganttemptyline}[1]{
+  \multicolumn{1}{S}{}
+  \forloop{ganttct}{1}{\value{ganttct} < #1}
+  {
+      & \multicolumn{2}{|D}{}
+  }
+  & \multicolumn{2}{|D|}{} & \multicolumn{1}{S}{} \\
+}
+\newcommand{\ganttcol}[1]{\multicolumn{2}{|D}{#1}}
+\newcommand{\ganttcolend}[1]{\multicolumn{2}{|D@{\hspace{3\arrayrulewidth}}|}{#1} & \\
+  \multicolumn{1}{S}{}
+  \forloop{ganttct}{1}{\value{ganttct} < \ganttcolnum}
+  {
+      & \multicolumn{2}{|D}{}
+  }
+  & \multicolumn{2}{|D|}{} & \multicolumn{1}{S}{} \\
+  \cline{2-\ganttcolnumminone}
+  \multicolumn{1}{S}{}
+  \forloop{ganttct}{1}{\value{ganttct} < \ganttcolnum}{
+      & \multicolumn{2}{|D}{}
+  }
+  & \multicolumn{2}{|D|}{} & \multicolumn{1}{S}{} \\
+  \multicolumn{2}{@{\hspace{2\arrayrulewidth}}D}{0}
+  \forloop{ganttct}{1}{\value{ganttct}<\ganttcolnum}{
+    & \multicolumn{2}{@{\hspace{\arrayrulewidth}}D}{\theganttct}
+  }
+  & \multicolumn{2}{@{\hspace{\arrayrulewidth}}D@{\hspace{\arrayrulewidth}}}{\theganttct}
+}
+\newenvironment{ganttchart}[2]
+{
+  \setlength{\ganttwidth}{#1}
+  \setlength{\tabcolsep}{0ex}
+  \setlength{\arrayrulewidth}{1.2pt}
+  \count1=#2
+  \ganttcolnum#2
+  \multiply \count1 by 2
+  \advance\count1 by 2
+  \dimen1=\ganttwidth
+  \divide \dimen1 by \count1
+  \setlength{\ganttcolwidth}{\dimen1}
+  \newcount\ganttcolnumminone
+  \ganttcolnumminone\count1
+  \advance\ganttcolnumminone -1
+  \newcolumntype{D}{>{\centering}m{2\ganttcolwidth}}
+  \newcolumntype{S}{>{\centering}m{\ganttcolwidth}}
+  \tabularx{\ganttwidth}{*{\count1}{S}}
+    \cline{2-\ganttcolnumminone}
+    \ganttemptyline{\ganttcolnum}
+    &
+}
+{
+  \endtabularx
+}
+
+%------------------------------------------------
+% Neue Karnaugh  Environment
+%
+% Dient zur Erstellung von Karnaugh Diagrammen der
+% Gr��e 4x4
+%
+% Verwendung:
+%
+%\begin{karnaugh}[format]{scalefactor}
+   %\drawknbox[orientation][autofill]{xPos}{yPos}{width}{hight}
+   %\drawkncontent[character]{xPos}{yPos}
+%\end{karnaugh}
+%
+% scalefactor:
+%    Skalierungsfaktor
+% format:
+%    Gibt an ob wir ein 3x4 oder 4x4 Diagramm
+%    wollen
+% orientation:
+%    Damit kann man angeben, an welchen Seiten
+%    das Diagramm offen sein soll. Kein Angabe
+%    bewirkt, dass alle Seiten geschlossen sind
+% autofill:
+%    Wenn man hier manual eintr�gt, werden die
+%    Felder nicht gesetzt. Ansonsten werden �berall
+%    in der Box 1en geschrieben
+% character:
+%   An besagter Position wir das entsprechende
+%   Zeichen geschrieben
+%
+% Beispiel 1:
+%
+%\begin{karnaugh}{1.0}
+%   \drawknbox[closed][manual]{2}{2}{1}{1}
+%   \drawkncontent{2}{2}
+%    \drawknbox[leftopen]{0}{1}{1}{2}
+%    \drawknbox[rightopen]{3}{1}{1}{2}
+%    \drawknbox[bottomopen]{2}{0}{1}{1}
+%    \drawknbox[topopen]{1}{3}{1}{1}
+%    \drawknbox[topleftopen]{0}{3}{1}{1}
+%    \drawknbox[toprightopen]{3}{3}{1}{1}
+%    \drawknbox[bottomrightopen]{3}{0}{1}{1}
+%    \drawknbox[bottomleftopen][manual]{0}{0}{1}{1}
+%    \drawkncontent[D]{0}{0}
+%\end{karnaugh}
+%
+% Beispiel 2:
+%\begin{karnaugh}[3x4]{1.0}
+%   \drawknbox{1}{0}{2}{1}
+%   \drawknbox[leftopen]{0}{1}{1}{1}
+%   \drawknbox[rightopen]{3}{1}{1}{1}
+%\end{karnaugh}
+%
+%------------------------------------------------
+\newcommandx*\drawkncontent[3][1=1]{%
+   \draw[opacity=1.0] (#2,#3) +(1.5,0.5) node {#1};
+}
+
+% macro for karnaugh box
+\newcommandx*\drawknbox[6][1=closed,2=auto]{%
+   % is our figure left or right open?
+   \ifthenelse{\equal{#1}{closed}}{%
+      % centered
+      \filldraw[knbox]%
+        {[rounded corners] (#3+1.1,#4+0.1) -- ++(0,#6-0.2) -- ++(#5-0.2,0) -- ++ (0,-#6+0.2) --cycle};
+   }{%
+      \ifthenelse{\equal{#1}{leftopen}}{%
+         % left open
+         \filldraw[knbox]%
+            (#3+1.0,#4+0.1) -- ++(0,#6-0.2) {[rounded corners] -- ++(#5-0.1,0) -- ++ (0,-#6+0.2)} --cycle;
+      }{%
+         \ifthenelse{\equal{#1}{rightopen}}{%
+            % right open
+            \filldraw[knbox]%
+               (#3+#5+1.0,#4+0.1) -- ++(0.0,#6-0.2) {[rounded corners] -- ++(-#5+0.1,0) -- ++ (0,-#6+0.2)} --cycle;
+         }{%
+            \ifthenelse{\equal{#1}{bottomopen}}{%
+               % top open
+               \filldraw[knbox]%
+                  (#3+1.1,#4) -- ++(#5-0.2,0) {[rounded corners] -- ++(0,#6-0.1) -- ++ (-#5+0.2,0)} -- cycle;
+            }{%
+               \ifthenelse{\equal{#1}{topopen}}{%
+                  % bottom open
+                  \filldraw[knbox]%
+                     (#3+1.1,#4+#6) -- ++(#5-0.2,0) {[rounded corners] -- ++(0,-#6+0.1) -- ++ (-#5+0.2,0)} -- cycle;
+               }{%
+                  \ifthenelse{\equal{#1}{topleftopen}}{%
+                     % top left open
+                     \filldraw[knbox]%
+                        (#3+1.0,#4+0.1) -- ++(0,#6-0.1) -- ++(#5-0.1,0) {[rounded corners] -- ++(0,-#6+0.1)} -- cycle;
+                  }{%
+                     \ifthenelse{\equal{#1}{toprightopen}}{%
+                        % top rigth open
+                        \filldraw[knbox]%
+                           (#3+1.1,#4+#6) -- ++(#5-0.1,0) -- ++(0,-#6+0.1) {[rounded corners] -- ++(-#5+0.1,0)} --cycle;
+                     }{%
+                        \ifthenelse{\equal{#1}{bottomrightopen}}{%
+                           % bottom right open
+                           \filldraw[knbox]%
+                              (#3+1.1,0) -- ++(#5-0.1,0) -- ++ (0,#6-0.1) {[rounded corners] -- ++(-#5+0.1,0)} -- cycle;
+                        }{%
+                           \ifthenelse{\equal{#1}{bottomleftopen}}{%
+                              % bottom left open
+                              \filldraw[knbox]%
+                                 (#3+#5+0.9,#4) -- ++(-#5+0.1,0) -- ++(0,#6-0.1) {[rounded corners] -- ++(#5-0.1,0)} -- cycle;
+                           }{
+                              \PackageError{ikg}{`#1' is an unknown option}
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+      % draw 1 (ones)
+      \ifthenelse{\equal{#2}{auto}}{%
+         \foreach \x in {1,...,#5}{%
+            \foreach \y in {1,...,#6}{%
+               \draw (\x,\y) +(#3+0.5,#4-0.5) node {1};
+            }
+         }
+      }{%
+      }
+}
+
+\newenvironment{karnaugh}[2][4x4]{% start
+   \begin{tikzpicture}[scale=#2]
+      \tikzset{mylines/.style={thick,dashed,blue!100}}
+      \tikzset{knbox/.style={step=1cm,fill=black!40,opacity=0.5,draw=black!100}}
+      \ifthenelse{\equal{#1}{4x4}}{%
+         % draw upper left corner
+         \draw[mylines,step=1cm] (0.4,4.6) -- (1,4);
+         \draw (1,4.5)node {$x_1x_2\:$};
+         \draw (0.4,4.1)node {$\:x_3x_4$};
+         % draw the grid
+         \draw[mylines,step=1cm] (1,0) grid +(4,4);
+         % draw scale
+         \foreach \x/\y in {1/00,2/01/,3/11,4/10}{%
+            \draw[thick] (0.5,4.5) +(\x,0) node[anchor=north] {\y};
+            \draw[thick] (0.5,-0.5) +(-0.2,\x) node[anchor=west] {\y};
+         }
+      }{% 3x4
+         \ifthenelse{\equal{#1}{3x4}}{%
+            % draw upper left corner
+            \draw[mylines,step=1cm] (0.4,2.6) -- (1,2);
+            \draw (1,2.5)node {$x_1x_2\:$};
+            \draw (0.5,2.1)node {$\:x_3$};
+            % draw the grid
+            \draw[mylines,step=1cm] (1,0) grid +(4,2);
+            % draw scale
+            \foreach \x/\y in {1/00,2/01/,3/11,4/10}{%
+               \draw[thick] (0.5,2.5) +(\x,0) node[anchor=north] {\y};
+            }
+            \foreach \x/\y in {1/1,2/0}{%
+               \draw[thick] (0.5,-0.5) +(-0.2,\x) node[anchor=west] {\y};
+            }
+         }{%
+            % error
+            \PackageError{mdsg}{`#1' is an unknown option}
+         }
+      }
+}{% ende
+   \end{tikzpicture}
+}
+
+% =============================================================================
+% layout adaptions
+% =============================================================================
+%
+% no indents for paragraphs
+\setlength{\parindent}{0pt}
+\setlength{\marginparpush}{\parsep}
+% list adaptions
+% labels
+\renewcommand{\labelitemi}{\normalfont\bfseries --}
+\renewcommand\labelitemii{$\m@th\bullet$}
+\renewcommand\labelitemiii{$\m@th\ast$}
+\renewcommand\labelitemiv{$\m@th\cdot$}
+% enumeration environment
+\renewenvironment{enumerate}{%
+  \ifnum \@enumdepth >3 \@toodeep\else
+      \advance\@enumdepth \@ne
+      \edef\@enumctr{enum\romannumeral\the\@enumdepth}\list
+      {\csname label\@enumctr\endcsname}{\usecounter
+        {\@enumctr}\def\makelabel##1{\upshape##1\hfill}
+        \setlength{\listparindent}{0pt}
+        \setlength{\labelsep}{1em}
+        \settowidth{\labelwidth}{99.}
+        \setlength{\leftmargin}{0\p@}
+        \addtolength{\leftmargin}{\labelwidth}
+        \addtolength{\leftmargin}{\labelsep}
+        }\fi
+}{%
+  \endlist
+}
+\let\endenumerate=\endlist % for efficiency
+% itemize environment
+\renewenvironment{itemize}{%
+  \ifnum\@itemdepth>3 \@toodeep
+  \else \advance\@itemdepth\@ne
+    \edef\@itemitem{labelitem\romannumeral\the\@itemdepth}%
+    \list{\csname\@itemitem\endcsname}%
+      {\def\makelabel##1{\upshape##1\hfill}
+      \setlength{\listparindent}{0pt}
+      \setlength{\labelsep}{1em}
+      \settowidth{\labelwidth}{99.}
+      \setlength{\leftmargin}{0\p@}
+      \addtolength{\leftmargin}{\labelwidth}
+      \addtolength{\leftmargin}{\labelsep}
+  }%
+  \fi
+}{%
+  \endlist
+}
+\let\enditemize=\endlist % for efficiency
+% description environment % TODO
+%\renewenvironment{description}{\list{}{%
+%  \advance\leftmargini6\p@ \itemindent-12\p@
+%  \labelwidth\z@
+%  \setlength{\listparindent}{0pt}
+%  \setlength{\labelsep}{1em}
+%  \setlength{\itemsep}{0pt}
+%  \settowidth{\labelwidth}{9.}
+%  \setlength{\leftmargin}{0\p@}
+%  \addtolength{\leftmargin}{\labelwidth}
+%  \addtolength{\leftmargin}{\labelsep}
+%  %\settowidth{\leftmargin}{\labelitemi}
+%  \let\makelabel\descriptionlabel}%
+%}{
+%  \endlist
+%}
+%\let\enddescription=\endlist % for efficiency
+
+% Disable single lines at the start of a paragraph (Schusterjungen)
+\clubpenalty = 10000
+%
+% Disable single lines at the end of a paragraph (Hurenkinder)
+\widowpenalty = 10000 \displaywidowpenalty = 10000
+
+%
+% =============================================================================
+% Some other useful commands
+% -----------------------------------------------------------------------------
+%
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\mcode}[1]{\text{\code{#1}}} % for use inside math environment
+\newcommand{\strong}[1]{\textbf{#1}}
+%
+% Hoch- bzw. Tiefstellung im Lauftext (ohne Umschalten in MATH-Modus, effizienter
+%       und schöner, falls MATH-Font <> TEXT-Font
+\newcommand{\up}[1]{\raisebox{.6ex}{#1}}%
+\newcommand{\low}[1]{\raisebox{-.6ex}{#1}}%
+% Shortcuts für mathematische Sonderfonts
+\newcommand{\DT}[1]{\mathfrak{#1}}
+\newcommand{\SC}[1]{\mathcal{#1}}
+
+%
+% =============================================================================
+% background picture
+% -----------------------------------------------------------------------------
+%
+\newcommand\BackgroundPicture[3]{%
+  \setlength{\unitlength}{1pt}%
+  \put(0,\strip@pt\paperheight){%
+    \parbox[t][\paperheight]{\paperwidth}{%
+      \vfill
+      \centering\includegraphics[width=1.1\textwidth]{watermark}
+      \vfill
+    }
+  }
+} 
+
+
+%
+% =============================================================================
+% Define and set some booleans
+% -----------------------------------------------------------------------------
+%
+\newboolean{doAnswers}%
+\setboolean{doAnswers}{false}%
+\newboolean{doBackgroundPicture}%
+\setboolean{doBackgroundPicture}{false}%
+\newboolean{doZiele}%
+\setboolean{doZiele}{false}%
+\newboolean{doPoints}%
+\setboolean{doPoints}{true}%
+\newboolean{nummerNotSet}%
+\setboolean{nummerNotSet}{true}%
+\newboolean{isKlausur}%
+\setboolean{isKlausur}{false}%
+\newboolean{isUebung}%
+\setboolean{isUebung}{false}%
+\newboolean{isMerkblatt}%
+\setboolean{isMerkblatt}{false}%
+\newboolean{isZoom}%
+\setboolean{isZoom}{false}%
+\newboolean{doPlatznummer}%
+\setboolean{doPlatznummer}{false}%
+\newboolean{isVorlesung}%
+\setboolean{isVorlesung}{false}%
+\newboolean{isPraktikum}%
+\setboolean{isPraktikum}{false}%
+% in case we provide practical courses for another
+% prof instead of Linnhoff...
+\newboolean{isExterneBetreuung}%
+\setboolean{isExterneBetreuung}{false}%
+% to enable the utilization of the letters H,T,K,P
+% to distinguish different types of exercises
+\newboolean{isUseLetters}%
+\setboolean{isUseLetters}{false}%
+%
+% define some new commands
+\renewcommand{\columnseprule}{.4pt}
+% in order to switch between different numberings
+\newcommand{\alphaEnum}{\renewcommand{\theenumi}{\alph{enumi}}%
+  \renewcommand{\theenumii}{\roman{enumii}}}
+\newcommand{\romanEnum}{\renewcommand{\theenumi}{\roman{enumi}}}
+%
+% ======================================================
+% ------ Package-Options  ------------------------------
+% ------------------------------------------------------
+%
+% available options
+%
+% in case `answers' option in place  -> boolean \answer <- true
+\DeclareOption{answers}{\doAnswerstrue}
+% in case `bgpicture option in place  -> boolean \bgpicture <- false
+\DeclareOption{bgpicture}{\doBackgroundPicturetrue}
+% in case `nopoints option in place  -> boolean \points <- false
+\DeclareOption{nopoints}{\doPointsfalse}
+\DeclareOption{ziele}{\doZieletrue}
+% in order to specify klausur-specific options
+\DeclareOption{klausur}{\isKlausurtrue}
+% in order to specify uebung-specific options
+\DeclareOption{uebung}{\isUebungtrue}
+% in order to specify merkblatt-specific options
+\DeclareOption{merkblatt}{\isMerkblatttrue}
+% in order to specify increased letter size (12pt)
+\DeclareOption{zoom}{\isZoomtrue}
+% in order to include a separate field fo Platznummer
+\DeclareOption{platznummer}{\doPlatznummertrue}
+% in order to provide modified header for external courses
+\DeclareOption{externebetreuung}{\isExterneBetreuungtrue}
+% in order to specifiy the utilisations if letters H,T,P,K
+\DeclareOption{useletters}{\isUseLetterstrue}
+% catch unknown options
+\DeclareOption*{%
+   \PackageError{mdsg}{Unknown option `\CurrentOption'}%
+}
+%
+% evaluate options and define option-specific environments, commands, ...
+%
+\ProcessOptions
+%
+% check that exactly one option of uebung, klausur, and merkblatt is given
+%
+\ifthenelse{%
+\boolean{isUebung}\OR\boolean{isKlausur}\OR\boolean{isMerkblatt}%
+}{%
+   \ifthenelse{%
+   \(
+      \boolean{isUebung}\AND\NOT\(\boolean{isKlausur}\OR\boolean{isMerkblatt}\)
+   \)
+   \OR
+   \(
+      \boolean{isKlausur}\AND\NOT\(\boolean{isUebung}\OR\boolean{isMerkblatt}\)
+   \)
+   \OR
+   \(
+      \boolean{isMerkblatt}\AND\NOT\(\boolean{isUebung}\OR\boolean{isKlausur}\)
+   \)%
+   }{% everything is fine -> go ahead
+   }{% more than one of those package options -> error
+       \PackageError{mdsg}{You tried to use
+       \ifisMerkblatt
+          merkblatt,
+       \fi
+       \ifisUebung
+          uebung,
+       \fi
+       \ifisKlausur
+          klausur
+       \fi
+       at the same time}%
+   }%
+}{%
+   \PackageError{mdsg}{You have to specifiy exactly one of the options `merkblatt', `uebung', or `klausur'}%
+}
+%
+% =============================================================================
+% Answers environemnt for option `uebung'
+% -----------------------------------------------------------------------------
+%
+\newboolean{inAntwort}
+\setboolean{inAntwort}{false}
+\ifdoAnswers
+  \setboolean{inAntwort}{true}
+  \newenvironment{solution}%
+  {%
+    % print the following before the lines between \begin{antwort} and \end{antwort}
+    \par\medskip\alphaEnum\answerfont\makebox[1.3cm]{\textbf{Solution:}}\nopagebreak[4]\\[1ex]\nopagebreak[4]%
+  }%
+  {%
+    % print the following after the lines between \begin{antwort} and \end{antwort}
+    % ...
+  }
+\else
+\let\solution\comment
+\let\endsoluton\endcomment
+\fi
+
+%
+% =============================================================================
+% Some useful MAKROS 
+% -----------------------------------------------------------------------------
+%
+% makro for test of empty arguments
+%
+%\@ifemptyarg{#1} {Argument ist leer}{Argument ist nicht leer}
+\providecommand\@ifemptyarg[1]{%
+  \ifx\@empty#1\@empty
+  \expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi}
+%
+% =============================================================================
+% Title pages
+% -----------------------------------------------------------------------------
+% Support for new commands inside title:
+%    Always available:
+%       \Professor
+%       \Universitaet
+%       \Institut
+%       \Semester
+%       \Vorlesung
+%       \Praktikum
+%       \date         %       from standard class
+%       \InstitutsWebsite
+%       \LehrstuhlWebsite
+%    Only available in case of Package option uebung
+%       \nummerUebungsblatt
+%       \nummerErsteFrage
+%       \Abgabe
+%       \Ankuendigungen
+%       \Anmerkungen
+%       \zuLesen
+%       \zuWiederholen
+%       \zuVertiefen
+%    Only available in case of package option klausur
+%       \nummerKlausur
+
+%
+% commands that we always need
+%
+\newcommand{\@Professor}{}
+\newcommand{\@Universitaet}{}
+\newcommand{\@Institut}{}
+\newcommand{\@Lehrstuhl}{}
+\newcommand{\@Semester}{}
+\newcommand{\@ShortSemester}{}
+\newcommand{\@Vorlesung}{}
+\newcommand{\@Praktikum}{}
+\newcommand{\@InstitutsWebsite}{}
+\newcommand{\@LehrstuhlWebsite}{}
+\newcommand{\@VorlesungsWebsite}{}
+\newcommand{\@LearningOutcome}{}
+%
+\newcommand{\Professor}[1]{\renewcommand{\@Professor}{#1}}
+\newcommand{\Universitaet}[1]{\renewcommand{\@Universitaet}{#1}}
+\newcommand{\Institut}[1]{\renewcommand{\@Institut}{#1}}
+\newcommand{\Lehrstuhl}[1]{\renewcommand{\@Lehrstuhl}{#1}}
+\newcommand{\Semester}[2][]{\renewcommand{\@Semester}{#2}
+  \@ifemptyarg{#1}{\renewcommand{\@ShortSemester}{#2}}{\renewcommand{\@ShortSemester}{#1}}}
+\newcommand{\Vorlesung}[1]{\renewcommand{\@Vorlesung}{#1}
+  \@ifemptyarg{#1}{\setboolean{isVorlesung}{false}}{\setboolean{isVorlesung}{true}}}
+\newcommand{\Praktikum}[1]{\renewcommand{\@Praktikum}{#1}
+  \@ifemptyarg{#1}{\setboolean{isPraktikum}{false}}{\setboolean{isPraktikum}{true}}}
+\newcommand{\InstitutsWebsite}[1]{\renewcommand{\@InstitutsWebsite}{#1}}
+\newcommand{\LehrstuhlWebsite}[1]{\renewcommand{\@LehrstuhlWebsite}{#1}}
+\newcommand{\VorlesungsWebsite}[1]{\renewcommand{\@VorlesungsWebsite}{#1}}
+\newcommand{\LearningOutcome}[1]{\renewcommand{\@LearningOutcome}{#1}}
+
+%
+% klausur specific commands
+%
+\ifisKlausur
+\newcommand{\@klausurTitle}{}
+\newcommand{\klausurTitle}[1]{\renewcommand{\@klausurTitle}{#1}}
+
+  \newcommand{\@nummerKlausur}{}
+  %
+  \newcommand{\nummerKlausur}[1]%
+    {\@ifemptyarg{#1}% if \nummerNotSet not set -> leave it out
+      {}
+      {\renewcommand{\@nummerKlausur}{#1.\hspace{1mm}}\nummerNotSetfalse}
+    }
+\fi
+%
+% uebung-specific commands
+%
+\ifisUebung
+  \newcommand{\@nummerUebungsblatt}{}
+  \newcommand{\@Abgabetermin}{}
+  \newcommand{\@Besprechung}{}
+  \newcommand{\@Ankuendigungen}{}
+  \newcommand{\@Anmerkungen}{}
+  \newcommand{\@zuLesen}{}
+  \newcommand{\@zuLesenKlausur}{}
+  \newcommand{\@zuWiederholen}{}
+  \newcommand{\@zuVertiefen}{}
+  % Nummerierung des Uebungsblatts
+  \newcommand{\nummerUebungsblatt}[1]%
+    {\renewcommand{\@nummerUebungsblatt}{#1}\nummerNotSetfalse}
+  % Abgabetermin
+  \newcommand{\Abgabetermin}[1]%
+    {\@ifemptyarg{#1}% Wenn kein \Abgabetermin{} angegeben -> weglassen
+      {}
+      {\renewcommand{\@Abgabetermin}{% sonst folgendes
+          {\makebox[.2\textwidth][l]{\textbf{Abgabetermin:}}\parbox[t]{.8\textwidth}{\textsf{#1}}}\\[.5em]}
+      }
+  }
+  % Ankuendigungen
+  \newcommand{\Ankuendigungen}[1]%
+    {\@ifemptyarg{#1}% Wenn kein \Ankuendigungen{} angegeben -> weglassen
+      {}
+      {\renewcommand{\@Ankuendigungen}{% sonst folgendes
+          {\makebox[.2\textwidth][l]{\textbf{Ank\"undigungen:}}\parbox[t]{.8\textwidth}{\textsf{#1}}}\\[.5em]}
+      }
+  }
+  % Anmerkungen
+  \newcommand{\Anmerkungen}[1]%
+    {\@ifemptyarg{#1}% Wenn kein \Anmerkungen{} angegeben -> weglassen
+      {}
+      {\renewcommand{\@Anmerkungen}{% sonst folgendes
+          {\makebox[.2\textwidth][l]{\textbf{Anmerkungen:}}\parbox[t]{.8\textwidth}{\textsf{#1}}}\\[.5em]}
+      }
+  }
+  % Besprechung
+  \newcommand{\Besprechung}[1]%
+    {\@ifemptyarg{#1}% Wenn kein \Besprechung{} angegeben -> weglassen
+      {}
+      {\renewcommand{\@Besprechung}{% sonst folgendes
+          {\makebox[.2\textwidth][l]{\textbf{Besprechung:}}\parbox[t]{.8\textwidth}{\textsf{#1}}}\\[.5em]}
+      }
+  }
+  % zuLesen
+  \newcommand{\zuLesen}[1]%
+    {\@ifemptyarg{#1}% Wenn kein \zuLesen{} angegeben -> weglassen
+      {}
+      {\renewcommand{\@zuLesen}{% sonst folgendes
+          {\makebox[.2\textwidth][l]{\textbf{Literatur:}}\parbox[t]{.8\textwidth}{\textsf{#1}}}\\[.5em]}
+      }
+  }
+  % klausurLiteratur
+  \newcommand{\zuLesenKlausur}[1]%
+    {\@ifemptyarg{#1}% Wenn kein \zuLesen{} angegeben -> weglassen
+      {}
+      {\renewcommand{\@zuLesenKlausur}{% sonst folgendes
+          {\makebox[.2\textwidth][l]{\textbf{Pflicht-Literatur:}}\parbox[t]{.8\textwidth}{\textsf{#1}}}\\[.5em]}
+      }
+  }
+
+  % zuWiederholen
+  \newcommand{\zuWiederholen}[1]%
+    {\@ifemptyarg{#1}% Wenn kein \zuWiederholen{} angegeben -> weglassen
+      {}
+      {\renewcommand{\@zuWiederholen}{% sonst folgendes
+          {\makebox[.2\textwidth][l]{\textbf{Wiederholen:}}\parbox[t]{.8\textwidth}{\textsf{#1}}}\\[.5em]}
+      }
+  }
+  % zuVertiefen
+  \newcommand{\zuVertiefen}[1]%
+    {\@ifemptyarg{#1}% Wenn kein \zuVertiefen{} angegeben -> weglassen
+      {}
+      {\renewcommand{\@zuVertiefen}{% sonst folgendes
+          {\makebox[.2\textwidth][l]{\textbf{Vertiefen:}}\parbox[t]{.8\textwidth}{\textsf{#1}}}\\[.5em]}
+      }
+  }
+\fi
+
+%
+% title for klausur
+%
+%%%\ifisKlausur
+%%%  \renewcommand*\maketitle{%
+%%%  \@maketitle}%
+%%%  \def\@maketitle{%
+%%%  \thispagestyle{empty}%
+%%%  % info line
+%%%  {
+%%%    \ifdoPlatznummer
+%%%      \ifisZoom
+%%%        \begin{textblock}{6}(11.5,3)
+%%%        {\Large {\bf Platznummer \\[-2.5ex] hier eintragen! $\Rightarrow$}}
+%%%        \fboxrule0.4mm
+%%%        \framebox[2cm]{\rule[-.2cm]{0cm}{1.5cm}}
+%%%        \end{textblock}
+%%%      \else
+%%%        \begin{textblock}{8}(8.3,0.5)
+%%%        {\Large {\bf Platznummer hier eintragen! $\Rightarrow$}}
+%%%        \fboxrule0.4mm
+%%%        \framebox[2cm]{\rule[-.6cm]{0cm}{1.5cm}}
+%%%        \end{textblock}
+%%%      \fi
+%%%    \fi
+%%%    \large
+%%%    {\scshape
+%%%    \ifisExterneBetreuung
+%%%      \begin{tabular}[t]{l}
+%%%        \@Universitaet \\
+%%%        \href{\@InstitutsWebsite}{\@Institut} \\
+%%%        %\href{\@LehrstuhlWebsite}{\@Lehrstuhl} \\
+%%%        \@Professor
+%%%      \end{tabular}%
+%%%    \else
+%%%      \begin{tabular}[t]{l}
+%%%        \@Universitaet \\
+%%%        \href{\@InstitutsWebsite}{\@Institut} \\
+%%%        \href{\@LehrstuhlWebsite}{\@Lehrstuhl} \\
+%%%        \@Professor
+%%%      \end{tabular}%
+%%%    \fi
+%%%    }
+%%%    \hfill
+%%%    \begin{tabular}[t]{c}
+%%%      \@Semester \\
+%%%      \@nummerKlausur Klausur \\
+%%%      \@date
+%%%    \end{tabular}
+%%%  }
+%%%  \par\bigskip\bigskip
+%%%  % Titelzeile
+%%%  \begin{center}
+%%%    {\LARGE\textbf{\@nummerKlausur %
+%%%     \ifthenelse{\boolean{isPraktikum}}
+%%%        {Klausur zum Praktikum\\ \href{\@VorlesungsWebsite}{\@Praktikum}}
+%%%        {\ifthenelse{\boolean{isVorlesung}}
+%%%           {Exam \\ \href{\@VorlesungsWebsite}{\@Vorlesung}}
+%%%           % error
+%%%           {\PackageError{mdsg}{You have to specifiy either `\~Vorlesung' or `\~Praktikum' in your VorlesungsParameter.tex}}
+%%%        }%
+%%%     }
+%%%     \par}\smallskip
+%%%  \end{center}
+%%%  \par\bigskip
+%%%}
+%%%\fi
+%%%%
+% title for uebung
+%
+\ifisUebung
+  \ifdoBackgroundPicture
+    \AddToShipoutPicture{\BackgroundPicture}
+  \fi
+  \renewcommand*\maketitle{\@maketitle}%
+  \def\@maketitle{%
+  \thispagestyle{empty}%
+  \ifnummerNotSet
+    \PackageError{tumbgdm}{%
+      Sie haben keine Nummer fuer das Uebungsblatt angegeben%
+    }{%
+      Geben Sie mit \\nummerUebungsblatt eine Nummer an.%
+    }
+  \fi
+  %
+  \ifisExterneBetreuung
+    \begin{tabular}[b]{l}
+      \color{TUMBlue}\@Universitaet \\
+      \href{\@InstitutsWebsite}{\@Institut} \\
+      % \href{\@LehrstuhlWebsite}{\@Lehrstuhl} \\
+      \@Professor
+      \color{black}
+    \end{tabular}%
+  \else
+    \begin{tabular}[b]{l}
+      \color{TUMBlue}\href{\@InstitutsWebsite}{\@Universitaet} \\
+      \color{TUMBlue}\href{\@InstitutsWebsite}{\@Institut} \\
+%      \href{\@LehrstuhlWebsite}{\@Lehrstuhl} \\
+      \color{TUMBlue}\href{\@InstitutsWebsite}{\@Professor}\\
+      \end{tabular}%
+  \fi
+  \hfill
+  \ifisExterneBetreuung
+    \begin{tabular}[b]{c}
+      Vorlesung \\
+      \@Vorlesung \\
+      (\@Semester)\\
+    \end{tabular}%
+  \else
+    \begin{tabular}[b]{r}
+    \theTUMLogo
+      %\includegraphics[scale =.2]{gfx/ikg.eps}
+    \end{tabular}
+  \fi
+  \vspace{0.5cm}
+  %
+  \par\bigskip\bigskip
+  % Titelzeile
+  \begin{center}
+    {\LARGE\textbf{\href{\@VorlesungsWebsite}{%
+     \ifthenelse{\boolean{isPraktikum}}
+        {Praktikum \@Praktikum}
+        {\ifthenelse{\boolean{isVorlesung}}
+           {\@Vorlesung}
+           % error
+           {\PackageError{mdsg}{You have to specifiy either `\~Vorlesung' or `\~Praktikum' in your VorlesungsParameter.tex}}%
+        }%
+    }\hspace{1mm}(\@Semester)\\
+     Tutorial \hspace{1mm} \@nummerUebungsblatt}\par}\smallskip
+  \end{center}
+  %
+      {\small
+        Tasks marked with a star like \textbf{Optional Task\up*} are optional. Tasks marked like \textbf{Hard Task\up+} are given, but it is not expected that you solve them now. It is great if you learn to solve them during the lecture. Go back to them after a few weeks and see your own progress.\par\vspace{1em}  
+
+\normalsize
+\textbf{Learning Outcome:}\@LearningOutcome
+%    \@Abgabetermin
+%    \@Besprechung
+%    \@Ankuendigungen
+%    \@Anmerkungen
+%    \@zuLesen
+%    \@zuLesenKlausur
+%    \@zuWiederholen
+%    \@zuVertiefen
+  }
+}
+\fi
+
+
+
+\ifisKlausur
+  \ifdoBackgroundPicture
+    \AddToShipoutPicture{\BackgroundPicture}
+  \fi
+  \renewcommand*\maketitle{\@maketitle}%
+  \def\@maketitle{%
+  \thispagestyle{empty}%
+  %
+  \ifisExterneBetreuung
+    \begin{tabular}[b]{l}
+      \color{TUMBlue}\@Universitaet \\
+      \href{\@InstitutsWebsite}{\@Institut} \\
+      % \href{\@LehrstuhlWebsite}{\@Lehrstuhl} \\
+      \@Professor
+      \color{black}
+    \end{tabular}%
+  \else
+    \begin{tabular}[b]{l}
+      \color{TUMBlue}\href{\@InstitutsWebsite}{\@Universitaet} \\
+      \color{TUMBlue}\href{\@InstitutsWebsite}{\@Institut} \\
+%      \href{\@LehrstuhlWebsite}{\@Lehrstuhl} \\
+      \color{TUMBlue}\href{\@InstitutsWebsite}{\@Professor}\\
+      \end{tabular}%
+  \fi
+  \hfill
+  \ifisExterneBetreuung
+    \begin{tabular}[b]{c}
+      Vorlesung \\
+      \@Vorlesung \\
+      (\@Semester)\\
+    \end{tabular}%
+  \else
+    \begin{tabular}[b]{r}
+    \theTUMLogo
+      %\includegraphics[scale =.2]{gfx/ikg.eps}
+    \end{tabular}
+  \fi
+  \vspace{0.5cm}
+  %
+  \par\bigskip\bigskip
+  % Titelzeile
+  \begin{center}
+    \LARGE\bfseries
+      \ifthenelse{\boolean{isKlausur}}{%
+        \@klausurTitle \hspace{1mm} \par}{}
+      \normalfont
+        %TODO
+%      \LARGE\textbf{\href{\@VorlesungsWebsite}{%
+%    \ifthenelse{\boolean{isPraktikum}}
+%       {Praktikum \@Praktikum}
+%       {\ifthenelse{\boolean{isVorlesung}}
+%          {\@Vorlesung}
+%          % error
+%          {\PackageError{mdsg}{You have to specifiy either `\~Vorlesung' or `\~Praktikum' in your VorlesungsParameter.tex}}%
+%       }%
+%   }\hspace{1mm}(\@Semester)\\
+%       }
+%     \smallskip
+  \end{center}
+  %
+      {\small
+        \textbf{Rules: }
+        \begin{itemize}
+        \item Keep these sheets closed until the official start of the examination is announced.
+        \item Already now, write your name and matrikel number onto this front page. Have your passport and student ID available on your desk.
+        \item No further items except this examination document, paper given out by us, a few pens, and passport / student ID are allowed on your desk.
+        \item If you have a question, raise your hand. If the answer is relevant to everyone, we will share it with everyone.
+        \item If you are done, please stay in your location quietly and double-check everything. If you need to go to the restrooms, raise your hands. Only one person is allowed to leave the room at the same time.
+        \end{itemize}
+     
+        \par\vspace{1em}  
+
+        \normalsize
+        \parbox[t][2em][t]{.3\textwidth}{\flushright\large Last Name:\hspace*{1em}}\parbox[t][2em][b]{.6\textwidth}{\hrule width.4\textwidth} \par
+        \parbox[t][2em][t]{.3\textwidth}{\flushright\large Given Name:\hspace*{1em}}\parbox[t][2em][b]{.6\textwidth}{\hrule width.4\textwidth} \par
+        \parbox[t][2em][t]{.3\textwidth}{\flushright\large Matrikel No.:\hspace*{1em}}\parbox[t][2em][b]{.6\textwidth}{\hrule width.4\textwidth} \par
+        \vspace{2em}
+        
+%        \textbf{Evaluation (leave this space empty!)}
+%\textbf{ Outcome:}\@LearningOutcome
+%    \@Abgabetermin
+%    \@Besprechung
+%    \@Ankuendigungen
+%    \@Anmerkungen
+%    \@zuLesen
+%    \@zuLesenKlausur
+%    \@zuWiederholen
+%    \@zuVertiefen
+%  }
+      }
+  }
+  \clearpage
+\fi
+
+
+
+%
+% title for merkblatt
+%
+\ifisMerkblatt
+  \renewcommand*\maketitle{\@maketitle}%
+  \def\@maketitle{%
+  \thispagestyle{empty}%
+  %
+  \ifisExterneBetreuung
+    \begin{tabular}[b]{c}
+      \@Universitaet \\
+      \href{\@InstitutsWebsite}{\@Institut} \\
+      % \href{\@LehrstuhlWebsite}{\@Lehrstuhl} \\
+      \@Professor
+    \end{tabular}%
+  \else
+    \begin{tabular}[b]{c}
+      \@Universitaet \\
+      \href{\@InstitutsWebsite}{\@Institut} \\
+      \href{\@LehrstuhlWebsite}{\@Lehrstuhl} \\
+      \@Professor
+    \end{tabular}%
+  \fi
+  \hfill
+  \ifisExterneBetreuung
+    \begin{tabular}[b]{c}
+      Vorlesung \\
+      \@Vorlesung \\
+      im \@Semester\\
+    \end{tabular}%
+  \else
+    \begin{tabular}[b]{r}
+      \href{\@LehrstuhlWebsite}{\includegraphics[scale =.4]{madsg_final}}
+    \end{tabular}
+  \fi
+  \vspace{0.5cm}
+  %
+  \par\bigskip\bigskip
+  % Titelzeile
+  \begin{center}
+    {\LARGE\textbf{\href{\@VorlesungsWebsite}{%
+     \ifthenelse{\boolean{isPraktikum}}
+        {\@Praktikum}
+        {\ifthenelse{\boolean{isVorlesung}}
+           {\@Vorlesung}
+           % error
+           {\PackageError{mdsg}{You have to specifiy either `\~Vorlesung' or `\~Praktikum' in your VorlesungsParameter.tex}}%
+        }%
+    } \hspace{1mm} im \@Semester\\
+     Merkblatt}\par}\smallskip
+  \end{center}
+}
+\fi
+
+%
+\newcommand{\Introfont}{\small}
+\newenvironment{intro}{\par\Introfont}{\par\normalsize\normalfont}
+
+% =============================================================================
+% Adaption of headline
+% -----------------------------------------------------------------------------
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+% clean headers
+\fancyhf{}
+%
+% page number left for even, rigth for odd pages
+%
+% the RE option has no effect until you specify option `twoside' in your tex files
+%
+\fancyhead[LE,RO]{{\cmbrfamily \thepage}}
+%
+% head for klausur
+%
+\ifisKlausur
+  \fancyhead[LO,RE]{{\cmbrfamily\@Vorlesung\,--\,\@ShortSemester,
+  \@nummerKlausur Exam}}
+\fi
+%
+% head for uebung
+%
+\ifisUebung
+  \fancyhead[LO,RE]{{\cmbrfamily\@Vorlesung\,--\,\@ShortSemester, Tutorial
+    \@nummerUebungsblatt}}
+\fi
+%
+% head of merkblatt
+%
+\ifisMerkblatt
+  \fancyhead[LO,RE]{{\cmbrfamily\@Vorlesung\,--\,\@ShortSemester, Merkblatt}}
+\fi
+%
+% =============================================================================
+% AUFGABEN-Environment
+% -----------------------------------------------------------------------------
+%
+\ifthenelse{\boolean{isUebung}\OR\boolean{isKlausur}}{%
+   \newif\ifexists@ziele
+   \newcounter{aufgaben@nummer}
+   \newcommand{\nummerErsteFrage}[1]{\setcounter{aufgaben@nummer}{#1}\addtocounter{aufgaben@nummer}{-1}}
+   \newcommand{\aufgabenfont}{\Large\bfseries}
+   \newcommand{\aufgabentitelfont}{\Large}
+   \newcommand{\answerfont}{\cmbrfamily\small}
+   \newcommand{\@ziele}{}
+   \newcommand{\ziele}[1]{\renewcommand{\@ziele}{#1}\exists@zieletrue}
+   \newenvironment{task}[3]{%
+     \stepcounter{aufgaben@nummer}\exists@zielefalse
+     \renewcommand{\@ziele}{}\alphaEnum
+     \addtocontents{tsk}{\protect\evaluationtableentry\protect{\theaufgaben@nummer}{#1}{#2}} %inject the Task 
+     \par\bigskip\medskip\noindent
+     \ifthenelse{\boolean{isUebung}}{%                  % Uebung has different spacing than klausur
+       \ifthenelse{\boolean{isUseLetters}}{%            % Uebung with letters has different spacing than without
+         \makebox[.28\textwidth][l]{%
+           {\aufgabenfont Task \theaufgaben@nummer:\ } % print "Aufgabe #:", (# is a number)
+         \aufgabenfont (#3)                               % print "(type)", (type is H,K,T,P)
+         }%
+         \parbox[t]{.72\textwidth}{%  % former .72
+           {\aufgabentitelfont #1}%
+         }
+       }{%
+         \makebox[.2\textwidth][l]{
+           {\aufgabenfont Task \theaufgaben@nummer:\ } % print "Aufgabe #:", (# is a number)
+         }%
+       \parbox[t]{.8\textwidth}{
+           {\aufgabentitelfont #1}%
+         }
+       }
+     }{%
+       \makebox[.2\textwidth][l]{%
+         {\aufgabenfont Task \theaufgaben@nummer:\ } % print "Aufgabe #:", (# is a number)
+       }%
+       \parbox[t]{.8\textwidth}{%
+         {\aufgabentitelfont #1}%
+       }
+     }%
+     \newline
+     \ifdoPoints
+        % stupid hack, but I didn't get raggedright work...
+        \@ifemptyarg{#2}{}{{\makebox[.1\textwidth][l]{}\hfill(#2 points.)}
+        }                                               % print "(# Pkt.)", (# is e.g. a number)
+     \fi
+     \par\nopagebreak\medskip
+   }
+
+   \ifdoZiele
+     \ifexists@ziele
+       \par\smallskip
+       {
+         \answerfont
+         \textbf{Ziele:\ }
+         \@ziele
+       }
+     \fi
+   \fi\exists@zielefalse
+   \smallskip
+}{%
+}
+
+% =============================================================================
+% LISTING-Environments 
+% -----------------------------------------------------------------------------
+%
+% escapeinside allows you to use the sequence of charackters inside curly braces in
+% order to define labels. You can use these labels to refer to certain line numbers.
+% For Java you may want to use escapeinside={//@}{@//}.
+% This allows commands inside Java Code like //@\label{line:startLine}@//. In your
+% Latex source file you can use this label by referencing it like \ref{line:startLine}
+%
+\newcommand{\includeMODULA}[1]{\lstset{
+   language=Modula-2, xleftmargin=14pt, numbers=left, numberstyle=\tiny, stepnumber=1, showstringspaces=false, numbersep=8pt, escapeinside={(*@}{@*)}}
+   \lstinputlisting{#1}
+}
+\newcommand{\includeMIPS}[1]{\lstset{
+   language=MIPS, xleftmargin=14pt, numbers=left, numberstyle=\tiny, stepnumber=1, showstringspaces=false, numbersep=8pt, escapeinside={(*@}{@*)}}
+   \lstinputlisting{#1}
+}
+\newcommand{\includeC}[1]{\lstset{
+   language=C, xleftmargin=14pt, numbers=left, numberstyle=\tiny, stepnumber=1, showstringspaces=false, numbersep=8pt, escapeinside={//@}{@//}}
+   \lstinputlisting{#1}
+}
+\newcommand{\includeJava}[1]{\lstset{
+   language=Java, xleftmargin=14pt, numbers=left, numberstyle=\tiny, stepnumber=1, showstringspaces=false, numbersep=8pt, escapeinside={//@}{@//}}
+   \lstinputlisting{#1}
+}
+\newcommand{\includeBASH}[1]{\lstset{
+   language=bash, xleftmargin=14pt, numbers=left, numberstyle=\tiny, stepnumber=1, showstringspaces=false, numbersep=8pt, escapeinside={\#@}{@\#}}
+   \lstinputlisting{#1}
+}
+\newcommand{\includeMAKE}[1]{\lstset{
+   language=make, xleftmargin=14pt, numbers=left, numberstyle=\tiny, stepnumber=1, showstringspaces=false, numbersep=8pt, escapeinside={\#@}{@\#}}
+   \lstinputlisting{#1}
+}
+\newcommand{\includePascal}[1]{\lstset{
+   language=pascal, xleftmargin=14pt, numbers=left, numberstyle=\tiny, stepnumber=1, showstringspaces=false, numbersep=8pt, escapeinside={(*@}{@*)}}
+   \lstinputlisting{#1}
+}
+
+%
+% same as above, but for code inside tex document
+%
+\lstnewenvironment{codeJava}
+  {\lstset{language=Java, xleftmargin=14pt, numbers=left, numberstyle=\tiny, stepnumber=1, showstringspaces=false, numbersep=8pt, escapeinside={//@}{@//}}}
+  {}
+
+\lstnewenvironment{codeMIPS}
+  {\lstset{language=MIPS, xleftmargin=14pt, numbers=left, numberstyle=\tiny, stepnumber=1, showstringspaces=false, numbersep=8pt, escapeinside={(*@}{@*)}}}
+  {}
+
+\lstnewenvironment{codeC}
+  {\lstset{language=C, xleftmargin=14pt, numbers=left, numberstyle=\tiny, stepnumber=1, showstringspaces=false, numbersep=8pt, escapeinside={//@}{@//}}}{}
+
+\lstnewenvironment{codeMODULA}
+  {\lstset{language=Modula-2, xleftmargin=14pt, numbers=left, numberstyle=\tiny, stepnumber=1, showstringspaces=false, numbersep=8pt, escapeinside={(*@}{@*)}}}
+  {}
+
+\lstnewenvironment{codeBASH}
+  {\lstset{language=bash, xleftmargin=14pt, numbers=left, numberstyle=\tiny, stepnumber=1, showstringspaces=false, numbersep=8pt, escapeinside={\#@}{@\#}}}
+  {}
+
+\lstnewenvironment{codeMAKE}
+  {\lstset{language=make, xleftmargin=14pt, numbers=left, numberstyle=\tiny, stepnumber=1, showstringspaces=false, numbersep=8pt, escapeinside={\#@}{@\#}}}
+  {}
+
+\lstnewenvironment{codePascal}
+  {\lstset{language=pascal, xleftmargin=14pt, numbers=left, numberstyle=\tiny, stepnumber=1, showstringspaces=false, numbersep=8pt, escapeinside={(*@}{@*)}}}
+  {}
+
+
+
+
+%
+% for people with a visual impairment we may create a
+% copy with increased letter size.
+% Attention: You have to take care, that your tex code
+% works with dynamic layouts! Therefore, avoid fixed
+% length attributes where possible
+%
+\ifisZoom
+  % zoom start
+  \let\normalsize=\large
+  % set length of text
+  \setlength{\oddsidemargin}{0cm}
+  \setlength{\topmargin}{0cm}
+  \setlength{\headheight}{13pt}
+  \setlength{\hoffset}{-1.04cm} %default 1 inch == 2.54cm => -2,54 + 1.5
+  \setlength{\voffset}{-2.04cm} %default 1 inch == 2.54cm => -2,54 + 0.5
+  \setlength{\footskip}{0cm}
+  \setlength{\headsep}{20pt}
+  \setlength{\textwidth}{18.cm} % => 1,5 cm space before and after
+  \setlength{\textheight}{25.7cm} % => 1,5 cm space before and after
+  \setlength{\footskip}{1cm}
+  \setlength{\parindent}{0cm} % no paragraph indentation
+  \renewcommand{\baselinestretch}{1.1}
+  % adjust header width
+  \setlength{\headwidth}{\textwidth}
+  % zoom end
+\fi
+
+
+
+
+%%%%%%%%%%%%%% TABLE FOR EVALUATION OF EXAMINATIONS
+
+%DEL\newcommand{\mcquestion}[4]{%
+%DEL  \mcitem & #1 %
+%DEL          & \ifthenelse{\boolean{inAntwort}}{#2}{} %
+%DEL          & \ifthenelse{\boolean{inAntwort}}{#3}{} %
+%DEL  % falls antwort Umgebung gewuenscht...
+%DEL  \ifthenelse{\boolean{inAntwort}}{%
+%DEL    % ...und falls ein Kommentar zur Loesung gegeben ist, schreibe diesen unter die Frage
+%DEL    \@ifemptyarg{#4}{}{%
+%DEL      \\
+%DEL      \hline
+%DEL      & \multicolumn{3}{X|}{\textit{#4}}}%
+%DEL    }{%
+%DEL    }
+%DEL    \\ \hline
+%DEL  }
+%DEL
+\newcommand{\startevaltable}
+           {\setcounter{pointaccumulator}{0} \centering \tabular{|p{8cm}|p{1cm}|p{1cm}|}}
+\newcommand{\stopevaltable}{\endtabular}
+%\newcommand\startevaltable{
+%  \centering \tabularx{\textwidth}{|X|p{5ex}|p{5ex}|}
+%  Task & Points & Max \\ \hline
+%}
+%\newcommand\stopevaltable{\endtabularx}
+
+\newcounter{row}
+
+\newlength{\Xwidth}
+\newlength{\Bwidth}
+
+
+
+
+
+\newcommand{\evaluationtableentry}[3]% #1 = textfield
+{\addtocounter{pointaccumulator}{#3}%
+\hrule width\textwidth%
+\stepcounter{row}%
+\mystrut\hspace{1\tabcolsep}%
+\parbox[c]{.9\textwidth}{Task #1: #2}  / #3   \hfil%
+\par}
+\newcommand{\evaluationtablesum}[2]% #1 = textfield
+{\hrule width\textwidth
+\stepcounter{row}%
+\mystrut\hspace{1\tabcolsep}%
+\parbox[c]{.9\textwidth}{#1}  / #2   \hfil
+\par}
+
+\newcommand\evaluationtableentryfail[3]{\mbox{A }&\mbox{B }&\mbox{C }\\} %Task #1: #2 & & #3 \\ \hline
+\newcommand\evaluationtableentryold[3]{
+  \fbox{\parbox[c]{8cm}{\vphantom{Xy}Task #1: #2}}\fbox{\parbox[c]{2cm}{ \phantom{Xy}}}\fbox{\parbox[c]{2cm}{\centering #3}} \par 
+  \addtocounter{pointaccumulator}{#3}
+}
+%
+\newcommand\evaluationtable{
+  \makeatletter
+  \newcounter{pointaccumulator}
+  \parindent=0pt
+\large% changes size of em
+\setlength{\Bwidth}{\dimexpr 0.7em+4pt}% width of \CheckBox
+\setlength{\Xwidth}{\dimexpr \textwidth-12\tabcolsep-4\Bwidth}% width of parbox
+\def\mystrut{\rule{0pt}{\dimexpr 0.7em + \tabcolsep}\rule[-\tabcolsep]{0pt}{0pt}}%
+\textbf{Evaluation}\par\vspace*{1em}
+\@starttoc{tsk}
+\evaluationtablesum{\textbf{Sum}}{\the\value{pointaccumulator}}
+  %\startevaltable
+  %\hline
+  %Task & Pts. & Max.  \\\hline\@starttoc{tsk}
+%\textbf{Total} & & \textbf{\the\value{pointaccumulator}} \\ \hline
+%\stopevaltable
+\makeatother
+}
+  % \fbox{\parbox[c]{8cm}{\textbf{Task}\phantom{Xy}}}\fbox{\parbox[c]{2cm}{\textbf{Pts.\phantom{Xy}}}}\fbox{\parbox[c]{2cm}{\textbf{Max.\phantom{Xy}}}}\par
+  % \par
+  % \fbox{\parbox[c]{8cm}{\phantom{Xy}}}\fbox{\parbox[c]{2cm}{\textbf{\phantom{Xy}}}}\fbox{\parbox[c]{2cm}{\centering\the\value{pointaccumulator}\vphantom{Xy}}}\par
+

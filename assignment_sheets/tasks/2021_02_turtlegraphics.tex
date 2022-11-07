@@ -1,0 +1,131 @@
+\begin{task}{Simple Turtle Graphics to Train For-Loops}{}{}
+  In this task, you learn how to generate nice-looking figures of high complexity. Mainly loops over index ranges are used (there is a temporary variable, often called $i$ or $j$ or $k$ which starts at some integer $i_0$ and is increased by one until it reaches some $i_{\max}$).
+  Further information is found in the official documentation of this type of index loops known as for loops \url{https://www.mathworks.com/help/matlab/ref/for.html}.
+
+  For the exercises, we implement a simple turtle graphics engine. In turtle graphics, you control a turle with movement instructions and it draws lines along its movements. Our turtle is quite minimal: we implement a single-color turtle and supports two operations:
+  \begin{itemize}
+  \item {\code{turn}: Turns the turtle by a given angle without moving, hence without visible results}
+  \item{\code{move}: Moves the turtle into the current direction for the given distance as given initially and updated using \code{turn}.}
+  \end{itemize}
+
+  The following script can directly be used for this turtle.
+  \begin{lstlisting}[language=matlab, caption='Simple Turtle']
+% A simple Turtle
+global L pen heading location
+
+% state variables
+L=[]; % here we save our lines
+pen = true; % our pen state
+heading = 0; % the direction the turtle is headed
+location=[0,0]; % the turtles location
+
+for i =  1:9 % TODO: Correct the range
+    % TODO: Create the path using turn and forward.
+end
+
+plot(L(:,1), L(:,2))
+
+function turn(x)
+    global heading
+    heading = heading + x;
+end
+
+function forward(x)
+    global heading pen location L
+    last_loc = location;
+    dir = [cos(deg2rad(heading)), sin(deg2rad(heading))];
+    location = last_loc + dir*x;
+    if pen
+        L = [L; last_loc; location; NaN,NaN];
+    end
+end
+
+    \end{lstlisting}
+
+  This script goes beyond what we have learnt so far by using and implementing functions. Read the official documentation (\url{https://www.mathworks.com/help/matlab/ref/function.html})
+
+  \begin{enumerate}
+  \item{\textbf{Turtle Spirals:} Modify the script from above to create some turtle graphics. One example could look like this:
+    
+    \includegraphics[width=.25\textwidth]{gfx/2021_02_turtle_examplespiral.png}
+  }
+
+    \item{\textbf{The House of Santa Claus:} The house of Santa Claus is a drawing game for children. The challenge is to draw a house in one line (without overlapping lines or lifting the pen). The resulting house looks like:
+
+      \includegraphics[width=.25\textwidth]{gfx/2021_02_turtle_houseofsanta.png}
+
+      Implement a turtle proram (complete the given program) to draw such a house. Move the part drawing your turtle into a function called \code{house}.
+      \begin{lstlisting}[language=matlab]
+
+% call your own function house to draw a house
+house()
+plot(L(:,1), L(:,2))
+
+function house()
+% here put your turtle program calling move and turn
+end
+        
+       \end{lstlisting}
+      
+    }
+    \item{\textbf{Side-effect-Free House Function:}
+      A common way of drawing the house starts in the bottom-left and ends in the bottom-right of the house. Now (allowing for lines on top of already existing lines), complete the function such that the turtle state is the same (same position, same direction) after running the function. Now, you can combine the \code{house} function with your alredy-programmed turtles.
+      % squeeze in side-effect free and pure from functional programming
+    }
+    \item{\textbf{Function Parameters\up{*}:} Update your function to take a single parameter \code{size} that modulates the size of the house.
+\begin{lstlisting}[language=matlab]
+function house(size)
+% here you can use size for computing the length of your move commands
+end
+\end{lstlisting}
+    }
+
+      \item{\textbf{Spirals of Houses\up+}. Use your side-effect-free function to draw spirals of houses. }
+
+  \end{enumerate}
+
+  \begin{solution}
+    Under Construction
+    \end{solution}
+
+  
+% TODO: let students implement two pen functions penup and pendown
+  
+\end{task}
+
+%## Task 2.5: Turtle spirals (+)
+%Draw a spiral of Santa Clauses houses.
+%
+%  
+%
+%
+%
+%  Read the blog given above. In this blog consisting of three articles, you are introduced to
+%  functional programming using MATLAB anonymous functions.
+%
+%  \begin{itemize}
+%  \item{Read about functional programmming, for example at \\
+%    \url{https://en.wikipedia.org/wiki/Functional\_programming}}
+%  \item{Inform yourself about anonymous functions and the varargin mechnaism for variable argument lists.}
+%  \item{Recall the central idea of functional programming and think about its purpose, pros and cons.}
+%  \item{Implement Euklids algorithm for the greatest common divisor. Therefore, complete the following
+%    MATLAB file (Tip: The loop construct can easily be extended to a state holding a and b and the function
+%    curly can be used to finally extract the second part of the state, which holds the result at the end
+%    of the algorithm)
+%%    \lstinputlisting{src/euklid/euklid_assignment.m}
+%%    \url{https://github.com/mwernerds/big\_geospatial\_data\_lecture/blob/master/03\_matlab\_functional\_euklid/euklid\_assignment.m}
+%
+%  }
+%  \end{itemize}
+%  \begin{solution}
+%    The following source code is an example of how to solve this problem:
+%%    \lstinputlisting{src/euklid/euklid_solution.m}
+%    An alternative solution uses the recur function and looks like
+%    \begin{lstlisting}
+%ggt = @(a,b) recur(...
+%@(f,k,l) iif(l==0, k,...
+%true, @() f(f,l, mod(k,l))), a,b);
+%      \end{lstlisting}
+%   \end{solution}
+%\end{task}
+%

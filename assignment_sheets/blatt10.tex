@@ -1,0 +1,31 @@
+\documentclass[twoside]{article}
+\usepackage[utf8]{inputenc}
+%\usepackage[uebung, answers]{tumbgdm}
+\usepackage[uebung]{tumbgdm}
+\usepackage{lecturesetupcf2}
+\nummerUebungsblatt{4}
+\nummerErsteFrage{8}
+
+\LearningOutcome{
+Network Routing Principles
+}
+
+\begin{document}
+\maketitle
+
+\begin{task}{Network Server and Client}{}{}
+  Implement a client and a server in the C programming language using Berkeley sockets. The protocol shall be a simple
+  chat system. Each client can connect to the server and send a text command. Implement a few commands like
+  ``hello'' letting the server give an answer, ``quit'' should be responsed to with a byebye message and a graceful disconnection from server side (shutdown, close).
+
+  You can extend this to a chat system for multiple clients or a classical text adventure, use a Google search to get inspiration.
+\end{task}
+
+\begin{task}{Routing Strategies}{}{}
+  Given the network example from the beginning of the routing slides, compute optimal solutions for the named strategies (e.g., minimum maximum energy, etc.).
+\end{task}
+
+\begin{task}{Distance Vector Routing}{}{}
+  On paper, run a few steps of DSDV on the network from slide 22 (before mobility, from zero knowledge). Assume that every node sends all information. As a second example, assume the network information is already fully distributed (every node knows a correct and complete table). For simplicity, assume all sequence numbers are one. Then, consider the mobility scenario from the slides and run a few updates (on paper). Assume that only changed lines are exchanged with neighbors.
+\end{task}
+\end{document}

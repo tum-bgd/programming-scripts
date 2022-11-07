@@ -1,0 +1,62 @@
+\begin{task}{Control Structures and Loops}{}{}
+In this task, you practice how to use control structures such as if commands and loops statements in order to control conditional or repeating elements of programs.
+
+\begin{enumerate}
+\item{\textbf{Rough Square Root:}
+  In this task, we will compute the square root of an integer number as follows (this is
+  not the smartest way, but we can learn something): We set a variable to 1 and start a
+  loop in which we double this number each iteration. In this way, the number $i$ will
+  quickly grow. Each time in the loop, we also compute the square of the number by multiplying
+  the number with itself. As soon as the square is larger than the given input parameter, we
+  start a second loop in which we go ``backwards'' decrementing (which is making a variable
+  one less) the loop variable one step at a time until we (again) fall below the input parameter.
+  As soon as the square of this variable becomes smaller, we know that the square root is inbetween this number and its predecessor, which is exactly one higher.
+
+  Implement this strategy in MATLAB.
+}
+\item{\textbf{Testing a Number for Being Prime:} A number is a prime number if it is not
+  divisible by any other number than the number itself and one. As a number that divides another must at least be smaller, a simple algorithm just checks if all numbers smaller than the given number are dividers. Implement this using a for loop and test for divisibility by checking that the remainder (modulo function) is zero. Terminate the algorithm (\code{break} statement) as soon as you find a dividing number as you can then directly conclude the value is not prime.
+
+  \begin{lstlisting}[language=MATLAB]
+1;
+fprintf("Test: 3 divides 4 ==> %d (should be 0)\n",divides(3,4));
+fprintf("Test: 1 divides 5 ==> %d (should be 0)\n",divides(1,5));
+fprintf("Test: 2 divides 8 ==> %d (should be 1)\n",divides(2,8));
+fprintf("========================================\n");
+fprintf("Test: isPrime(9)  ==> %d (should be 0, 9=3*3)\n",isPrime(9));
+fprintf("Test: isPrime(13) ==> %d (should be 1, 13 is prime)\n",isPrime(13));
+
+function ret=isPrime(a)
+% write this function
+   ret = 1;  
+end
+
+function ret = divides(a,b)
+   ret = (mod(b,a) == 0); % modulo is the remainder of integer division
+end
+  \end{lstlisting}
+}
+
+\item{\textbf{Faster Prime Testing:} A simple observation is that at any time in the previous algorithm for a number to test $p$, we already found out that no smaller number than the loop counter is dividing. Hence, as soon as we exceed
+  \[
+  c = \sqrt{p}
+  \]
+  we can stop the process. Because if there was a dividing number larger than this threshold $c$, then it would have to be paired with a number smaller than $c$ not to exceed $p$, but they all have been tested. This is a powerful speedup, as we reduce the number of loop body executions from
+  $p-1$ to the smallest integer larger than $\sqrt{p}$. Now look at the numbers:
+  \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}\hline
+    $p$ & Steps of First Algorithm & Steps of Second Algorithm \\ \hline\hline
+    13  & 12 & 4 \\ \hline
+    97 & 96 & 10 \\ \hline
+    19,134,702,400,093,278,\linebreak 081,449,423,917 &  19,134,702,400,093,278,\linebreak 081,449,423,916 & 
+138,328,241,513,052 \\ \hline   
+  \end{tabular}
+
+  To feel the real effect of such speedups and, therefore, the power of a topic called time complexity, run this for the tenth Fibonacci prime (see \url{https://oeis.org/A005478}). This takes about 10 seconds on my computer for the slow version and 0.0016 seconds for the fast version. Note that both algorithms are doing exactly the same amount of work for non-prime numbers, namely finding the first dividing number smaller than $\sqrt{p}$. That is, the second algorithm is faster only for prime numbers.
+
+  Implement this optimized version. 
+}
+
+\end{enumerate}
+
+\end{task}
+

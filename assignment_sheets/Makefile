@@ -1,0 +1,4 @@
+all:
+	bash build.sh
+
+

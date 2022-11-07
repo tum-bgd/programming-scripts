@@ -1,0 +1,43 @@
+\begin{task}{Arduino}{}{}
+  The Arduino family consists of a set of well-tested PCB boards holding typically AVR microcontrollers that
+  have always been quite efficient in terms of simplicity of external circuitry as they require not much more than a clock source and a suitable energy management.
+
+  The Arduino project combines such basic boards with a well-known geometry for extensions (e.g., where are the PINs), a small IDE for the Atmel-AVR-GCC compilers, and a basic firmware that translates operation of such microcontrollers into two functions: setup() and loop().
+
+  In this way, a typical Arduino program called sketch does not contain a main, but rather a setup function which is called once at the beginning and a loop function which is called endlessly.
+
+  If you own an Arduino, this task is easy, if not, I would recommend buying a cheap set (starter kit, sensor kit)
+  for learning. However, you are free to answer the questions after an Internet research as well in ``theory''.
+
+  A very simple program looks like
+  \begin{lstlisting}
+  int buttonPin = 3;
+
+// setup initializes serial and the button pin
+void setup() {
+  Serial.begin(9600);
+  pinMode(buttonPin, INPUT);
+}
+
+// loop checks the button pin each time,
+// and will send serial if it is pressed
+void loop() {
+  if (digitalRead(buttonPin) == HIGH) {
+    Serial.write('H');
+  }
+  else {
+    Serial.write('L');
+  }
+
+  delay(1000);
+}
+\end{lstlisting}
+  
+  \begin{itemize}
+  \item{Design and implement a circuit (maybe buy an Arduino Nano and a few LEDs for this) with a blinking LED}
+  \item{Design and implement the traffic light state machine with LEDs}
+  \item{Use PWM using `analogWrite` to dim an LED based on a potentiometer read from an A/D pin}
+    
+    \end{itemize}
+
+\end{task}

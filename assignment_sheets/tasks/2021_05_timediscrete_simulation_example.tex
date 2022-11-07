@@ -1,0 +1,74 @@
+\begin{task}{Time Discrete Simulation of Movement According to Basic Physics\up*}{}{}
+
+  Simulations are one of the many kinds of programs we can apply in engineering.
+  Simple physics simulations run as so-called \textbf{time-discrete simulations} in a loop that advances a
+  shared variable $t$  holding the time by a a discrete timestep $\Delta t$ in every iteration.
+
+  That is, the basic pattern of time-discrete simulation is as follows:
+  \begin{lstlisting}
+    t_start = 1  % some sort of start time
+    t_end = 100  % when to end
+    for time = t_start:t_end
+    % proceed for a timestep with simulation logic
+    % proceed for a timestep with physics
+    end
+  \end{lstlisting}
+  We want to practice this principle.
+
+  \begin{enumerate}
+  \item{\textbf{Throwing a Ball:} When throwing a ball, you use your body to assign a certain velocity (e.g., speed acting into a known direction) to it. How does this given speed combined with gravity complete to a time-discrete simulation returing the distance of your pitch? Complete the following simulation.
+    \begin{lstlisting}[language=Matlab]
+p = [0,1] % initial position
+angle = 45 % start angle
+speed = 10 % inital speed in m/s
+v = speed*[cos(deg2rad(angle)),sin(deg2rad(angle))]  % velocity
+g = [0,-9.81] % gravity
+dt = 0.2 % delta time
+dg = g*dt % delta gravity
+L = [p] % Lines
+
+for i = 1:100
+                    % <-- update speed
+                    % <-- update location
+                    % <-- break when hitting floor
+
+
+                    % <-- add  point to trajectory
+    disp(p(2));
+end
+
+disp(sprintf("we went for %f m in %i iterations", L(end,1), i))
+
+% visualize
+plot(L(:,1),L(:,2))
+
+      \end{lstlisting}
+
+    
+  }
+  \item{\textbf{Optimal Angle:} Adjust the program in such a way, that you find the best integer angle, that achieves the largest distance and have the program display the best angle as well as plot the best trajectory. Tipp: As we constrained to integer angles, you can use a keep-the-best pattern similar to the following:
+    \begin{lstlisting}[language=Matlab]
+best_angle = -1; % We dont know our best angle
+best_length = -inf; % We dont know the best length
+for this_angle = 1:360
+    this_length = simulate_throw(this_angle)
+    if this_length > best_length
+        fprintf("Updating best_length from %.2f to %.2f at angle %d\n", best_length, this_length, this_angle)
+        best_length = this_length
+        best_angle = this_angle
+    end
+end
+fprintf("The best result of %.2f m was achieved with an angle of %d\n",best_length, best_angle)
+
+    \end{lstlisting}
+    In this pattern, \code{-inf} denotes minus infinity and every finite number is larger. We then run the loop and if there is an improvement, we update the variables \code{best\_angle} and \code{best\_length}. 
+
+  }
+  \end{enumerate}
+  
+
+  
+\end{task}
+
+%
+%

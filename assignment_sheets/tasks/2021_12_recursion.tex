@@ -1,0 +1,64 @@
+\begin{task}{Recursion}{}{}
+  Recursion is a fundamental programming technique which we train a bit in this task.
+  \begin{enumerate}
+
+  \item{\textbf{Fibonacci Sequence:}
+    The Fibonacci sequence is a traditional sequence of numbers which seems to be known since about 450 BC. It pops up in really many topics in mathematics, geometry, computer science, and natural science. In this task, we will concentrate on the recursive definition and implement it.
+    The definition is very easy: First, we fix $F_0=0$ and $F_1=1$. All other Fibonacci numbers are then given based on these as
+    \[
+    F_n = F_{n-1} + F_{n-2} \text{  for } n \ge 2
+    \]
+    Implement a MATLAB function \code{function ret=fibonacci(n)} which computes the $n$-th Fibonacci number. Compute the sequence of Fibonacci numbers in a \code{for}-loop, maybe the first 25 numbers, and compare to the Online Encyclopedia of Integer Sequences \url{https://oeis.org/A000045}.
+		}
+
+
+
+
+    
+  \item{\textbf{Greatest Common Divisor:}
+    The prime decomposition of integer numbers claims that each integer number can be represented as a product of prime numbers and
+    that this representation is unique. For example, the number $15$ is uniquely decomposed as $15=3\cdot5$ or $8$ is decomposed as
+    $8= 2^3$. With this unique decomposition, is is possible to define the \textbf{Greatest Common Divisor (GCD)} of two numbers $a$ and $b$ as the number which is built from all prime factors that both numbers share (with their multiplicites). For example, the GCD of
+    $8$ and $15$ would be computed from their decompositions $8=2\cdot 2\cdot 2$ and $15 = 3 \cdot 5$. As they don't share a prime factor, the GCD is given by the empty product, which evaluates to $GCD(8,5)=1$. For $24= 3 \cdot 2^3$ and $4=2^2$, however, the GCD is
+    $GCD(24,4) = 2^2 =4$ as we can pick two times a two from both prime decompositions.
+
+    Write a very simple algorithm which just loops through all numbers, uses the MATLAB \code{rem} function to test whether a
+    a number divides another. You don't need recursion for this one. Compute the GCD of $9214$ and $1513$. Print the result using \code{fprintf(...)}.
+  }
+     
+  \item{\textbf{Tail Recursion:} We have learnt in the lecture that loops are an essential part of programming (cf. structured program theorem). However, there are quite a few programming languages that (at first sight) don't provide loops. They, instead, provide recursion. Given the following program, write a recursive version which runs in the same or the opposite order. Each invocation of the recursive function shall run no more than one loop body and call itself as long as loop bodys should be computed.
+\begin{lstlisting}[language=matlab]
+1;
+
+recursive_loop(1,5, @loop_body);
+
+function loop_body(x)
+   fprintf("Executing Loop Body %d\n",x)
+end
+
+function iterative_loop(start, endidx, fun)
+    for i=start:endidx
+       fun(i)
+    end
+end
+
+function recursive_loop(start, endidx, fun)
+    if (...) % Implement a Suitable Termination
+        return
+    end
+    fun(start) % Call the Loop Body
+    recursive_loop(...) % Recursively call recursive_loop
+end
+\end{lstlisting}
+What is interesting to note in this example is that \code{@loop\_body} creates a function handle with which we can give functions as arugments. In this way, we sometimes implement a simple algorithm and let users of our code implement a tiny aspect of it.
+When reflecting the purpose of this task, one realizes that it shows that recursion is enough to simulate loops. For the converse, that the elements of the structured program theorem (sequence, loop, branch) are sufficient to simulate recursion, we will first introduce the stack data structure. That is, for the converse, we will need to store data. The family of recursive functions which can be implemented in terms of structured programming without an additional data structure is known as tail recursions.
+}
+
+
+
+
+  \end{enumerate}
+
+  
+
+\end{task}

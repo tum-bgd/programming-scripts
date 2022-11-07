@@ -1,0 +1,66 @@
+\begin{task}{Storing Data in Files}{}{}
+  
+  Very often, you will want to store the results of experiments, analyses or complicated computations over a long time.
+  Therefore, MATLAB provides convenient and quite efficient variable storage mechanisms. We learn how to use it in this task.
+  
+  \begin{enumerate}
+
+  \item{\textbf{Storing and Loading Variables:} In one of the previous tasks, you were asked to create turtle graphics such as
+    a nice spiral. This might have looked similar to:
+
+\begin{lstlisting}
+global L pen heading location
+
+L=[];
+pen = true;
+heading = 0;
+location=[0,0];
+
+for i =  1:99
+	forward(5+i)
+	turn(15)
+end
+
+plot(L(:,1), L(:,2)) % Here we plot the spiral
+
+function turn(x)
+	global heading
+	heading = heading + x;
+end
+
+function forward(x)
+	global heading pen location L
+	last_loc = location;
+	dir = [cos(deg2rad(heading)), sin(deg2rad(heading))];
+	location = last_loc + dir*x;
+	if pen
+		L = [L; last_loc; location; NaN,NaN];
+	end
+end
+
+\end{lstlisting}
+
+You are now supposed to remove the \code{plot} call from this program such that it does not visualize the spiral directly. Instead,
+it shall save the needed information (\code{L}) into a file. Then, implement a second file which just loads this data file and plots the data. Read the documentation of \code{save} and \code{load} and have a look at the lecture video.
+}
+
+
+  \item{\textbf{Generic Text Files\up{+}}: While the \code{save} and \code{load} mechanism is nice within the MATLAB environment, it is not designed for data exchange, maybe with other researchers or different programming languages. However, basic text file support in MATLAB is not complicated and based on POSIX standards. Therefore, the principle is shared among all but a few high-level languages:
+
+    As files are managed by the operating system, you can only create a file by using an Application Programming Interface (API) of
+    your operating system. In this context, a file is just an entry in a table that is managed by the operating system. You identify files by their index in this table. Such an index is often called \textbf{handle} and can be used with a set of functions.
+
+    First, a file must be opened. Three basic modes are available: open for reading, open for writing (replacing the file), and open for appending. We will only use write in this task. The basic approach is now as follows: Opening the file gives you a handle. Then, \code{fprintf} can be used to write to the file, finally, \code{fclose} should be called to signal to the operating system that the file operations have completed. Or in code:
+   \begin{lstlisting}[language=MATLAB]
+1;      
+f = fopen("test.txt","w")
+fprintf(f,"Hello File\r\n")
+fclose(f)
+\end{lstlisting}
+ Write a program that calculates all prime numbers smaller than $100$ using the MATLAB built-in function \code{primes(...)} and store all values into a file (one number per line) called "primes.txt". Open the file in MATLAB (it should appear in the browser on the left).}
+
+  \end{enumerate}
+
+
+
+\end{task}

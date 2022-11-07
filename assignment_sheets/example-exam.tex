@@ -1,0 +1,117 @@
+\documentclass[twoside]{article}
+\usepackage[utf8]{inputenc}
+%\usepackage[uebung, answers]{tumbgdm}
+\usepackage[klausur]{tumbgdm}
+\usepackage{lecturesetup}
+%\nummerUebungsblatt{6}
+%\nummerErsteFrage{14}
+\klausurTitle{Sample Exam}
+%\LearningOutcome{
+%We are warming up with C/C++ programming environments.
+%}
+
+\begin{document}
+\maketitle
+
+
+\begin{task}{MATLAB Multiple Choice}{4}{}
+ \begin{mclist}
+ \mcquestion{MATLAB has been designed for working with matrices}{X}{}{No comment given.}
+ \mcquestion{In MATLAB, subsets of data can be created with slicing.}{X}{}{}
+ \mcquestion{In MATLAB, one needs to allocate memory for an object before creating or using it using malloc and free.}{}{X}{}
+ \mcquestion{Discrete time simulation is not suitable for simulating movement.}{}{X}{It is. This is how we used it in the first lecture.}
+ \end{mclist}
+\end{task}
+
+\clearpage
+
+\begin{lstlisting}[label={lst:simple},language=c++, caption='A simple program']
+for (size_t i=0; i < input.size(); i++)
+{
+   work_on(input[i]);
+}
+\end{lstlisting}
+
+\begin{task}{Algorithms}{4}{}
+ \begin{mclist}
+   \mcquestion{A linear time algorithm is expected to run faster as opposed to a quadratic time algorithm on the same input.}{}{X}{A tricky question.
+     Linear time means nothing about how long it takes to run the algortihm, but only about how fast the time grows. That is, there are linear algorithms for certain inputs that are slower than quadratic algorithms. Complexity is for $n \mapsto \infty$.}
+   \mcquestion{The program in Listing \ref{lst:simple} is $O(N^2)$ for an input of size $N$ (assuming \code{work\_on} is constant time.}{}{X}{}
+   
+ \end{mclist}
+\end{task}
+
+
+\begin{task}{Algorithm Complexity}{2}{}
+  Consider Listing \ref{lst:simple} and assume that the implementation of \code{work\_on} implies a time complexity for \code{work\_on} of
+  $O(n^2 \log n \log \log n)$.
+
+  What is the time complexity of Listing \ref{lst:simple} in this case?
+
+  
+\end{task}
+
+
+\clearpage
+\begin{task}{Addition}{8}{}
+  Assume you are given two numbers as vectors of digits in C++ as in the following snippet. Implement (sketch an implementation of) a function that computes the sum. Therefore
+
+  \begin{enumerate}
+  \item{Perform the written addition on paper here: \vspace{6cm}}
+
+
+  \item{Complete the following program}
+
+\begin{lstlisting}
+void add(std::vector<int> A, std::vector<int> B)
+{
+  std::vector<int> ret;
+  std::vector<int> carry;
+  // what you write below shall be inserted right here...
+  return ret;
+}  
+\end{lstlisting}
+
+Write your program snippet below this line:
+\vspace*{6cm}
+
+
+
+    \end{enumerate}
+
+  
+
+\end{task}
+
+
+\clearpage
+\begin{task}{MIU}{8}{}
+  Consider the MIU text replacement system
+
+\begin{itemize}
+\item
+  Rule 1: If a sequence ends with a I, we are allowed to add a U to the
+  end
+\item
+  Rule 2: a sequence of the from Mx, where x is any sequence of
+  available character, can be transformed into a sequence Mxx, that is,
+  the part after the M is doubled. \emph{Note that x always refers to
+  the complete sequence after M and could contain M's as well.}
+\item
+  Rule 3: A subsequence III can be replaced by U
+\item
+  Rule 4: A subsequence UU can be removed.
+\end{itemize}
+
+
+With this system:
+\begin{enumerate}
+  \item{Compute all derivations to depth 2 of the word ``MI''. \vspace{8cm}}
+  \item{Give a reason why ``MU'' is not part of the language. \vspace{2cm}}
+\end{enumerate}
+\end{task}
+
+
+
+
+\end{document}

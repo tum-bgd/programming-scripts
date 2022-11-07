@@ -1,0 +1,58 @@
+\begin{task}{Turing Machine}{}{}
+The Lecture introduced Turing Machines and how to write programs for
+them. In this task we will practice to implement some simple turing
+machines.
+\begin{enumerate}
+\item{\textbf{Even Number:} Create a Turing Machine that accepts all even numbers. Remember that a Turing machine accepts a language (e.g., set of strings) if the machine terminates for all of them in a accepting state. You can declare any state to be accepting, introduce maybe two states \code{accept} and \code{reject} and let the Turing machine go into \code{accept} for even numbers and into \code{reject} for uneven numbers.
+  Tip: Formulate the machine with pen and paper. This is what you need to learn. Only after formulating the machine, feel free to test it, for example on \url{https://www.turingmachine.io/}}
+  
+
+  \item{\textbf{Even Numbers with Result on Tape:}
+  Create a Turing Machine that accepts all even numbers and writes \(\epsilon \; N \epsilon\) for uneven or
+  \(\epsilon \; Y\epsilon\) for even numbers. If you did not find a solution for the previous tasks, write
+  two Turing machines: both start out by clearing the current word on tape (walk right until you find an empty, walk left writing emtpy until you find an empty. The first machine, then writes 'Y' onto the tape, the second one 'N'. 
+  }
+
+  \item{\textbf{Unary Addition:}
+    Create a Turing Machine that adds two numbers given as a string \code{III+II} on the tape. Make sure that the Turing machine ends on the beginning of the result. Note that the solution can be rather simple.
+  }
+
+  \item{\textbf{Doubling Chars:}
+    Create a Turing Machine that doubles every occurence of the letter \code{a} on a tape. }
+
+\item{\textbf{Reversing:} Create a Turing Machine that reverses the contents of a tape. By this, we mean that the result consists of the same characters in the opposite order.
+}
+  \end{enumerate}
+
+\begin{solution}
+  The following snippets for \url{https://www.turingmachine.io} solve the problems.
+
+  \begin{enumerate}
+  \item{\textbf{Unary Addition:}
+
+    \begin{lstlisting}
+    # Unary Addition - A rather simple trick
+blank: ' '
+start state: search
+input: 'III+II'
+table:
+  search:
+    1: {write: 0, R: search}
+    0: {write: 1, R: search}
+    +: {write: ' ', R: done}
+  done:
+
+    \end{lstlisting}
+    
+
+    }
+  \end{enumerate}
+
+  
+\end{solution}
+
+
+\end{task}
+
+
+

@@ -1,0 +1,18 @@
+\begin{task}{Adder}{}{}
+
+  \begin{itemize}
+  \item{Implement a half-adder and a full adder using OR, AND, and NOT and implement a full adder using only NAND
+    operations}
+  \item{Stitch together a ripple-carry adder for 8 bit. This contains a half adder for the two lowest bits and then
+    a full adder for each bit. The carry output is fed into the next-higher adder.}
+  \item{Check that the adder is correct}
+  \item{If we add timing delays, how many delays do we need to wait? What is the depth of the circuit? If you have
+  a gate technology which can implement gate logic at 1MHz, what is the speed of the addition? }
+    
+    \end{itemize}
+
+  This task shows a problem of gate logic, namely, that it easily accumulates a depth and that the input signals of all bits have to be held for a long duration until the last addition has happened. In ASIC integrated circuits, this is
+  not a severe problem, as the internal frequencies can be quite high, but for reconfigurable devices like FPGAs, where the hardware description is implemented at runtime, these pose scalability problems. Therefore, modern architectures
+  of FPGAs can implement complex Boolean circuits (using a lookup table) and provide so-called ``fast carry chains''. Interested students can use a search engine to find out more.
+  
+\end{task}

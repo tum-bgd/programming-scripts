@@ -1,0 +1,118 @@
+\begin{task}{Expression Parsing}{}{}
+  As a first part of a digital design flow, one might be interested in automating the implementation of truth tables and
+  expressions. Turning a given truth table into an expression is extremely simple due to the SOP representation. However,
+  the step from such an expression to a circuit is a bit more complicated and provides an excellent (despite not very easy)
+  progrmaming task.
+
+  We want to parse (and evaluate) an expression using a concept called LL parser (which is sufficient for expressions). In
+  such a parser, we will always look at the next char only (Note that we only have one-digit numbers 0 and 1 and we will
+  only allow character a,b,c,... to appear in an expression). This is called the next token.
+
+  The grammar for a simple expression parser (which can even compute the expression) is given, for example, as follows:
+  %Assignment --> Identifier = Expression
+  \begin{lstlisting}
+    Expression --> Expression + Term | Term
+    Term --> Identifier | (Expression)
+    Identifier --> a|b|c
+  \end{lstlisting}
+
+
+  When you try to implement an LL parser, then each such rule is implemented as a function. The return value of this function could be a pointer or value, in our start implementation it is nothing. If you want to implement a calculator, you can try to return a value. If you want to implement some decent algorithm, e.g., for simplifying a circuit, you would maybe return a pointer to an object and would wire everything together into a parsing tree (which is the opposite of the circuit, remember?).
+
+  One thing to note is that LL parsers cannot implement left-recursive text replacements (e.g., first rule) as this would loop infinitely: Calling expression (because we expect an expression) would immediately call expression which would call expression and so on. Therefore, we replace this with an iterative version of the rule:
+  \begin{lstlisting}
+    Expression --> Term { + Term }*
+  \end{lstlisting}
+  This is, we expect something different (term) which will be terminating and possibly (in a while loop) more terms appended with +.
+
+  To get you started into this abstract way of writing programs, here is a first version of such an LL parser implementing only identifier a and b and an operation +.
+
+  \begin{lstlisting}
+    #include<iostream>
+
+
+using namespace std;
+
+char *ptoken;
+int where = 0;
+char token()
+{
+   return *ptoken;
+}
+bool nexttoken()
+{
+    ptoken ++;
+    where ++;
+    if (*ptoken == '\0')
+       return false;
+    return true;
+}
+
+void expression();
+
+void identifier(){
+    cout << "Identifier at " << where << std::endl;
+
+   if (token() == 'a' || token() == 'b')
+   {
+	nexttoken();
+	std::cout << "PARSED IDENTIFIER a or b" << std::endl;
+   }else
+    throw(std::runtime_error("identifier not a or b"));
+}
+
+void term()
+{
+    cout << "Term at " << where << std::endl;
+    if (token() == '(')
+    {
+        nexttoken();
+	expression();
+	if (token() != ')') throw std::runtime_error("Expected )");
+	nexttoken(); 
+    }else
+       identifier();
+}
+
+void expression()
+{
+// this is an iterative version of the left-recursive rule to avoid infinite loop
+// analyze this change
+// the modified grammar rule is expression--> Term { + Term}* where {*} denotes that this can happen as often as possible
+// more down to Earth, this means we cut off the left-most Term and continue as long as there are some terms.
+cout << "Expression at " << where << std::endl;
+term(); // this is exactly, where we cut off
+while (token() == '+')
+{
+    nexttoken(); 
+    term();
+}
+
+}
+
+
+
+int main(void){
+   string expr;
+   cout << "Expression: ";
+   cin >> expr;
+   ptoken = &expr[0];
+   expression();
+   return 0;
+}
+
+    \end{lstlisting}
+
+  \begin{itemize}
+  \item{\textbf{Understand:} Run this parser with various expressions in a debugger and see how the parsing actually works}
+  \item{\textbf{Boolean Algebra:} Complete this parser to accept all expressions built from ``a,b,c,+,*,(,)''.}
+  \item{\textbf{Negation:} Try to implement negation ``!a''. This is a new grammar rule as it is valid to negate expressions and identifiers, for example ``!a'' and ``!(a+b)'' are valid expressions.}
+  \item{\textbf{Truth Table (optional):} Use this parser to compute a Truth table. Therefore, run the parser for each row of the Truth table and replace a,b,c with their real values (return them) and implement the operations.}
+  \end{itemize}
+
+  If you want to continue along these lines, a nice student tool would be one that checks your simplification results. That is, write a program that given two expressions proofs by exhaustion that two expressions are same. If they are not, the program shall return the first or all contradictions to convince you.
+
+  Another nice student tool could be one that computes a truth table expression by expression showing intermediate results just in the way we did it in the lecture.
+
+  If you want to know how this is done for real, read on YACC (yet another compiler compiler), GNU bison, and flex. And if you want to see it in industrial grade software, have a look at postgresql.
+\end{task}

@@ -1,0 +1,86 @@
+
+\begin{task}{Basics in MATLAB}{}{}
+In this task, we want to practice  certain elements of the MATLAB language which you will find helpful when trying to write your first programs. This includes
+
+- Types and variables
+- Casting
+- Matrices
+
+Recall all numeric data types of the MATLAB language as can be found in the official MATLAB manual (\url{https://de.mathworks.com/help/matlab/numeric-types.html}). Then try to answer the following questions and complete the following program snippets.
+
+\begin{enumerate}
+
+\item{\textbf{Some Casting:} Look up casting here \url{https://www.mathworks.com/help/matlab/ref/cast.html}. Then cast the number given by $\pi$ multiplied with 100 to int32, int8 and uint8. What is happening when you cast to int8 and uint8?
+}
+
+\item{\textbf{Some Rounding:} Implement a small script in which one variable is set to 2.4 and another variable is set to 42. Compute the sum of both and round it up and down to the nearest integer. Store the result in variables called \code{sum\_rounded\_up} and \code{sum\_rounded\_down}. For that, you can either use typecasting between floating point and integer numbers which typically truncates numbers or you can have a look at dedicated functions such as \code{ceil}, \code{floor}, \code{round}. See as well \url{https://de.mathworks.com/help/matlab/ref/round.html}.}
+
+
+\item{\textbf{Identity Matrix:} Create the following matrix. Do this by hand or using the the eye function (https://de.mathworks.com/help/matlab/ref/eye.html).
+  \[
+  I= \begin{pmatrix}
+    1 & 0 & 0\\
+    0 & 1 & 0\\
+    0 & 0 & 1\\
+\end{pmatrix}
+  \] \emph{Optional: When you come back to this task after learning loops, try to write a custom eye function yourself.}
+  }
+
+\item{\textbf{Some Slicing:} Given the matrix M with 8 columns and 6 rows, extract each evenly numbered row and compute the sum.
+  \[
+  M= \begin{pmatrix}
+1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
+11 & 12 & 13 & 14 & 15 & 16 & 17 & 18\\
+21 & 22 & 23 & 24 & 25 & 26 & 27 & 28\\
+31 & 32 & 33 & 34 & 35 & 36 & 37 & 38\\
+41 & 42 & 43 & 44 & 45 & 46 & 47 & 48\\
+51 & 52 & 53 & 54 & 55 & 56 & 57 & 58\\
+\end{pmatrix}
+ \]
+}
+
+\item{\textbf{Matrix Multiplication:}
+Find out how to multiply two matrices and compute the multiplication of the following matrices $A$ and $B$.
+\[
+  A= \begin{pmatrix}
+1 & 2 & 3\\
+3 & 2 & 1\\
+\end{pmatrix}
+B= \begin{pmatrix}
+1 & 2 \\
+3 & 3 \\
+2 & 1
+\end{pmatrix}
+\]
+}
+\item{\textbf{Matrix Inversion:} Look up the documentation for matrix inversion (\url{https://www.mathworks.com/help/matlab/ref/inv.html}) and invert the matrices above (when possible).}
+
+\item{\textbf{Linear System Solving:} In order to solve the following system of linear equations given as an $n \times n$ square matrix $A$ an (row-)vector of $n$ unknown numbers, and a (row-)vector of $n$ known numbers (e.g., measurements) $b$
+
+\[
+Ax =b
+\]
+MATLAB provides a very nice syntactic feature in which you can write the inversion of the system as a "right-division". Find out, how to do this and compute the solution of the system using MATLAB.
+
+\[
+A =\begin{pmatrix}
+1 & 2 \\
+3 & 4
+\end{pmatrix}
+b=\begin{pmatrix}
+1 \\
+1
+\end{pmatrix}
+\]
+The advantage of this notation over an approach in which one computes an inverse matrix $A^-1$ such that $A\cdot A^{-1} = A^{-1}\cdot A = I$ with $I$ being the identity matrix and computing
+\[
+  Ax = b \Leftrightarrow x = A^{-1}b
+  \]
+  is that MATLAB can choose the best algorithm based on the properties of $A$. Inverting the matrix can be numerically unstable, such that an algorithm which directly solves the equations (for example by substitution) is better than computing the inverse (if interested, some background is here:\url{https://en.wikipedia.org/wiki/Condition_number})
+  }
+\end{enumerate}
+\begin{solution}
+  Not yet given.
+  \end{solution}
+\end{task}
+

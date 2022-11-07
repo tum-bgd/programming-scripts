@@ -1,0 +1,72 @@
+\begin{task}{Method of Least Squares\up*}{}{}
+When working with measurements from the real world errors are
+unavoidable. These errors can often be reduced by using multiple
+measurements. Since these measurements will contradict each other we
+need a method to resolve this contradiction.
+
+Assuming, that the relationship between measurements and the actual
+values, we can create the system of overdetermined linear equation
+
+\[
+Ax = b
+\] where \(b = (b_1,\ldots,b_n)\) contains the measurements, \(x\)
+the actual value we want to infer and \(A\) expresses the
+\emph{theoretic} relationship between them. We also assume that \(A\)
+has maximal rank, meaning that the column vectors of \(A\) are linearly
+independant. Because the perfect solution for \(x\) does not exist, due
+to the errors in measurement, we are looking for the value of x which
+minimizes the \emph{norm} of the residium \(r(x)\):
+
+\[
+\sqrt{\sum_{i=1..n}{r_i^2}} = ||\begin{pmatrix}r_1\\...\\r_i\\...\\r_n\end{pmatrix}||=||r(x)|| = ||b-Ax||\]
+
+A perfect solution would be a a \emph{norm} of zero. For the Euclidian
+norm we can simplify the term by squaring both sides, as the norm is
+defined as the square root of the scalar product, therefore a minimal
+norm corresponds to a minimal scalar product. We can formulate the
+following equation:
+
+\[ || r(x) || ^2 =(b-Ax)^T(b-Ax) = x^T A^T Ax - 2x^T A^T b + b^T b \rightarrow min\]
+
+As we want to find the minimum we can use differential calculus and set
+the first derivative to zero:
+
+\[\frac{\partial}{\partial x} ||r(x)||^2 = 2A^T Ax - 2 A^T b = 0\]
+
+This equation is called \emph{normal equation of an overdetermined
+  system of linear equation} \(Ax=b\) and is usually given in the
+equivalent form:
+
+\[A^T Ax = A^T b\]
+
+\(A^T A\) is a positive semi-definite, \textbf{symmetric} matrix. As a
+result the equation can easily be solved for \(x\) as it is not
+overdetermined anymore. This \(x\) minimizes the error function norm.
+The Gauss-Markov theorem actually proves that this algorithm provides a
+best, linear, unbiased estimate value of \(x\). Which is in asense the
+most probable value of \(x\) given the set of measurements.
+
+\begin{enumerate}
+\item{
+  Using the measured values \code{b = [14.1000;25.9000;18.0500;41.9500]} and a matrix of
+  \code{A = [1,2,3;4,5,4;6,3,2;7,7,7]}, calculate the normal equation in MATLAB. Note that matrix transposition is available
+  in MATLAB either as a symbol like in \code{A'} or as a function like \code{transpose(A)}.
+}
+\item{
+Solve the normal equation set up in the previous task with MATLAB. Note that it is not good practice to compute the inverse of the matrix $A$, as its realization in main memory can produce fatal rounding errors. It is better to recall the right division in MATLAB from a previous sheet.
+  }
+\item {
+  As the equation is overdetermined, the solution will not be exact. Compute the vector of residual values
+  \[
+     r = b-Ax
+     \]
+     and its size
+     \[
+     ||r||
+     \]
+     For the size, consider using the MATLAB function \code{norm}.
+  }
+
+    
+  \end{enumerate}
+\end{task}
