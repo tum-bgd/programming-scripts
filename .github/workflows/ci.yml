@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-22.04
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install build deps
+      shell: bash
+      run: |
+        sudo apt-get update -y
+        sudo apt-get install build-essential python3-pip \
+                        texlive-latex-extra \
+                        texlive-fonts-extra \
+                        texlive-xetex latexmk -y
+        pip install jupyter-book
+
+    - name: Build book
+      run: |
+        make build
+        cp book/_build/latex/book.pdf book/_build/html/programming.pdf
+
+    - name: Deploy book
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./book/_build/html
