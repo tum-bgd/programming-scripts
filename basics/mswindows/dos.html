@@ -1,0 +1,734 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>The Disk Operating System (DOS) &#8212; Principles of Programming and Computational Foundations</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Microsoft Windows" href="windows.html" />
+    <link rel="prev" title="Computational Foundations - Extended Table of Contents" href="../../etoc_compfound.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Principles of Programming and Computational Foundations</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    About this Repository
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lecture and Tutorial Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../etoc_principlesofprogramming.html">
+   Principles of Programming - Extended Table of Contents
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../etoc_compfound.html">
+   Computational Foundations - Extended Table of Contents
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basic Knowledge
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   The Disk Operating System (DOS)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="windows.html">
+   Microsoft Windows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unix/unix.html">
+   Unix, Linux, and POSIX
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../imperative_programming.html">
+   Imperative Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../cppintro.html">
+   The C and C++ Language
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python (only Principles of Programming)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Python_basics.html">
+   Python basics
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorial Principles of Programming
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../unit01_tasks.html">
+   Tutorial No. 1 - Check your knowledge
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Libraries and Stories
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../libraries_happly.html">
+   Reading and Writing PLY files (point cloud example)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../libraries_happly_boostgeometry.html">
+   happly and boost geometry - Load Point Clouds in C++11
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/tumbgd/programming_scripts"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tumbgd/programming_scripts/issues/new?title=Issue%20on%20page%20%2Fbasics/mswindows/dos.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/basics/mswindows/dos.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   The Disk Operating System (DOS)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#automation-in-windows">
+   Automation in Windows
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>The Disk Operating System (DOS)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   The Disk Operating System (DOS)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#automation-in-windows">
+   Automation in Windows
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="the-disk-operating-system-dos">
+<h1>The Disk Operating System (DOS)<a class="headerlink" href="#the-disk-operating-system-dos" title="Permalink to this headline">#</a></h1>
+<p>In order to fully understand Microsoft Windows and in order to get to
+advanced usage capabilities, it is unavoidable to understand, how
+Microsoft Windows has emerged. In the old days of computing, a company
+named Microsoft introduced an operating system known as Disk Operating
+System (DOS) which was used to run most personal computers in these
+days. From a user perspective, this operating system did all the work of
+starting up the computer and configuring hardware and running programs.
+Therefore, a command line was designed and equipped with programs and
+technology to support basic computing tasks.</p>
+<p>MS Dos was a single tasking operating system (except TSRs, which have
+been small programs that were able to run in the background). This
+dictates the logic under which interaction with MS Dos is cut into
+sequential steps. In a nutshell, the computer tells the user that it
+waits for an instruction by showing a command prompt.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The user is then supposed to enter a command which then runs a program
+or a builtin instruction. Only four types of information are available
+to both the user and programs:</p>
+<ul class="simple">
+<li><p>The current working directory (CWD) which is a combination of a
+drive and a folder relative to which all file operations are
+performed</p></li>
+<li><p>A set of environment variables, such as the %PATH% variable</p></li>
+<li><p>The name of the program and a space-separated list of arguments to
+the command</p></li>
+</ul>
+<p>In this context, the DOS provided a set of commands for working with
+these states and software vendors could provide additional programs.
+While DOS can be considered history, all current Windows versions
+include a Command Prompt feature, which provides a DOS-like command line
+to perform tasks on Windows computers. For an overview, we list a few
+DOS commands and ask you to explore them yourself on a Windows computer
+(or in FreeDOS in a virtual machine like Virtual Box).</p>
+<p>Each command starts with the name of the command or program and a set of
+arguments where arguments starting with a “/” are considered switches
+that just influence the behavior. Many file-oriented commands allow you
+to use wildcards. A wildcard in a string matches zero or more character
+(*) or exactly one unspecified character (?). For more clarity:</p>
+<ul class="simple">
+<li><p>stat*.bat would match status.bat as well as stat.bat</p></li>
+<li><p>data?.dat would match data0.dat, but not data10.dat</p></li>
+</ul>
+<p>Basic programs</p>
+<ul class="simple">
+<li><p>&lt;drive letter&gt;: to change the drive</p></li>
+<li><p>CD to change the directory</p></li>
+<li><p>DIR to list a directory, consider switches /P and /S which change
+the behavior</p></li>
+<li><p>MD to create a directory</p></li>
+<li><p>RD to remove a directory (only if empty)</p></li>
+<li><p>TREE shows all files below the current working directory</p></li>
+<li><p>ATTRIB show and modify attributes like write protection on files</p></li>
+<li><p>COPY is used to copy files</p></li>
+<li><p>DEL deletes files (synonymous with ERASE)</p></li>
+<li><p>EDIT provides a simple editor (EDLIN before MS DOS 6.0)</p></li>
+<li><p>FIND searches for a string in a file</p></li>
+<li><p>MORE pages a file to the screen</p></li>
+<li><p>MOVE moves a file to a different location</p></li>
+<li><p>PRINT is used to print a file</p></li>
+<li><p>REPLACE works like copy but replaces the file in the target</p></li>
+<li><p>TYPE outputs the whole content of the given file</p></li>
+<li><p>XCOPY extends COPY to be able to copy whole directories and trees</p></li>
+<li><p>CLS clears the screen</p></li>
+<li><p>DATE shows and modifies the date</p></li>
+<li><p>TIME shows and modifies the time</p></li>
+<li><p>ECHO is used to control whether commands are shown or not (mainly in
+batch files)</p></li>
+<li><p>FDISK is used to set up hard disks (partitions, etc.)</p></li>
+<li><p>FORMAT organizes a file system on floppy disks or hard disk
+partitions</p></li>
+<li><p>HELP shows help for a dos command (use it in the tutorial!)</p></li>
+<li><p>SET shows configuration information and environment variables and
+modifies them</p></li>
+<li><p>VER shows the version of DOS in use</p></li>
+</ul>
+<p>With these commands, it is possible to organize a computer quite nicely
+yet remaining simple and self-explaining. Another interesting aspect
+about DOS which is visible in modern versions of Windows is the fact
+that file names were heavily restricted in early versions allowing 8
+characters for the file name and 3 characters for the file name
+extension separated with a dot. Extensions have always been used to mark
+the type of file, for example article.txt was a text file suitable for
+the edit program while word.exe was a program known as Word which could
+be run by writing the command word (without the extension) when in the
+same directory or when the directory was mentioned in the PATH variable.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Assignment 1:</strong></p>
+<ul class="simple">
+<li><p>Install VirtualBox and run FreeDOS inside</p></li>
+<li><p>Using the FreeDOS command line, create a folder structure
+representing Germanys federal structure. Start by creating a folder
+Germany, within this folder, create one for each state.</p></li>
+<li><p>In each state, create a file capital.txt and write into it only the
+name of the capital of the state in one line (be sure to end the
+line)</p></li>
+<li><p>Show the tree (and submit as a solution) using the command line</p></li>
+<li><p>(Advanced) Output all member states</p></li>
+<li><p>Learn about the redirection of output using the &gt; pipe</p></li>
+<li><p>Look around on your Windows PC if you have one. Where is your data
+stored technically, where is Documents located? Where are Downloads?
+Try to find out about this by just running the “Command Prompt” or
+“Eingabeaufforderung” in German language.</p></li>
+<li><p>Create a file on the Desktop of your Windows Computer, use the
+extension .txt and write Hello Windows into it. Then open the file
+with the Windows GUI which should spill up your favourite editor.</p></li>
+</ul>
+</div>
+<p>DOS used drive letters A, B, C, etc. to distinguish different disks. In
+the very early days, one typically had no hard drive in an MS DOS
+computer, but one floppy disk. This disk was known as A and all the life
+was taking place in A:&gt;. A bit later, many computers came up with a
+second floppy drive. Now, the drive A was used to start the operating
+system (DOS) and provide commands, while B:&gt; was used to store data. As
+floppy disks are sometimes usable (when a valid disk has been inserted)
+and sometimes unusable, both letters are reserved up to today.
+Typically, the first drive letter assigned to hard drives or other
+modern devices is, therefore, C:&gt;. In almost all versions of Windows
+today, Windows is installed on a drive with letter C. If the main drive
+has more partitions, drive letters are used sequentially, such that a
+two-partition setup often has a drive D:&gt;. On many other computers, D:
+already refers to some CD drive or USB stick. In a nutshell, drive
+letters are assigned along the alphabet and as the first two letters are
+reserved for floppy drives, the first letter in every-day use is C. As a
+consequence of this unknown dynamics, it has become a tradition to map
+the first network drive with the letter Z and to continue backwards (if
+you are in a network-enabled environment). Furthermore, some companies
+have started to use a drive called H like “Home” for the home drive of a
+user.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Assignment Two: Install Windows (at least once)</strong></p>
+<p>Windows Installation Tutorial. When you start working with Windows a
+lot, you will face the situation that your computer is not working
+properly anymore. In this tutorial (accessible only for people with a
+valid Windows license), we will install Windows into a virtual machine
+to train the procedure. In order to help you for your future, we ask you
+to do this on a virtual disk of 20 GB (use a FCOW disk to save space)
+which you partition into three disks: Disk C (the main Windows disk)
+shall use 10 GB, while a drive D of 5 GB and a drive E of 5 GB shall be
+available as well. Therefore, you can use the partitioning tool part of
+the Windows installer. We will use Windows Education 11, but the
+procedure is not much different for any (unmodified) Windows.</p>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="automation-in-windows">
+<h1>Automation in Windows<a class="headerlink" href="#automation-in-windows" title="Permalink to this headline">#</a></h1>
+<p>Since the beginning (including MS DOS), the builtin functionality can be
+used to automate routine tasks to some extent. In Windows, batch files
+are being used. In their simplest form, batch files just list a sequence
+of commands to be executed one after another. But batch files can have
+more aspects such as looping over files, asking for user input and other
+advanced patterns. As many of our students will be exposed to a Windows
+with no access to advanced scripting software, it is worth knowing some
+basic aspects of how to write batch files on Windows.</p>
+<p>As said, a batch file is just a text file in ASCII format and each row
+of the file represents a command which you could as well type into the
+command prompt. However, it gets more interesting if one realizes the
+following three functionalities:</p>
+<ul class="simple">
+<li><p>Disabling the output</p></li>
+<li><p>Looping over files</p></li>
+<li><p>Using arguments given to the batch file</p></li>
+</ul>
+<p>The first aspect is simple, but important: in basic batch files, each
+command is first output before the command is executed and the output of
+the execution is output. This means that it is a bit tricky to have
+concise output from a batch script which is really useful for the user.
+In a batch file, the output of a command can be suppressed by prefixing
+it with &#64; why it is good practice to start all batch files with a line</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="nd">@echo</span> <span class="n">off</span>
+</pre></div>
+</div>
+<p>The output of this line is suppressed (it would typically output “ECHO
+is disabled”) and the output of commands is disabled for the remainder
+of the script.</p>
+<p>Now, it is very common that batch files are used to automate annoying
+commands to avoid typing and thereby avoiding typos as well. Imagine you
+are working on satellite images and you have downloaded 1,000 scenes
+from Sentinel 2. As you want to create a web map, you decided to
+reproject all of these files from their own projection into a
+WebMercator projection (EPSG 90009001). You figured out the right
+parameters for letting gdal_warp utility doing your work, for example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>gdal\_warp \&lt;scene\&gt; -t\_srs ... (please figure it out yourself!)
+</pre></div>
+</div>
+<p>Then, you can use a batch file like this one:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="nd">@echo</span> <span class="n">off</span>
+<span class="k">for</span> <span class="o">%%</span><span class="n">f</span> <span class="ow">in</span> <span class="p">(</span>\<span class="o">*.</span><span class="n">tif</span><span class="p">)</span> <span class="n">do</span> <span class="p">(</span>
+<span class="n">gdal</span>\<span class="n">_warp</span> \<span class="o">&lt;</span><span class="n">magic</span> <span class="n">parameters</span> <span class="n">here</span>\<span class="o">&gt;</span> <span class="o">%%</span>\<span class="o">~</span><span class="n">nf</span> <span class="n">output</span><span class="o">/%%</span>\<span class="o">~</span><span class="n">nf</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>This file takes all files with extension tif in the current directory
+and gives them as input to our magic gdal_warp command while putting
+the result into the same file, but in a directory output. Hence, be sure
+to have this directory created (or make the creation of this directory
+part of the batch script itself). In this way, you can now have a lot of
+coffee or go to bed while your computer is working through your archive
+of data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Assignment Three: Writing Batch Files</strong></p>
+<p>Create a batch file which reproduces the result of Assigment One. A
+batch file in Microsoft DOS and Windows is a simple ASCII text file with
+an extension of .BAT. Those files can be run from the command prompt
+just like EXE files by giving their name without extension. Use the
+&#64;ECHO OFF as the first line to suppress the output of the individual
+programs. Explore on your own using the Internet, how one can get input
+from the user into a variable, how one can loop over files running a
+certain command for each file.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Assignment Four: Learn some Latin</strong></p>
+<p>We will write a batch file program to train latin vocabulary. Therefore,
+we create a file with the latin name containing the translation
+(followed by a newline). Then, try to write a script that first selects
+a file at random (or any other way) and asks (by showing the filename
+representing the latin vocabulary). Then ask the user to input and
+(!maybe!) try to compare the user input with the file contents at least
+roughly. Note that this can be really tricky in BATCH programming, so
+any approximate solution is appreciated.</p>
+<p>*Just some tips: To make it less complex, the solution to this task was
+not comparing the results, but rather showing the user input and the
+translation from the file. Further, we create two Batch files: one which
+loops over all files and another one which is called with the filename
+and presents a short dialog. *</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Assignment Five: Reproject Sentinel Scenes</strong></p>
+<p>Download a handful of Sentinel scenes from different locations, install
+GDAL and use the gdal_warp command line utility to bring all the files
+into the same projection.</p>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./basics/mswindows"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../../etoc_compfound.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Computational Foundations - Extended Table of Contents</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="windows.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Microsoft Windows</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Martin Werner<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
