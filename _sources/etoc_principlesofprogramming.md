@@ -7,7 +7,15 @@
 - Lecture 2: Imperative Programming
   - [Imperative Programming](imperative_programming)
   - [Python](Python_basics)
-  
+- Lecture 3: Imperative Programming II
+  - [Live Notes (Notebook)](live/2022-11-08_ExampleFromLecture.ipynb)
+  - [Tutorial: Niki the Robot](tasks_01_niki)
+  - Tutorial on / with numpy
+  - *Completion of Python Syntax and Data Structures, material above*
+  - The Notion of an Algorithm
+- Lecture 4:
+  - The Bisector of a Line (in Python)
+
 Preview Material:
 - [The Notion of an Algorithm](algorithm.md)
 

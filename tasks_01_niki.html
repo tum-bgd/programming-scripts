@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Algorithm Examples &#8212; Principles of Programming and Computational Foundations</title>
+    <title>Task Sheet 1: Niki the robot &#8212; Principles of Programming and Computational Foundations</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Task Sheet 1: Basic C and C++" href="tasks_02_cpp.html" />
+    <link rel="prev" title="Tutorial No. 1 - Check your knowledge" href="unit01_tasks.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -189,14 +191,14 @@ const thebe_selector_output = ".output, .cell_output"
   Tutorial Assignments
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="unit01_tasks.html">
    Tutorial No. 1 - Check your knowledge
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tasks_01_niki.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Task Sheet 1: Niki the robot
   </a>
  </li>
@@ -295,7 +297,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/tum-bgd/programming-scripts/issues/new?title=Issue%20on%20page%20%2Falgorithm.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/tum-bgd/programming-scripts/issues/new?title=Issue%20on%20page%20%2Ftasks_01_niki.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -312,7 +314,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/tum-bgd/programming-scripts/edit/main/book/algorithm.md"
+        <a href="https://github.com/tum-bgd/programming-scripts/edit/main/book/tasks_01_niki.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -340,7 +342,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/algorithm.md"
+        <a href="_sources/tasks_01_niki.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -377,23 +379,130 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-outcome">
+   Learning Outcome
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-1-doubling-numbers">
+   Task 1: Doubling Numbers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#disclaimer">
+   Disclaimer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-2-staircase">
+   Task 2: Staircase
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-3-storage">
+   Task 3: Storage
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-4-waste-collection">
+   Task 4: Waste Collection
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-5-tunnel">
+   Task 5: Tunnel
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-6-signs-in-the-world">
+   Task 6:  Signs in the world
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Algorithm Examples</h1>
+                <h1>Task Sheet 1: Niki the robot</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-outcome">
+   Learning Outcome
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-1-doubling-numbers">
+   Task 1: Doubling Numbers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#disclaimer">
+   Disclaimer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-2-staircase">
+   Task 2: Staircase
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-3-storage">
+   Task 3: Storage
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-4-waste-collection">
+   Task 4: Waste Collection
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-5-tunnel">
+   Task 5: Tunnel
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-6-signs-in-the-world">
+   Task 6:  Signs in the world
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -401,9 +510,62 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="algorithm-examples">
-<h1>Algorithm Examples<a class="headerlink" href="#algorithm-examples" title="Permalink to this headline">#</a></h1>
-<p>TBD;</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="task-sheet-1-niki-the-robot">
+<h1>Task Sheet 1: Niki the robot<a class="headerlink" href="#task-sheet-1-niki-the-robot" title="Permalink to this headline">#</a></h1>
+<p>Niki is a traditional environment to teach programming. It is about a small robot that has a very limited set of sensors and actions. However, Niki can be programmed in various ways to solve quite complex problems. As Niki does not have a concept of variables, it uses the environment of the robot to store information. In order to efficiently solve some advanced tasks, Niki provides support for recursion, allowing simple solutions to some complex problems.</p>
+<p>Below screenshot shows the result of our joint exploration of Niki in the lecture:</p>
+<p><img alt="" src="_images/upload_24ca740b4c9b8d3d92872fff00d8e099.png" /></p>
+<section id="learning-outcome">
+<h2>Learning Outcome<a class="headerlink" href="#learning-outcome" title="Permalink to this headline">#</a></h2>
+<p>We learn how to use loops and conditions to solve some toy problems for Niki. We prepare for the principle of recursion.</p>
+</section>
+<section id="task-1-doubling-numbers">
+<h2>Task 1: Doubling Numbers<a class="headerlink" href="#task-1-doubling-numbers" title="Permalink to this headline">#</a></h2>
+<p>Program Niki to initialize a vertical tower of deposited markers starting at location 1/1. The height of the tower shall be interpreted as an natural number. Assure and assume that the robot is located on the basement of the first tower looking right. Now, write a program (decompose it into procedures where sensible) to double the number by creating a tower right of the given tower with double the height. (Tip: An oral explanation of a possible implementation is given in the lecture video)</p>
+</section>
+<section id="disclaimer">
+<h2>Disclaimer<a class="headerlink" href="#disclaimer" title="Permalink to this headline">#</a></h2>
+<p><em>Below assignments have been taken from the Niki manual. They have been formulated by various people, but not from me.</em></p>
+</section>
+<section id="task-2-staircase">
+<h2>Task 2: Staircase<a class="headerlink" href="#task-2-staircase" title="Permalink to this headline">#</a></h2>
+<p><img alt="" src="_images/upload_827cca5a46c52b8ff0b25ddf1c6f219e.png" /></p>
+<p>Recreate the given world (click on Arbeitsfeld-&gt;Verändern), now the mouse will show you what changes a click would do. These include</p>
+<ul class="simple">
+<li><p>placing markers</p></li>
+<li><p>placing walls</p></li>
+<li><p>placing the robot</p></li>
+</ul>
+<p>a) Write a program that knows the world and picks up the marker, brings it to the podest and deposits it there.</p>
+<p>b) Based on domain knowledge that there is first a double staircase and then a podest, find the marker on the podest without knowing the detailed shape or position of the marker and bring it to the podest</p>
+</section>
+<section id="task-3-storage">
+<h2>Task 3: Storage<a class="headerlink" href="#task-3-storage" title="Permalink to this headline">#</a></h2>
+<p><img alt="" src="_images/upload_d87b1f7dfb7922326aaa9d855d7b4fc1.png" /></p>
+<p>Niki is supposed to sort the large items (two markers) into the bottom line of the depicted storage space and the small ones (one marker) into the upper row. In a first version, he keeps the X location of all of those. In a more advanced version, the result is supposed to be that the both rows are filled from left to right.</p>
+</section>
+<section id="task-4-waste-collection">
+<h2>Task 4: Waste Collection<a class="headerlink" href="#task-4-waste-collection" title="Permalink to this headline">#</a></h2>
+<p><img alt="" src="_images/upload_a097f39219d641f2491efc9835c1644a.png" /></p>
+<p>Niki is somewhere within a hall. The hall has one single entrance. Along the outside wall, there is waste deposited. Niki is supposed to pick up all the waste (not knowing where exactly it is, just that it is adjacent to the wall). Write a program for it.
+(Tip: Try to program it such that left of Niki is always a wall. This is called left hand rule and would walk around any polygons inner or outer boundaries. With the one hole, this rule would change from the inner to the outer boundary and back).
+This tip enlightens us with a simple fact: sometimes very hard programs can be written pretty concisely by finding an invariant (a natural language condition that remains true throughout the program or program part like a loop). Then, we do a mathematical proof that this invariant is exhausting the problem space (no programming needed) and implement the program (only make sure the invariant is never broken). This approach leads to a notion of algorithmic correctness we will discuss later.</p>
+</section>
+<section id="task-5-tunnel">
+<h2>Task 5: Tunnel<a class="headerlink" href="#task-5-tunnel" title="Permalink to this headline">#</a></h2>
+<p>Let Niki pick up the item in the following case
+<img alt="" src="_images/upload_979552562c8ac7be29f148e07535999a.png" /></p>
+<p>In a few weeks, extend this task by bringing the item back to the beginning of the tunnel of unknown shape. Therefore, either memory (which Niki does not have) or recursion (which Niki has) is requied.</p>
+</section>
+<section id="task-6-signs-in-the-world">
+<h2>Task 6:  Signs in the world<a class="headerlink" href="#task-6-signs-in-the-world" title="Permalink to this headline">#</a></h2>
+<p><img alt="" src="_images/upload_20863aaf8e02f52e4387fca79c38bf73.png" /></p>
+<p>The graphics visualizes a map in which Niki is supposed to follow the marked cells. The following rules are in place</p>
+<ul class="simple">
+<li><p>a cell filled with one marker means go straight.</p></li>
+<li><p>two markers and three markers stand for specific turns</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -433,6 +595,20 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="unit01_tasks.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Tutorial No. 1 - Check your knowledge</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="tasks_02_cpp.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Task Sheet 1: Basic C and C++</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
