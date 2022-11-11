@@ -9,6 +9,12 @@
 - Lecture 2: Imperative Programming
   - [Imperative Programming](imperative_programming)
   - [C++ - First Steps](cppintro)
+- Lecture 3: Imperative Programming II
+    - [Tutorial: Niki the Robot](tasks_01_niki)
+  - *Completion of Python Syntax and Data Structures, material above*
+  - The Notion of an Algorithm
+  - [A Selection of Introductory Programming Challenges](tasks_02_cpp)
+
 
 Preview Material:
 - [The Notion of an Algorithm](algorithm.md)

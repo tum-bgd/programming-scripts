@@ -18,11 +18,12 @@ parts:
   - caption: Python (only Principles of Programming)
     chapters:
     - file: Python_basics
-  - caption: Tutorial Principles of Programming
-    chapters:
-    - file: unit01_tasks
   - caption: Libraries and Stories
     chapters:
     - file: libraries_happly
     - file: libraries_happly_boostgeometry
-  
+  - caption: Tutorial Assignments
+    chapters:
+    - file: unit01_tasks
+    - file: tasks_01_niki
+    - file: tasks_02_cpp
