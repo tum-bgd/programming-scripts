@@ -11,11 +11,11 @@
   - [C++ - First Steps](cppintro)
 - Lecture 3: Imperative Programming II
     - [Tutorial: Niki the Robot](tasks_01_niki)
-  - [PDF Script: The Notion of an Algorithm](pdf/Section_algorithms.pdf)
+    - {Download}`Script Algorithms<./pdf/Section_algorithms.pdf>`
+    - {Download}`Slides Recursion<./pdf/02_RecursionSlice.pdf>`
+    - {Download}`Slides C/C++<./pdf/2022_v06_CandCpp.pdf>`
+    
   - [A Selection of Introductory Programming Challenges](tasks_02_cpp)
-
-Preview Material:
-- [The Notion of an Algorithm](algorithm.md)
 
 
 
@@ -46,10 +46,5 @@ First the dates in 2022/23:
 |07.02.2023 | Lecture  | 
 |-----------|--------------------|
 
-### Modules
-tba
-tba
-
 ## Computational Foundations II
 
-tba

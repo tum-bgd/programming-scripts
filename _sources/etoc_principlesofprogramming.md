@@ -10,9 +10,11 @@
 - Lecture 3: Imperative Programming II
   - [Live Notes (Notebook)](live/2022-11-08_ExampleFromLecture.ipynb)
   - [Tutorial: Niki the Robot](tasks_01_niki)
+  - {Download}`Script Algorithms<./pdf/Section_algorithms.pdf>`
+  - {Download}`Slides Recursion<./pdf/02_RecursionSlice.pdf>`
   - Tutorial on / with numpy
   - *Completion of Python Syntax and Data Structures, material above*
-  - The Notion of an Algorithm
+ 
 - Lecture 4:
   - The Bisector of a Line (in Python)
 
