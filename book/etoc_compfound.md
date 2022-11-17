@@ -14,6 +14,7 @@
     - {Download}`Script Algorithms<./pdf/Section_algorithms.pdf>`
     - {Download}`Slides Recursion<./pdf/02_RecursionSlice.pdf>`
     - {Download}`Slides C/C++<./pdf/2022_v06_CandCpp.pdf>`
+    - {Download}`Solution to Riemann Integral`<./source/integral.cpp>
     
   - [A Selection of Introductory Programming Challenges](tasks_02_cpp)
 
