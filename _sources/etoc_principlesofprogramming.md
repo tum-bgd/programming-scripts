@@ -11,6 +11,7 @@
   - [Live Notes (Notebook)](live/2022-11-08_ExampleFromLecture.ipynb)
   - [Tutorial: Niki the Robot](tasks_01_niki)
   - {Download}`Script Algorithms<./pdf/Section_algorithms.pdf>`
+  - {Download}`Slides Algorithms<./pdf/03_AlgorithmSlice.pdf>`
   - {Download}`Slides Recursion<./pdf/02_RecursionSlice.pdf>`
   - Tutorial on / with numpy
   - *Completion of Python Syntax and Data Structures, material above*
