@@ -1,3 +1,9 @@
-out.ply
+# files without an extension
+*
+!/**/
+!*.*
+
+# specific extensions
 *out
 *.o
+*.ply

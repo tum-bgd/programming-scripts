@@ -8,6 +8,7 @@ build_preprocess:
 	./in2md.sh files/cppintro.md.in > files/cppintro.md
 	./in2md.sh files/libraries_happly.md.in > files/libraries_happly.md
 	./in2md.sh files/libraries_happly_boostgeometry.md.in > files/libraries_happly_boostgeometry.md
+	cd cpp && ./maker.sh && cd ..
 
 build_jupyter_books:
 	for book in $(BOOKS) ; do \
