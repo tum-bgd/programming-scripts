@@ -52,8 +52,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Python basics" href="python_basics.html" />
-    <link rel="prev" title="Imperative Programming" href="imperative_programming.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -113,7 +111,7 @@ const thebe_selector_output = ".output, .cell_output"
   Basic Knowledge
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="dos.html">
    The Disk Operating System (DOS)
@@ -134,15 +132,10 @@ const thebe_selector_output = ".output, .cell_output"
    Imperative Programming
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   The C and C++ Language
-  </a>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Python (only Principles of Programming)
+  Python
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -183,11 +176,6 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="tasks_01_niki.html">
    Task Sheet 1: Niki the robot
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tasks_02_cpp.html">
-   Task Sheet 1: Basic C and C++
   </a>
  </li>
 </ul>
@@ -485,8 +473,8 @@ These contain source code which a <em>compiler</em> can translate to object code
 <h3>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">#</a></h3>
 <p>The following program is the first program you should learn and understand. It just prints out “Hello World” to the screen. We will provide four information aspects in this script: the source code file (C++), a Makefile (which contains the compiler arguments, at the moment just compiling, the output of compiling (could become interesting later) and the output of running the program (note that the first line is the invocation for the case we are later giving arguments). In the HTML version of this book, they are alternative with each other (tabs), in print, they are a bit lengthy, but in this way everything remains complete.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="4cae6605-d42c-4da6-8e3b-7ef8c63858f4" name="3e7f9ec6-b4cb-4062-9893-fb199fd91ff1" type="radio">
-</input><label class="sd-tab-label" for="4cae6605-d42c-4da6-8e3b-7ef8c63858f4">
+<input checked="checked" id="f7fa8df8-d6e8-4df3-bec3-1901ab5446d4" name="0d828eef-ca3b-4d54-96b1-7067db9bd2c6" type="radio">
+</input><label class="sd-tab-label" for="f7fa8df8-d6e8-4df3-bec3-1901ab5446d4">
 Source</label><div class="sd-tab-content docutils">
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 
@@ -498,8 +486,8 @@ Source</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="c97aad0e-eba4-4812-bee8-ecff7e2d1c7c" name="3e7f9ec6-b4cb-4062-9893-fb199fd91ff1" type="radio">
-</input><label class="sd-tab-label" for="c97aad0e-eba4-4812-bee8-ecff7e2d1c7c">
+<input id="1138770e-1fee-4135-bfde-1b249e8d5bf5" name="0d828eef-ca3b-4d54-96b1-7067db9bd2c6" type="radio">
+</input><label class="sd-tab-label" for="1138770e-1fee-4135-bfde-1b249e8d5bf5">
 Makefile</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">all</span><span class="p">:</span> 
 	<span class="n">g</span><span class="o">++</span> <span class="o">-</span><span class="n">Wall</span> <span class="o">-</span><span class="n">o</span> <span class="mi">01</span><span class="n">_oldhelloworld</span> <span class="mi">01</span><span class="n">_oldhelloworld</span><span class="o">.</span><span class="n">cpp</span>
@@ -508,15 +496,15 @@ Makefile</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="2882df8b-17b5-4f30-b53d-d9fc6a198fc4" name="3e7f9ec6-b4cb-4062-9893-fb199fd91ff1" type="radio">
-</input><label class="sd-tab-label" for="2882df8b-17b5-4f30-b53d-d9fc6a198fc4">
+<input id="0c06391b-e486-4840-a98a-76e8a2b95a5e" name="0d828eef-ca3b-4d54-96b1-7067db9bd2c6" type="radio">
+</input><label class="sd-tab-label" for="0c06391b-e486-4840-a98a-76e8a2b95a5e">
 Build Output</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
-<input id="6fa75a17-c26e-49dd-8b2e-67a19ba25145" name="3e7f9ec6-b4cb-4062-9893-fb199fd91ff1" type="radio">
-</input><label class="sd-tab-label" for="6fa75a17-c26e-49dd-8b2e-67a19ba25145">
+<input id="be34da84-8596-4afd-aece-4ea3c4c4400e" name="0d828eef-ca3b-4d54-96b1-7067db9bd2c6" type="radio">
+</input><label class="sd-tab-label" for="be34da84-8596-4afd-aece-4ea3c4c4400e">
 Run Output</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
@@ -541,8 +529,8 @@ reliability. Hence, printf is not used that much in safety-oriented code.</p>
 <p>In order to output data to the user, the C++ libraries define a header iostreams which define cout (C output), cerr (standard error output) and cin (for input, used with a &gt;&gt; stream operator).</p>
 <p>Hence, the same program written in idiomatic C++ looks like this:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="17688f7d-c362-40e8-b302-be779d3555fd" name="f12af61e-8dc3-4d8c-bb2a-f348dd256405" type="radio">
-</input><label class="sd-tab-label" for="17688f7d-c362-40e8-b302-be779d3555fd">
+<input checked="checked" id="afe3977a-6b13-45d4-9507-020c82f2e753" name="c890333e-9eed-4020-b5c6-5772f372f08e" type="radio">
+</input><label class="sd-tab-label" for="afe3977a-6b13-45d4-9507-020c82f2e753">
 Source</label><div class="sd-tab-content docutils">
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
@@ -554,8 +542,8 @@ Source</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="c60491d1-a298-4a21-bb5e-95547136bb04" name="f12af61e-8dc3-4d8c-bb2a-f348dd256405" type="radio">
-</input><label class="sd-tab-label" for="c60491d1-a298-4a21-bb5e-95547136bb04">
+<input id="ff7d1bd7-1383-4ec5-8382-d2a59e9488c6" name="c890333e-9eed-4020-b5c6-5772f372f08e" type="radio">
+</input><label class="sd-tab-label" for="ff7d1bd7-1383-4ec5-8382-d2a59e9488c6">
 Makefile</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">all</span><span class="p">:</span> 
 	<span class="n">g</span><span class="o">++</span> <span class="o">-</span><span class="n">Wall</span> <span class="o">-</span><span class="n">o</span> <span class="mi">00</span><span class="n">_helloworld</span><span class="o">.</span><span class="n">out</span> <span class="mi">00</span><span class="n">_helloworld</span><span class="o">.</span><span class="n">cpp</span>
@@ -564,15 +552,15 @@ Makefile</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="c105528b-eb63-4dc0-bab1-dd50df58ee15" name="f12af61e-8dc3-4d8c-bb2a-f348dd256405" type="radio">
-</input><label class="sd-tab-label" for="c105528b-eb63-4dc0-bab1-dd50df58ee15">
+<input id="b2df2556-6b17-411a-a4ea-74be33a5f94e" name="c890333e-9eed-4020-b5c6-5772f372f08e" type="radio">
+</input><label class="sd-tab-label" for="b2df2556-6b17-411a-a4ea-74be33a5f94e">
 Build Output</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
-<input id="44aea383-8f87-432b-8162-b487604b799f" name="f12af61e-8dc3-4d8c-bb2a-f348dd256405" type="radio">
-</input><label class="sd-tab-label" for="44aea383-8f87-432b-8162-b487604b799f">
+<input id="fbfaa249-db47-407d-a7da-1016fb8cac18" name="c890333e-9eed-4020-b5c6-5772f372f08e" type="radio">
+</input><label class="sd-tab-label" for="fbfaa249-db47-407d-a7da-1016fb8cac18">
 Run Output</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
@@ -585,8 +573,8 @@ Run Output</label><div class="sd-tab-content docutils">
 <h2>Functions and Signature-based Selection<a class="headerlink" href="#functions-and-signature-based-selection" title="Permalink to this headline">#</a></h2>
 <p>A little bit later, we will introduce many different types, but for now, we will look into how we can write our own functions similar to the printf functions. A function is a unit of code that can be reused in your own code. Let us consider the following already quite involved example:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="f49cbe29-adcc-44ec-821b-342d8e6c3fcb" name="52110cbf-54f9-4594-9900-f2902f4b6803" type="radio">
-</input><label class="sd-tab-label" for="f49cbe29-adcc-44ec-821b-342d8e6c3fcb">
+<input checked="checked" id="898fe080-7b9d-46f1-83fc-c6c20f390cae" name="173392f4-ba5c-4c27-a297-2ab5d88948e0" type="radio">
+</input><label class="sd-tab-label" for="898fe080-7b9d-46f1-83fc-c6c20f390cae">
 Source</label><div class="sd-tab-content docutils">
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
@@ -609,8 +597,8 @@ Source</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="363e73a2-081c-4529-bd59-fd124d38f740" name="52110cbf-54f9-4594-9900-f2902f4b6803" type="radio">
-</input><label class="sd-tab-label" for="363e73a2-081c-4529-bd59-fd124d38f740">
+<input id="aa841ec5-b1b4-4005-bd07-3276ba32f8ec" name="173392f4-ba5c-4c27-a297-2ab5d88948e0" type="radio">
+</input><label class="sd-tab-label" for="aa841ec5-b1b4-4005-bd07-3276ba32f8ec">
 Makefile</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">all</span><span class="p">:</span> 
 	<span class="n">g</span><span class="o">++</span> <span class="o">-</span><span class="n">Wall</span> <span class="o">-</span><span class="n">o</span> <span class="mi">02</span><span class="n">_functionsignatures</span> <span class="mi">02</span><span class="n">_functionsignatures</span><span class="o">.</span><span class="n">cpp</span>
@@ -619,15 +607,15 @@ Makefile</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="f4bd5dae-849e-4c8d-ae42-1e13e55f56e2" name="52110cbf-54f9-4594-9900-f2902f4b6803" type="radio">
-</input><label class="sd-tab-label" for="f4bd5dae-849e-4c8d-ae42-1e13e55f56e2">
+<input id="a60b6eab-8cc9-46c1-8c6e-935c69da91d2" name="173392f4-ba5c-4c27-a297-2ab5d88948e0" type="radio">
+</input><label class="sd-tab-label" for="a60b6eab-8cc9-46c1-8c6e-935c69da91d2">
 Build Output</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
-<input id="52d45c79-81a5-4c89-b48f-0a9aac7f65f4" name="52110cbf-54f9-4594-9900-f2902f4b6803" type="radio">
-</input><label class="sd-tab-label" for="52d45c79-81a5-4c89-b48f-0a9aac7f65f4">
+<input id="9b9e2044-4b5d-49e0-859a-5f8468cab776" name="173392f4-ba5c-4c27-a297-2ab5d88948e0" type="radio">
+</input><label class="sd-tab-label" for="9b9e2044-4b5d-49e0-859a-5f8468cab776">
 Run Output</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
@@ -642,8 +630,8 @@ Run Output</label><div class="sd-tab-content docutils">
 <p>In many situations, we will implement functions that we want to use from multiple programs. For example, we could implement a sort function and use it in many different programs if we need to sort. In this situation, we need to put our implementations into an isolated C++ file, create a header file with the so-called <em>function prototypes</em> which are just fixing the name of the function and the type of the return value and of all arguments. In this way, we can include the header in our own program (one which has a main), generate code using the functions in the compilation step, and then link together our program with the library into a proper executable.</p>
 <p>More concretely, we could move the two implementations of the <code class="docutils literal notranslate"><span class="pre">doubled</span></code> functions into their own C++ file:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="8c8b84fd-f881-44b2-8a15-39ce918355c7" name="68a1d805-62f0-4ba4-98b0-49858b6b9e20" type="radio">
-</input><label class="sd-tab-label" for="8c8b84fd-f881-44b2-8a15-39ce918355c7">
+<input checked="checked" id="62e2ad77-ddae-4ba6-9855-a06130379b78" name="e516bb92-5315-4b29-b62d-463dd8d9dfc2" type="radio">
+</input><label class="sd-tab-label" for="62e2ad77-ddae-4ba6-9855-a06130379b78">
 Library</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="nb">int</span> <span class="n">doubled</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">)</span>
@@ -661,8 +649,8 @@ Library</label><div class="sd-tab-content docutils">
 </div>
 <p>This one can now be compiled independently from everything else. Note that we do not even include iostream here, because we are not using anything from iostreams. In order to make this available, we formualte a header</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="6915df89-5c06-4fa4-a8d9-c541f1500cd7" name="448c9004-8eb9-4c5f-a898-ce0ef6fa2b9b" type="radio">
-</input><label class="sd-tab-label" for="6915df89-5c06-4fa4-a8d9-c541f1500cd7">
+<input checked="checked" id="ca365b86-9ee7-4857-a645-d74c2734c130" name="1415fe8a-24b5-4777-abfb-eb48843c20f1" type="radio">
+</input><label class="sd-tab-label" for="ca365b86-9ee7-4857-a645-d74c2734c130">
 Header</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#ifndef DOUBLED_H_INC</span>
 <span class="c1">#define DOUBLED_H_INC</span>
@@ -681,8 +669,8 @@ used to only give the types of the arguments such as</p>
 <p>In order to make sure that these definitions cannot be loaded twice (not really needed here, but problems will be coming) all of this header is protected from double inclusion using the preprocessor. All lines with # are processed even before compiling and in order to avoid a double include (maybe you are including the file directly, but some library you include also includes this header) we check if a symbol specific to the header (it is common to use the capitalized filename as depicted) and if not, we define it (such that it is defined in the sequel) and close with <code class="docutils literal notranslate"><span class="pre">#endif</span></code> at end of file. In modern C++, this can be replaced with a simple <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">once</span></code> in the beginning, but this is not that widely used today.</p>
 <p>The remaining project then looks like this:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="64354b33-9d6e-4b64-afbc-004ec9457b9b" name="48814560-cdf0-450a-a3f1-5d2dfb7b1361" type="radio">
-</input><label class="sd-tab-label" for="64354b33-9d6e-4b64-afbc-004ec9457b9b">
+<input checked="checked" id="fdc7e599-3600-473e-a9cb-1e91df5abbd4" name="869bb8eb-924f-4eaf-ad68-f47c316bd729" type="radio">
+</input><label class="sd-tab-label" for="fdc7e599-3600-473e-a9cb-1e91df5abbd4">
 Source</label><div class="sd-tab-content docutils">
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;03_doubled.h&quot;</span><span class="cp"></span>
@@ -697,8 +685,8 @@ Source</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="a1546817-b5b1-4901-b6fe-3d7c413f1745" name="48814560-cdf0-450a-a3f1-5d2dfb7b1361" type="radio">
-</input><label class="sd-tab-label" for="a1546817-b5b1-4901-b6fe-3d7c413f1745">
+<input id="c7ec2c18-9d32-4f8a-8ccf-a2b5c54826ae" name="869bb8eb-924f-4eaf-ad68-f47c316bd729" type="radio">
+</input><label class="sd-tab-label" for="c7ec2c18-9d32-4f8a-8ccf-a2b5c54826ae">
 Makefile</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">all</span><span class="p">:</span>
 	<span class="n">g</span><span class="o">++</span> <span class="o">-</span><span class="n">c</span> <span class="mi">03</span><span class="n">_doubled</span><span class="o">.</span><span class="n">cpp</span> <span class="o">-</span><span class="n">o</span> <span class="mi">03</span><span class="n">_doubled</span><span class="o">.</span><span class="n">o</span>
@@ -709,15 +697,15 @@ Makefile</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="2b42b3c0-a590-45c7-9b30-cfb971917a66" name="48814560-cdf0-450a-a3f1-5d2dfb7b1361" type="radio">
-</input><label class="sd-tab-label" for="2b42b3c0-a590-45c7-9b30-cfb971917a66">
+<input id="4d1f7735-a4dc-4a4e-a5c8-605c756a5e8b" name="869bb8eb-924f-4eaf-ad68-f47c316bd729" type="radio">
+</input><label class="sd-tab-label" for="4d1f7735-a4dc-4a4e-a5c8-605c756a5e8b">
 Build Output</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
-<input id="a53e7b58-b9c6-41ab-8856-ab36bc42a08c" name="48814560-cdf0-450a-a3f1-5d2dfb7b1361" type="radio">
-</input><label class="sd-tab-label" for="a53e7b58-b9c6-41ab-8856-ab36bc42a08c">
+<input id="677f9e16-7f00-480f-aafe-c241202bb3e1" name="869bb8eb-924f-4eaf-ad68-f47c316bd729" type="radio">
+</input><label class="sd-tab-label" for="677f9e16-7f00-480f-aafe-c241202bb3e1">
 Run Output</label><div class="sd-tab-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
@@ -756,20 +744,6 @@ Run Output</label><div class="sd-tab-content docutils">
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="imperative_programming.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Imperative Programming</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="python_basics.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Python basics</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>
