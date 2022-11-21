@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Algorithm Examples &#8212; Principles of Programming and Computational Foundations</title>
+    <title>Task Sheet 2 (Lectures 4-6) &#8212; Principles of Programming and Computational Foundations</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,8 +50,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Task Sheet 1: Basic C and C++" href="tasks_02_cpp.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -189,7 +192,7 @@ const thebe_selector_output = ".output, .cell_output"
   Tutorial Assignments
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="unit01_tasks.html">
    Tutorial No. 1 - Check your knowledge
@@ -205,8 +208,8 @@ const thebe_selector_output = ".output, .cell_output"
    Task Sheet 1: Basic C and C++
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tasks_03_loops.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Task Sheet 2 (Lectures 4-6)
   </a>
  </li>
@@ -300,7 +303,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/tum-bgd/programming-scripts/issues/new?title=Issue%20on%20page%20%2Falgorithm.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/tum-bgd/programming-scripts/issues/new?title=Issue%20on%20page%20%2Ftasks_03_loops.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -317,7 +320,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/tum-bgd/programming-scripts/edit/main/book/algorithm.md"
+        <a href="https://github.com/tum-bgd/programming-scripts/edit/main/book/tasks_03_loops.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -345,7 +348,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/algorithm.md"
+        <a href="_sources/tasks_03_loops.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -382,23 +385,70 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-1-loops">
+   Task 1: Loops
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-2">
+   Task 2
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Algorithm Examples</h1>
+                <h1>Task Sheet 2 (Lectures 4-6)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-1-loops">
+   Task 1: Loops
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-2">
+   Task 2
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -406,9 +456,114 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="algorithm-examples">
-<h1>Algorithm Examples<a class="headerlink" href="#algorithm-examples" title="Permalink to this headline">#</a></h1>
-<p>TBD;</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="task-sheet-2-lectures-4-6">
+<h1>Task Sheet 2 (Lectures 4-6)<a class="headerlink" href="#task-sheet-2-lectures-4-6" title="Permalink to this headline">#</a></h1>
+<p><strong>Qualification Goal:</strong> In this task sheet, you are expected to develop routine in writing loops and recursions for simple cases. Some of the given formulas are helpful to know.</p>
+<p>You can submit your results to Moodle for correction, but preferably as a single C file for all things you want to have corrected.  <em>We will discuss these tasks in the lecture to some extent. But to develop some routine in programming, you need to solve these tasks yourself, preferably without help from the Internet. It is advisable to do these tasks repeatedly (or Google for different sum formulas) until you are able to do them.</em></p>
+<section id="task-1-loops">
+<h2>Task 1: Loops<a class="headerlink" href="#task-1-loops" title="Permalink to this headline">#</a></h2>
+<p>Implement the following expressions using loops. If two sides are given, implement one as a loop, the other one as an expression. Put the values of the left hand side into a variable lhs, the right hand side into rhs and compare the two values. Output an error message if they don’t fit.</p>
+<div class="math notranslate nohighlight">
+\[ \sum_{i=1}^{n} i = \frac{n(n+1)}{2}\]</div>
+<p><em>Example</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="n">void</span><span class="p">){</span>
+   <span class="nb">int</span> <span class="n">lhs</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+   <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+     <span class="n">lhs</span> <span class="o">+=</span> <span class="n">i</span><span class="p">;</span>
+
+   <span class="n">rhs</span><span class="o">=</span><span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LHS: </span><span class="si">%d</span><span class="se">\n</span><span class="s2">RHS: </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">lhs</span><span class="p">,</span> <span class="n">rhs</span><span class="p">);</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">rhs</span> <span class="o">!=</span> <span class="n">lhs</span><span class="p">)</span>
+     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Something is wrong&quot;</span><span class="p">);</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[ \sum_{i=1}^{n} i^2 = \frac{n(n+1)(2n+1)}{6}\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[ \prod_{i=1}^{10} n\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[ (a+b)^n = \]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[ \sum_{i=1}^{10} i\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[ \sum_{i=1}^{10} (2i+3)\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[ n! = \prod_{i=1}^n i\]</div>
+</li>
+</ul>
+</section>
+<section id="task-2">
+<h2>Task 2<a class="headerlink" href="#task-2" title="Permalink to this headline">#</a></h2>
+<p>Please implement a factorial function first (you could find one in the script, but it is better to try it on your own). It should have the signature</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">factorial</span><span class="p">(</span><span class="nb">int</span> <span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then only implement the expression of the binomial coefficient.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left( \begin{array}{llll}
+n\\
+k\\
+\end{array} \right)= \frac{n!}{k!(n-k)!}
+\end{split}\]</div>
+<p>Check it with some known values by hand (create the values and double-check your implementation).</p>
+<p>The binomial coefficient is traditionally not defined as such a quotient, but in a recursive manner as follows:</p>
+<p>First, we fix base cases</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left( \begin{array}{llll}
+n\\
+0\\
+\end{array} \right)= 1 = 
+\left( \begin{array}{llll}
+n\\
+n\\
+\end{array}\right)
+\end{split}\]</div>
+<p>and then the recurisve relation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left( \begin{array}{llll}
+n+1\\
+k+1\\
+\end{array}\right)=\left( \begin{array}{llll}
+n\\
+k\\
+\end{array}\right)+\left( \begin{array}{llll}
+n\\
+k+1\\
+\end{array}\right)
+\end{split}\]</div>
+<p>Implement a recursive function. Note that you will have to rephrase the reccurence relation such that given <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(k\)</span> you can call the binomial function with certain values.</p>
+<p>Create a table how long it takes to compute all coefficients up to <span class="math notranslate nohighlight">\(m\)</span>, more precisely the set of values:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}C_m = \left\{\left( \begin{array}{llll}
+n\\
+k\\
+\end{array}\right)
+\text{ for which } 0 \le k \le n \le m
+\right\} 
+\end{split}\]</div>
+<p>Your program is expected to fail (taking too long) for some cases from <span class="math notranslate nohighlight">\(C_{65}\)</span>.</p>
+<p>However, there is a solution to this. And this is a good argument why we need to study <em>efficient</em> algorithms and why mathematical definitions are sometimes handy for proofs, but bad for computers.</p>
+<p>Construct the algorithm given the following non-recursive definition.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left( \begin{array}{llll}
+n\\
+k\\
+\end{array}\right)=\prod_{i=1}^k\frac{n+1-i}{i}
+\end{split}\]</div>
+<p>Give the number of steps for a concrete instance and estimate the complexity for <span class="math notranslate nohighlight">\(n\to \infty\)</span> assuming <span class="math notranslate nohighlight">\(k\le n\)</span>.</p>
+<p>Speed up this program by transforming the problem for <span class="math notranslate nohighlight">\(2k&gt;n\)</span> using the symmetry setting <span class="math notranslate nohighlight">\(k:=n-k\)</span>.</p>
+<p>Does this change the complexity? Does it change the runtime? Explain.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -438,6 +593,13 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="tasks_02_cpp.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Task Sheet 1: Basic C and C++</p>
+        </div>
+    </a>
 </div>
             </footer>
         </div>
