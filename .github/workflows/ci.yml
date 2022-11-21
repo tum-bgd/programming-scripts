@@ -23,12 +23,10 @@ jobs:
         pip install jupyter-book
 
     - name: Build book
-      run: |
-        make build
-        cp book/_build/latex/book.pdf book/_build/html/programming.pdf
-
+      run: make build
+        
     - name: Deploy book
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./book/_build/html
+        publish_dir: ./_html

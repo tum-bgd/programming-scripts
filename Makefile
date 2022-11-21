@@ -1,16 +1,33 @@
+BOOKS = principles-of-programming computational-foundations-1
+
 all: build deploy
 
-build:
-	./in2md.sh book/cppintro.md.in > book/cppintro.md
-	./in2md.sh book/libraries_happly.md.in > book/libraries_happly.md
-	./in2md.sh book/libraries_happly_boostgeometry.md.in > book/libraries_happly_boostgeometry.md
-	jb build book
-	jb build --builder pdflatex book
+build: build_preprocess build_jupyter_books build_pdflatex build_merge_html
+
+build_preprocess:
+	./in2md.sh files/cppintro.md.in > files/cppintro.md
+	./in2md.sh files/libraries_happly.md.in > files/libraries_happly.md
+	./in2md.sh files/libraries_happly_boostgeometry.md.in > files/libraries_happly_boostgeometry.md
+
+build_jupyter_books:
+	for book in $(BOOKS) ; do \
+		jb build --path-output _build/$${book} --config $${book}_config.yml --toc $${book}_toc.yml . ; \
+	done
+
+build_pdflatex:
+	for book in $(BOOKS) ; do \
+		jb build --config $${book}_config.yml --toc $${book}_toc.yml --builder pdflatex . ; \
+		cp _build/latex/$${book}.pdf _build/$${book}/_build/html/$${book}.pdf ; \
+	done
+
+build_merge_html:
+	mkdir -p _html
+	for book in $(BOOKS) ; do \
+		cp -a _build/$${book}/_build/html/. _html/$${book}/ ; \
+	done
 
 deploy:
-	cp book/_build/html/* /var/www/html/programming -R
-	cp book/_build/latex/book.pdf /var/www/html/programming/programming.pdf
+	cp _html/* /var/www/html/programming -R
 
 upload:
-	rsync  --no-perms --no-owner --no-group -avz --delete-after  book/_build/html/* di67nav@webdev02-tum.lrz.de:~/webserver/htdocs/en/teaching/oer/programming
-	rsync book/_build/latex/book.pdf di67nav@webdev02-tum.lrz.de:~/webserver/htdocs/en/teaching/oer/programming/programming.pdf 
+	rsync --no-perms --no-owner --no-group -avz --delete-after  _html/* di67nav@webdev02-tum.lrz.de:~/webserver/htdocs/en/teaching/oer/programming
