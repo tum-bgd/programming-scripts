@@ -4,18 +4,13 @@
 format: jb-book
 root: principles-of-programming_intro
 parts:
-  # - caption: Lecture and Tutorial Information
-  #   chapters:
-  #   - file: etoc_principlesofprogramming
-  #   - file: etoc_compfound
   - caption: Basic Knowledge
     chapters:
     - file: files/dos
     - file: files/windows
     - file: files/unix
     - file: files/imperative_programming
-    - file: files/cppintro
-  - caption: Python (only Principles of Programming)
+  - caption: Python 
     chapters:
     - file: files/python_basics
   - caption: Libraries and Stories
@@ -26,4 +21,4 @@ parts:
     chapters:
     - file: files/unit01_tasks
     - file: files/tasks_01_niki
-    - file: files/tasks_02_cpp
+    

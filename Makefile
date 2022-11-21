@@ -25,6 +25,7 @@ build_merge_html:
 	for book in $(BOOKS) ; do \
 		cp -a _build/$${book}/_build/html/. _html/$${book}/ ; \
 	done
+	cp index.html _html
 
 deploy:
 	cp _html/* /var/www/html/programming -R
