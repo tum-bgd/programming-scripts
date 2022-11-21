@@ -16,9 +16,10 @@
     - {Download}`Slides Algorithms<./pdf/03_AlgorithmSlice.pdf>`
     - {Download}`Slides C/C++<./pdf/2022_v06_CandCpp.pdf>`
     - {Download}`Solution to Riemann Integral<./source/integral.cpp>`
-    
-  - [A Selection of Introductory Programming Challenges](tasks_02_cpp)
-
+    - [A Selection of Introductory Programming Challenges](tasks_02_cpp)
+    - *Note that pointers are not yet taught.*
+- Lecture 4: Loops and Recursion
+  - [A Set of Loop and Recursive Programming Tasks](tasks_03_loops)
 
 
 ### Time Plan
