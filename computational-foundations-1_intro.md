@@ -20,8 +20,10 @@ Computational Foundations is a two-semester course in the aerospace bachelor and
   - {Download}`Slides Algorithms<./pdf/03_AlgorithmSlice.pdf>`
   - {Download}`Slides C/C++<./pdf/2022_v06_CandCpp.pdf>`
   - {Download}`Solution to Riemann Integral<./cpp/integral.cpp>`
-
   - [A Selection of Introductory Programming Challenges](./files/tasks_02_cpp)
+  - *Note that pointers are not yet taught.*
+- Lecture 4: Loops and Recursion
+  - [A Set of Loop and Recursive Programming Tasks](./files/tasks_03_loops)
 
 ## Time Plan
 
