@@ -9,7 +9,7 @@
 */  
 double F(double x)
 {
-   return (1.0d/3.0)*(x*x*x);
+   return (1.0/3.0)*(x*x*x);
 }
 
 /** 
