@@ -33,7 +33,7 @@ int main(void){
 
 
 
-## Task 2
+## Task 2: Binomial Coefficients
 Please implement a factorial function first (you could find one in the script, but it is better to try it on your own). It should have the signature
 ```
 int factorial(int k)
