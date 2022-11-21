@@ -25,13 +25,13 @@ The user is then supposed to enter a command which then runs a program
 or a builtin instruction. Only four types of information are available
 to both the user and programs:
 
--   The current working directory (CWD) which is a combination of a
+- The current working directory (CWD) which is a combination of a
     drive and a folder relative to which all file operations are
     performed
 
--   A set of environment variables, such as the %PATH% variable
+- A set of environment variables, such as the %PATH% variable
 
--   The name of the program and a space-separated list of arguments to
+- The name of the program and a space-separated list of arguments to
     the command
 
 In this context, the DOS provided a set of commands for working with
@@ -48,67 +48,67 @@ that just influence the behavior. Many file-oriented commands allow you
 to use wildcards. A wildcard in a string matches zero or more character
 (\*) or exactly one unspecified character (?). For more clarity:
 
--   stat\*.bat would match status.bat as well as stat.bat
+- stat\*.bat would match status.bat as well as stat.bat
 
--   data?.dat would match data0.dat, but not data10.dat
+- data?.dat would match data0.dat, but not data10.dat
 
 Basic programs
 
--   \<drive letter\>: to change the drive
+- \<drive letter\>: to change the drive
 
--   CD to change the directory
+- CD to change the directory
 
--   DIR to list a directory, consider switches /P and /S which change
+- DIR to list a directory, consider switches /P and /S which change
     the behavior
 
--   MD to create a directory
+- MD to create a directory
 
--   RD to remove a directory (only if empty)
+- RD to remove a directory (only if empty)
 
--   TREE shows all files below the current working directory
+- TREE shows all files below the current working directory
 
--   ATTRIB show and modify attributes like write protection on files
+- ATTRIB show and modify attributes like write protection on files
 
--   COPY is used to copy files
+- COPY is used to copy files
 
--   DEL deletes files (synonymous with ERASE)
+- DEL deletes files (synonymous with ERASE)
 
--   EDIT provides a simple editor (EDLIN before MS DOS 6.0)
+- EDIT provides a simple editor (EDLIN before MS DOS 6.0)
 
--   FIND searches for a string in a file
+- FIND searches for a string in a file
 
--   MORE pages a file to the screen
+- MORE pages a file to the screen
 
--   MOVE moves a file to a different location
+- MOVE moves a file to a different location
 
--   PRINT is used to print a file
+- PRINT is used to print a file
 
--   REPLACE works like copy but replaces the file in the target
+- REPLACE works like copy but replaces the file in the target
 
--   TYPE outputs the whole content of the given file
+- TYPE outputs the whole content of the given file
 
--   XCOPY extends COPY to be able to copy whole directories and trees
+- XCOPY extends COPY to be able to copy whole directories and trees
 
--   CLS clears the screen
+- CLS clears the screen
 
--   DATE shows and modifies the date
+- DATE shows and modifies the date
 
--   TIME shows and modifies the time
+- TIME shows and modifies the time
 
--   ECHO is used to control whether commands are shown or not (mainly in
+- ECHO is used to control whether commands are shown or not (mainly in
     batch files)
 
--   FDISK is used to set up hard disks (partitions, etc.)
+- FDISK is used to set up hard disks (partitions, etc.)
 
--   FORMAT organizes a file system on floppy disks or hard disk
+- FORMAT organizes a file system on floppy disks or hard disk
     partitions
 
--   HELP shows help for a dos command (use it in the tutorial!)
+- HELP shows help for a dos command (use it in the tutorial!)
 
--   SET shows configuration information and environment variables and
+- SET shows configuration information and environment variables and
     modifies them
 
--   VER shows the version of DOS in use
+- VER shows the version of DOS in use
 
 With these commands, it is possible to organize a computer quite nicely
 yet remaining simple and self-explaining. Another interesting aspect
@@ -172,7 +172,6 @@ you are in a network-enabled environment). Furthermore, some companies
 have started to use a drive called H like "Home" for the home drive of a
 user.
 
-
 ```{note}
 **Assignment Two: Install Windows (at least once)**
 
@@ -188,7 +187,6 @@ available as well. Therefore, you can use the partitioning tool part of
 the Windows installer. We will use Windows Education 11, but the
 procedure is not much different for any (unmodified) Windows.
 ```
-
 
 Automation in Windows
 =====================
@@ -207,11 +205,11 @@ of the file represents a command which you could as well type into the
 command prompt. However, it gets more interesting if one realizes the
 following three functionalities:
 
--   Disabling the output
+- Disabling the output
 
--   Looping over files
+- Looping over files
 
--   Using arguments given to the batch file
+- Using arguments given to the batch file
 
 The first aspect is simple, but important: in basic batch files, each
 command is first output before the command is executed and the output of

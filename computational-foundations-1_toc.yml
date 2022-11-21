@@ -1,0 +1,28 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: computational-foundations-1_intro
+parts:
+  # - caption: Lecture and Tutorial Information
+  #   chapters:
+  #   # - file: etoc_compfound
+  - caption: Basic Knowledge
+    chapters:
+    - file: files/dos
+    - file: files/windows
+    - file: files/unix
+    - file: files/imperative_programming
+    - file: files/cppintro
+  - caption: Python
+    chapters:
+    - file: files/python_basics
+  - caption: Libraries and Stories
+    chapters:
+    - file: files/libraries_happly
+    - file: files/libraries_happly_boostgeometry
+  - caption: Tutorial Assignments
+    chapters:
+    - file: files/unit01_tasks
+    - file: files/tasks_01_niki
+    - file: files/tasks_02_cpp
