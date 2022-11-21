@@ -27,3 +27,4 @@ parts:
     - file: unit01_tasks
     - file: tasks_01_niki
     - file: tasks_02_cpp
+    - file: tasks_03_loops
