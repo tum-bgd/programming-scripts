@@ -1,0 +1,721 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Unix, Linux, and POSIX &#8212; Computational Foundations I</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Imperative Programming" href="imperative_programming.html" />
+    <link rel="prev" title="Microsoft Windows" href="windows.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Computational Foundations I</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../computational-foundations-1_intro.html">
+                    Computational Foundations I (2022)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basic Knowledge
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="dos.html">
+   The Disk Operating System (DOS)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="windows.html">
+   Microsoft Windows
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Unix, Linux, and POSIX
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="imperative_programming.html">
+   Imperative Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cppintro.html">
+   The C and C++ Language
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="turtlegraphics.html">
+   Turtle Graphics Example
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorial Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="tasks_01_niki.html">
+   Task Sheet 1: Niki the robot
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tasks_02_cpp.html">
+   Task Sheet 1: Basic C and C++
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tasks_03_loops.html">
+   Task Sheet 2 (Lectures 4-6)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts/issues/new?title=Issue%20on%20page%20%2Ffiles/unix.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts/edit/main/files/unix.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/files/unix.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#posix">
+   POSIX
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linux-as-seen-by-a-user">
+   Linux as seen by a user
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-processing-data-in-a-linux-environment">
+   Example: Processing data in a Linux environment
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Unix, Linux, and POSIX</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#posix">
+   POSIX
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linux-as-seen-by-a-user">
+   Linux as seen by a user
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-processing-data-in-a-linux-environment">
+   Example: Processing data in a Linux environment
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="unix-linux-and-posix">
+<h1>Unix, Linux, and POSIX<a class="headerlink" href="#unix-linux-and-posix" title="Permalink to this headline">#</a></h1>
+<p>The Linux family of operating systems has been improving in importance in the last decades. The project started as an illustrative implementation of a simple UNIX kernel on top of the 80386 computer and is now the leading operating system in terms of global impact.</p>
+<p>In order to understand Linux, one has to look back into the history as well. Linux is modeled after Unix which is a family of operating systems developed for mainframes. Such computers have been very expensive and available long before the personal computer was available, but a single UNIX mainframe was used by many members of a company.</p>
+<p>Hence, topics like user management, access control and parallel execution of different things (for different users) have been at the heart of Unix development, while the simplicity (despite all risks) of the DOS immediate mode was not accessible.</p>
+<p>At this point, before looking into the guiding principles of Unix and Linux, we can mention a name here: the basic Unix was mainly developed by Ken Thompson and Dennis Ritchie who has also had huge impact on the development and success of the C programming language. In fact, Unix has been implemented mainly in assembler (a rather raw machine language with almost no abstractions), but later translated in large parts into the C language. And this is one of the earliest predecessors of the programming language we will focus on.</p>
+<p>Furthermore, a few principles have been fixed in the early days and have proven successful enough not to be changed that much in the years to come. This group of decisions is referred to as the Unix philosophy, which we will revisit when talking about software and programming.</p>
+<p>A famous formulation of the Unix philosophy is due to Douglas McIllroy:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Write programs such that they do only one thing and they do it well</p></li>
+<li><p>Write programs such that they can work together</p></li>
+<li><p>Write programs such that they work on textual streams as this is the universal interface</p></li>
+</ul>
+</div></blockquote>
+<p>This is often oversimplified to</p>
+<blockquote>
+<div><p>Do only a single thing at a time and do it well</p>
+</div></blockquote>
+<p>Or (more or less the same) as the KISS principle:</p>
+<blockquote>
+<div><p>Keep it simple stupid.</p>
+</div></blockquote>
+<p>There is a lot to these aspects and we will learn a lot about it. More down to the point, Mike Gancarz gives the following list</p>
+<ul class="simple">
+<li><p>Small is beautiful.</p></li>
+<li><p>Make each program do one thing well.</p></li>
+<li><p>Build a prototype as soon as possible.</p></li>
+<li><p>Choose portability over efficiency.</p></li>
+<li><p>Store data in flat text files.</p></li>
+<li><p>Use software leverage to your advantage.</p></li>
+<li><p>Use shell scripts to increase leverage and portability.</p></li>
+<li><p>Avoid captive user interfaces.</p></li>
+<li><p>Make every program a filter.</p></li>
+</ul>
+<p>This will guide our gentle introduction to Linux in the sequel.</p>
+<section id="posix">
+<h2>POSIX<a class="headerlink" href="#posix" title="Permalink to this headline">#</a></h2>
+<p>Unix has led to a joint understanding of how computers should work and it has been very successful. But it has also quickly become an area of debate (see Unix Wars). In order to unify and converge the market, a new standard has been carefully designed and developed (ISO/IEC/IEEE 9945) under the name POSIX.</p>
+<p>This standar describes clearly and independent from a concrete implementation defintions of terms, the system interface (concretely in C language including header files), and the command line interpreter and a list of tools.</p>
+<p>When learning C (or any other modern language), one will often touch exactly this standard even in a non-Unixoid environment (like Windows).</p>
+<p>We will now skip over the definitions and the header files, as they naturally appear when learning programming, but jump right ahead to the list of mandatory utilities that you can expect any unix-like operating system to provide:</p>
+<p>For a complete list, please refer to <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799/idx/utilities.html">https://pubs.opengroup.org/onlinepubs/9699919799/idx/utilities.html</a></p>
+<p>For our first interaction with these systems, we selected</p>
+<ul class="simple">
+<li><p>ar (nowadays often tar for tape archiver)</p></li>
+<li><p>at</p></li>
+<li><p>awk</p></li>
+<li><p>basename</p></li>
+<li><p>bc</p></li>
+<li><p>cat</p></li>
+<li><p>cd</p></li>
+<li><p>chgrp</p></li>
+<li><p>chmod</p></li>
+<li><p>chown</p></li>
+<li><p>compress (nowadays, bz2 and gzip)</p></li>
+<li><p>cp</p></li>
+<li><p>cut</p></li>
+<li><p>date</p></li>
+<li><p>dd</p></li>
+<li><p>df</p></li>
+<li><p>diff</p></li>
+<li><p>dirname</p></li>
+<li><p>du</p></li>
+<li><p>echo</p></li>
+<li><p>ed</p></li>
+<li><p>env</p></li>
+<li><p>ex</p></li>
+<li><p>expand</p></li>
+<li><p>expr</p></li>
+<li><p>false</p></li>
+<li><p>fg</p></li>
+<li><p>file</p></li>
+<li><p>find</p></li>
+<li><p>fold</p></li>
+<li><p>getopts</p></li>
+<li><p>grep</p></li>
+<li><p>head</p></li>
+<li><p>iconv</p></li>
+<li><p>id</p></li>
+<li><p>jobs</p></li>
+<li><p>join</p></li>
+<li><p>kill</p></li>
+<li><p>ln</p></li>
+<li><p>ls</p></li>
+<li><p>man</p></li>
+<li><p>mkdir</p></li>
+<li><p>mkfifo</p></li>
+<li><p>more</p></li>
+<li><p>mv</p></li>
+<li><p>nl</p></li>
+<li><p>paste</p></li>
+<li><p>patch</p></li>
+<li><p>printf</p></li>
+<li><p>ps</p></li>
+<li><p>pwd</p></li>
+<li><p>read</p></li>
+<li><p>rm</p></li>
+<li><p>rmdir</p></li>
+<li><p>sed</p></li>
+<li><p>sh (nowadays often bash)</p></li>
+<li><p>sleep</p></li>
+<li><p>sort</p></li>
+<li><p>split</p></li>
+<li><p>tail</p></li>
+<li><p>tee</p></li>
+<li><p>test</p></li>
+<li><p>time</p></li>
+<li><p>touch</p></li>
+<li><p>tr</p></li>
+<li><p>true</p></li>
+<li><p>ulimit</p></li>
+<li><p>umask</p></li>
+<li><p>uname</p></li>
+<li><p>uniq</p></li>
+<li><p>unlink</p></li>
+<li><p>vi (nowadays vim)</p></li>
+<li><p>wait</p></li>
+<li><p>wc</p></li>
+<li><p>who</p></li>
+<li><p>xargs</p></li>
+<li><p>zcat (gzcat, bzcat)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Install a Linux, preferably Debian (with no tasks selected, video follows), and login to the system with the user account you created during installation. Then, inform yourself about the commands using the <code class="docutils literal notranslate"><span class="pre">man</span></code> command.</p>
+</div>
+</section>
+<section id="linux-as-seen-by-a-user">
+<h2>Linux as seen by a user<a class="headerlink" href="#linux-as-seen-by-a-user" title="Permalink to this headline">#</a></h2>
+<p>In order to understand Linux, we need to understand the command line version of it. With Linux being a multiuser operating system, our adventure starts with logging in to Linux by giving a username and its associated password. Then, we end up with a command line, most typically running the Bourne Again Shell (bash).</p>
+<p>Similar to the DOS command line, the system now waits for your instructions and gives you some state information like the current working directory (PWD on Linux, accessible with the <code class="docutils literal notranslate"><span class="pre">pwd</span></code>comamnd). Again, you can now use the programs given to start working with a Linux computer.</p>
+<p>First, we will have to navigate the system and in Linux there is no concept of drive letters. Instead, there is one file system root (/) and from there the journey begins.</p>
+<p>We can move around by using cd, we can as well use the special directories . to refer to the current directory and .. to refer to the parent directory in the relevant contexts.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Navigate to the main directory, then from there into the bin directory. This directory traditinoally holds user programs. By using a pipe character, you can make the output of a program becoming the input of another such that
+<code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">|</span> <span class="pre">less</span></code> will let you page through all programs in the installation.</p>
+<p>Navigate to /home. Show all directories using ls. This should now have one directory per user. Enter whoami to find out your user name.</p>
+<p>Navigate to /etc, where Linux configuration is held. All programs should keep their configuration there as a plain text file. Look at the file /etc/fstab using an editor of your choice (vi, vim, emacs, nano).</p>
+<p>Navigate to /proc. This holds kernel information and files to interact with the kernel. Look at /proc/meminfo, /proc/partitions and /proc/meminfo to find some information about your computer.</p>
+</div>
+</section>
+<section id="example-processing-data-in-a-linux-environment">
+<h2>Example: Processing data in a Linux environment<a class="headerlink" href="#example-processing-data-in-a-linux-environment" title="Permalink to this headline">#</a></h2>
+<p>As long as you stick with the Unix principles, Linux provides sufficient tools for 99% of your everyday tasks as a data scientist. No advanced software or programming is required in this context.</p>
+<p>In order to illustrate the line of thinking, let us perform a rather simple task: count the words in the definition (RFC) of the HTTP protocol available from <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc2616.txt">RFC</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">rfc</span><span class="o">-</span><span class="n">editor</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">rfc</span><span class="o">/</span><span class="n">rfc2616</span><span class="o">.</span><span class="n">txt</span> <span class="o">&gt;</span> <span class="mf">2616.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>will just download the document. To simplify the remainder, we create a local copy, so be sure to be in a reasonable directory (maybe create one) first.</p>
+<p>In order to find the most frequent word, our task is now to break it down into individual words. We do this by relying on the <code class="docutils literal notranslate"><span class="pre">tr</span></code> tool. Read the man page, but we just turn every space into a newline:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">rfc2616</span><span class="o">.</span><span class="n">txt</span> <span class="o">|</span> <span class="n">tr</span> <span class="s2">&quot; &quot;</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>In this command, the file is first output to stdout, but this standard output is bound to the standard input of the tr command. This takes every space (first argument) and turns it into a newline. The output is ugly and long (would keep scrolling for quite some time), hence, we can rely on head to see part of it</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>martin@martin:~/lecture$ cat rfc2616.txt |tr &quot; &quot; &quot;\n&quot; | head -10
+
+
+
+
+
+
+Network
+Working
+Group
+
+martin@martin:~/lecture$
+
+</pre></div>
+</div>
+<p>Okay, this looks nice, but empty lines will be dominating (this happens, because there are a lot of spaces in the document for layouting page numbers). Let us get rid of empty lines as follows (this is tricky, we will discuss this in the tutorial)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>martin@martin:~/lecture$ cat rfc2616.txt |tr &quot; &quot; &quot;\n&quot; | sed &#39;/^[[:space:]]*$/d&#39; | head -10
+Network
+Working
+Group
+R.
+Fielding
+Request
+for
+Comments:
+2616
+UC
+</pre></div>
+</div>
+<p>Now, we can start counting the words. The easiest way to do this is to sort the output using <code class="docutils literal notranslate"><span class="pre">sort</span></code> and then use the <code class="docutils literal notranslate"><span class="pre">uniq</span> <span class="pre">-c</span></code> command to remove successive equal lines outputting the count of removed lines. Let us again limit the amount of screen usage with head:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>martin@martin:~/lecture$ cat rfc2616.txt |tr &quot; &quot; &quot;\n&quot; | sed &#39;/^[[:space:]]*$/d&#39; | sort |uniq -c | head -10
+      1 &quot;
+      1 &quot;&quot;
+      1 &quot;&quot;%&quot;
+      1 &quot;#&quot;
+      1 &quot;%
+      3 &quot;(&quot;
+      2 &quot;)&quot;
+      1 &quot;)&quot;&gt;
+     26 &quot;*&quot;
+      3 &quot;*&quot;,
+</pre></div>
+</div>
+<p>Here, now the first column shows the number of times a string has been seen and we need to find the largest ones.
+We do this by sorting again, but numerically using <code class="docutils literal notranslate"><span class="pre">sort</span> <span class="pre">-g</span></code> and reversing the direction. As we might be unsure whether it works, we can again work on reduced outputs by keeping the head in the command.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>martin@martin:~/lecture$ cat rfc2616.txt |tr &quot; &quot; &quot;\n&quot; | sed &#39;/^[[:space:]]*$/d&#39; | sort |uniq -c | head -10 | sort -rg
+     26 &quot;*&quot;
+      3 &quot;*&quot;,
+      3 &quot;(&quot;
+      2 &quot;)&quot;
+      1 &quot;)&quot;&gt;
+      1 &quot;%
+      1 &quot;#&quot;
+      1 &quot;&quot;%&quot;
+      1 &quot;&quot;
+      1 &quot;
+</pre></div>
+</div>
+<p>Now, we are almost there: Let us now really look for the ten most frequent words in RFC 2616:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>martin@martin:~/lecture$ cat rfc2616.txt |tr &quot; &quot; &quot;\n&quot; | sed &#39;/^[[:space:]]*$/d&#39; | sort |uniq -c | sort -rg | head -10
+   3532 the
+   1579 a
+   1349 to
+   1298 of
+   1006 is
+    829 and
+    773 in
+    661 that
+    653 be
+    550 for
+martin@martin:~/lecture$
+</pre></div>
+</div>
+<p>When you take your time to learn a few (if not all) of the core utilities (<a class="reference external" href="https://www.gnu.org/software/coreutils/manual/html_node/index.html">GNU coreutils</a>), you can solve almost all problems based on text files considerably faster than with any other environment.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./files"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="windows.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Microsoft Windows</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="imperative_programming.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Imperative Programming</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Martin Werner<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

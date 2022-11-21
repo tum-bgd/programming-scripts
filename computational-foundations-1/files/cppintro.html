@@ -1,0 +1,774 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>The C and C++ Language &#8212; Computational Foundations I</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Turtle Graphics Example" href="turtlegraphics.html" />
+    <link rel="prev" title="Imperative Programming" href="imperative_programming.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Computational Foundations I</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../computational-foundations-1_intro.html">
+                    Computational Foundations I (2022)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basic Knowledge
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="dos.html">
+   The Disk Operating System (DOS)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="windows.html">
+   Microsoft Windows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix.html">
+   Unix, Linux, and POSIX
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="imperative_programming.html">
+   Imperative Programming
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   The C and C++ Language
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="turtlegraphics.html">
+   Turtle Graphics Example
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorial Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="tasks_01_niki.html">
+   Task Sheet 1: Niki the robot
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tasks_02_cpp.html">
+   Task Sheet 1: Basic C and C++
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tasks_03_loops.html">
+   Task Sheet 2 (Lectures 4-6)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts/issues/new?title=Issue%20on%20page%20%2Ffiles/cppintro.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts/edit/main/files/cppintro.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/files/cppintro.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hello-world">
+     Hello World
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hello-c-world">
+     Hello C++ World
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions-and-signature-based-selection">
+   Functions and Signature-based Selection
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-libraries">
+   Code Libraries
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>The C and C++ Language</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hello-world">
+     Hello World
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hello-c-world">
+     Hello C++ World
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions-and-signature-based-selection">
+   Functions and Signature-based Selection
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-libraries">
+   Code Libraries
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="the-c-and-c-language">
+<h1>The C and C++ Language<a class="headerlink" href="#the-c-and-c-language" title="Permalink to this headline">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>The C programming language is the earliest form of the C and C++ family of programming languages. Nowadays, plain C
+is used in kernel programming (e.g., the Linux kernel), in long-established code bases (e.g. postgresql), and in very resource-constrained situations (e.g., embedded devices). It also presents a subset of modern C++ and (with very few incompatibilities), every modern C++ compiler will compile plain C source code without any issues.</p>
+<p>C and C++ are compiled languages and the compilation process is decomposed into a few tasks and translations that
+can run independetly from each other. A modern GUI will orchestrate these steps, but it is mandatory to understand
+the translation procedure to some extent when learning C++.</p>
+<p>To keep things simple, a C project typically contains a bunch of C (extension *.c) or C++ (extension *.cpp) files.
+These contain source code which a <em>compiler</em> can translate to object code. Object code is a form of machine code which is not executable as it can be incomplete. In a second phase, all object codes are linked together with system libraries such that all missing symbols are either coming from one of the object files of the project (hence, from your source code) or from some libraries (either system or additional libraries).</p>
+<p>In order to deal with the situation that your source code depends on functionality that is not available to the compiler, because it is in a different file or coming from the operating system libraries, the C system provides a second type of file in which only the <em>signature</em> of functions is defined. In this way, the compiler is able to generate code to understand the libraries contents (it is kind-of a table-of-contents) well enough to compile the object file without looking into the actual implementation.</p>
+<p>Summarizing, we have C++ files (<em>.c, <em>.cpp) and header files (</em>.h, <em>.hpp) and we translate each soure code file (</em>.c, <em>.cpp) into an object file (</em>.o) in order link together all objects with libraries (</em>.o, <em>.lib) into an executable (</em>.exe on Windows, just a name on Linux).</p>
+<p>With this theory, we are set to start learning the core language while already understanding a bit the files that we will create.</p>
+<section id="hello-world">
+<h3>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">#</a></h3>
+<p>The following program is the first program you should learn and understand. It just prints out “Hello World” to the screen. We will provide four information aspects in this script: the source code file (C++), a Makefile (which contains the compiler arguments, at the moment just compiling, the output of compiling (could become interesting later) and the output of running the program (note that the first line is the invocation for the case we are later giving arguments). In the HTML version of this book, they are alternative with each other (tabs), in print, they are a bit lengthy, but in this way everything remains complete.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="0ae3c34e-2466-494d-a84e-6c8637ab0d9f" name="fa344868-1167-4bbc-9c35-bde7bf94ffa5" type="radio">
+</input><label class="sd-tab-label" for="0ae3c34e-2466-494d-a84e-6c8637ab0d9f">
+Source</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<input id="673b679f-a93b-40cf-a0f4-7828734a90a9" name="fa344868-1167-4bbc-9c35-bde7bf94ffa5" type="radio">
+</input><label class="sd-tab-label" for="673b679f-a93b-40cf-a0f4-7828734a90a9">
+Makefile</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">all</span><span class="p">:</span> 
+	<span class="n">g</span><span class="o">++</span> <span class="o">-</span><span class="n">Wall</span> <span class="o">-</span><span class="n">o</span> <span class="mi">01</span><span class="n">_oldhelloworld</span> <span class="mi">01</span><span class="n">_oldhelloworld</span><span class="o">.</span><span class="n">cpp</span>
+<span class="n">run</span><span class="p">:</span> 
+	<span class="o">./</span><span class="mi">01</span><span class="n">_oldhelloworld</span>
+</pre></div>
+</div>
+</div>
+<input id="537a3dfb-931e-47a4-a968-43e581a47b9d" name="fa344868-1167-4bbc-9c35-bde7bf94ffa5" type="radio">
+</input><label class="sd-tab-label" for="537a3dfb-931e-47a4-a968-43e581a47b9d">
+Build Output</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<input id="d9fdb6ac-28a7-466b-8622-94943313a9d4" name="fa344868-1167-4bbc-9c35-bde7bf94ffa5" type="radio">
+</input><label class="sd-tab-label" for="d9fdb6ac-28a7-466b-8622-94943313a9d4">
+Run Output</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The file (like any other C++ files) first lists a few of header files to include (here stdio.h, defined in the POSIX standards, see <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/stdio.h.html">https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/stdio.h.html</a>.</p>
+<p>From this library, we are relying on the printf function to just output a string.</p>
+<p>C is an imperative language and instructs a computer step by step, the entry point (where this processing starts) is a special function called main (WinMain for Windows programs). Similar to what we have seen for the shell examples,
+the n denotes a special character “new line” and makes sure that the program does not only output Hello World!, but also continues to the next line.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is a very traditional incompatibility between Windows and Linux with respect to new lines: The Linefeed (LF, n) is sufficient on Linux and Unix, but on Windows, lines are typically ending with CR-LF: first a carriage return (CR, r), then a line feed (n).</p>
+</div>
+<p>The printf function is a powerful utility you can find in all programming languages and it can format various values
+into the output, what we will cover a bit later, but it has also some downsides, mainly with respect to security and
+reliability. Hence, printf is not used that much in safety-oriented code.</p>
+</section>
+<section id="hello-c-world">
+<h3>Hello C++ World<a class="headerlink" href="#hello-c-world" title="Permalink to this headline">#</a></h3>
+<p>In contrast to C, C++ has introduced the concept of an iostream which better reflects the nature of the standard input and standard ouput. A stream is an object that can represent a file, a network connection, or just a terminal window and one can stream various information into it. Therefore, an operator &lt;&lt; is implemented, which takes variables, strings, or whatever information. In this way, type conversion is safe and automatic.</p>
+<p>In order to output data to the user, the C++ libraries define a header iostreams which define cout (C output), cerr (standard error output) and cin (for input, used with a &gt;&gt; stream operator).</p>
+<p>Hence, the same program written in idiomatic C++ looks like this:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="70f4f5da-7f26-4001-9d88-73d438f686a4" name="f0d7857d-622f-4733-b78c-ccd9ecd88981" type="radio">
+</input><label class="sd-tab-label" for="70f4f5da-7f26-4001-9d88-73d438f686a4">
+Source</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello World!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<input id="79a8fe60-208d-481a-8e33-c1ea1001bcaa" name="f0d7857d-622f-4733-b78c-ccd9ecd88981" type="radio">
+</input><label class="sd-tab-label" for="79a8fe60-208d-481a-8e33-c1ea1001bcaa">
+Makefile</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">all</span><span class="p">:</span> 
+	<span class="n">g</span><span class="o">++</span> <span class="o">-</span><span class="n">Wall</span> <span class="o">-</span><span class="n">o</span> <span class="mi">00</span><span class="n">_helloworld</span><span class="o">.</span><span class="n">out</span> <span class="mi">00</span><span class="n">_helloworld</span><span class="o">.</span><span class="n">cpp</span>
+<span class="n">run</span><span class="p">:</span> 
+	<span class="o">./</span><span class="mi">00</span><span class="n">_helloworld</span><span class="o">.</span><span class="n">out</span>
+</pre></div>
+</div>
+</div>
+<input id="ac3eeed8-3137-42f4-b831-867c9ee7abb6" name="f0d7857d-622f-4733-b78c-ccd9ecd88981" type="radio">
+</input><label class="sd-tab-label" for="ac3eeed8-3137-42f4-b831-867c9ee7abb6">
+Build Output</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<input id="71c7034b-218a-47c4-a799-7a4405ca3591" name="f0d7857d-622f-4733-b78c-ccd9ecd88981" type="radio">
+</input><label class="sd-tab-label" for="71c7034b-218a-47c4-a799-7a4405ca3591">
+Run Output</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="functions-and-signature-based-selection">
+<h2>Functions and Signature-based Selection<a class="headerlink" href="#functions-and-signature-based-selection" title="Permalink to this headline">#</a></h2>
+<p>A little bit later, we will introduce many different types, but for now, we will look into how we can write our own functions similar to the printf functions. A function is a unit of code that can be reused in your own code. Let us consider the following already quite involved example:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="cdc493c2-60f7-4245-a08a-7381c95f6b78" name="111d9be6-8bf9-4581-93f3-59ee54a619de" type="radio">
+</input><label class="sd-tab-label" for="cdc493c2-60f7-4245-a08a-7381c95f6b78">
+Source</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">doubled</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">float</span><span class="w"> </span><span class="nf">doubled</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;doubled(4)=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">doubled</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="w"></span>
+<span class="w">             </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;doubled(4.5)=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">doubled</span><span class="p">(</span><span class="mf">4.5f</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<input id="b5c28f78-4001-41cb-ba94-af623ab4c5c2" name="111d9be6-8bf9-4581-93f3-59ee54a619de" type="radio">
+</input><label class="sd-tab-label" for="b5c28f78-4001-41cb-ba94-af623ab4c5c2">
+Makefile</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">all</span><span class="p">:</span> 
+	<span class="n">g</span><span class="o">++</span> <span class="o">-</span><span class="n">Wall</span> <span class="o">-</span><span class="n">o</span> <span class="mi">02</span><span class="n">_functionsignatures</span> <span class="mi">02</span><span class="n">_functionsignatures</span><span class="o">.</span><span class="n">cpp</span>
+<span class="n">run</span><span class="p">:</span> 
+	<span class="o">./</span><span class="mi">02</span><span class="n">_functionsignatures</span>
+</pre></div>
+</div>
+</div>
+<input id="6e4475cf-3e23-4c26-b19a-220173def3ca" name="111d9be6-8bf9-4581-93f3-59ee54a619de" type="radio">
+</input><label class="sd-tab-label" for="6e4475cf-3e23-4c26-b19a-220173def3ca">
+Build Output</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<input id="2d4f5b5a-8bc5-438d-a4c8-3be8673927c6" name="111d9be6-8bf9-4581-93f3-59ee54a619de" type="radio">
+</input><label class="sd-tab-label" for="2d4f5b5a-8bc5-438d-a4c8-3be8673927c6">
+Run Output</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>While this example does not look that much more complicated, we introduced many aspects that are difficult to understand. Let us unroll it a bit. In C++, we are allowed to define multiple functions to have the same name. This is particularly wanted, because sometimes, we can implement an algorithm just different if the arguments are of different types. In our example, we define two times a double function, once it takes an integer argument (int, more on types later, it is just an integral number) or a fractional number (float).</p>
+<p>The compiler selects the right function in a complex procedure: For the first call, <code class="docutils literal notranslate"><span class="pre">doubled(4)</span></code>, the type of the constant 4 is integer; hence, the system decides that the first function <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">doubled(int)</span></code> should be called. For the second call, we have a problem: if we remove the f from the argument, the compiler will tell us the call is ambiguous. What the compiler actually means in this situation is that there is no function that strictly fits to the type (4.5 will be considered a double value in the first place, not a float value, more on this later). Hence, the compiler would generate code and covert the double into an integer if only the first function would exist, it would convert the value into a float if only the second variant would exist. But the compiler has no precedence and raises an error. We resolved this by using a literal: for many constants, the type can be influenced by putting a character to the constant: 4.5f just means the value 4.5 as a floating point number of the type <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+</section>
+<section id="code-libraries">
+<h2>Code Libraries<a class="headerlink" href="#code-libraries" title="Permalink to this headline">#</a></h2>
+<p>In many situations, we will implement functions that we want to use from multiple programs. For example, we could implement a sort function and use it in many different programs if we need to sort. In this situation, we need to put our implementations into an isolated C++ file, create a header file with the so-called <em>function prototypes</em> which are just fixing the name of the function and the type of the return value and of all arguments. In this way, we can include the header in our own program (one which has a main), generate code using the functions in the compilation step, and then link together our program with the library into a proper executable.</p>
+<p>More concretely, we could move the two implementations of the <code class="docutils literal notranslate"><span class="pre">doubled</span></code> functions into their own C++ file:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="caa3d1e3-ade5-4d19-9fdb-ff22f1a0129e" name="ad2c4ef3-5d8c-4be5-9858-6fe932fa209d" type="radio">
+</input><label class="sd-tab-label" for="caa3d1e3-ade5-4d19-9fdb-ff22f1a0129e">
+Library</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="nb">int</span> <span class="n">doubled</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nb">float</span> <span class="n">doubled</span><span class="p">(</span><span class="nb">float</span> <span class="n">a</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This one can now be compiled independently from everything else. Note that we do not even include iostream here, because we are not using anything from iostreams. In order to make this available, we formualte a header</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="879710a7-06d1-4139-a3ee-f349d9a5f0a7" name="2fc8c908-f139-46f1-bdea-91c210d05998" type="radio">
+</input><label class="sd-tab-label" for="879710a7-06d1-4139-a3ee-f349d9a5f0a7">
+Header</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#ifndef DOUBLED_H_INC</span>
+<span class="c1">#define DOUBLED_H_INC</span>
+<span class="nb">int</span> <span class="n">doubled</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">);</span>
+<span class="nb">float</span> <span class="n">doubled</span><span class="p">(</span><span class="nb">float</span> <span class="n">a</span><span class="p">);</span>
+<span class="c1">#endif</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>which contains the signature lines of the functions only (ending with a semicolon). It is valid, but not very widely
+used to only give the types of the arguments such as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span> <span class="n">doubled</span> <span class="p">(</span><span class="nb">float</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>In order to make sure that these definitions cannot be loaded twice (not really needed here, but problems will be coming) all of this header is protected from double inclusion using the preprocessor. All lines with # are processed even before compiling and in order to avoid a double include (maybe you are including the file directly, but some library you include also includes this header) we check if a symbol specific to the header (it is common to use the capitalized filename as depicted) and if not, we define it (such that it is defined in the sequel) and close with <code class="docutils literal notranslate"><span class="pre">#endif</span></code> at end of file. In modern C++, this can be replaced with a simple <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">once</span></code> in the beginning, but this is not that widely used today.</p>
+<p>The remaining project then looks like this:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="47bf0d35-859f-41d4-b7a7-5a38cbd5a0d4" name="69d1a0f7-b553-4249-a4ad-ddf4735d4091" type="radio">
+</input><label class="sd-tab-label" for="47bf0d35-859f-41d4-b7a7-5a38cbd5a0d4">
+Source</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;03_doubled.h&quot;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;doubled(4)=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">doubled</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="w"></span>
+<span class="w">             </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;doubled(4.5)=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">doubled</span><span class="p">(</span><span class="mf">4.5f</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<input id="ce01b4f9-06da-435e-a885-5d1e47333e37" name="69d1a0f7-b553-4249-a4ad-ddf4735d4091" type="radio">
+</input><label class="sd-tab-label" for="ce01b4f9-06da-435e-a885-5d1e47333e37">
+Makefile</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">all</span><span class="p">:</span>
+	<span class="n">g</span><span class="o">++</span> <span class="o">-</span><span class="n">c</span> <span class="mi">03</span><span class="n">_doubled</span><span class="o">.</span><span class="n">cpp</span> <span class="o">-</span><span class="n">o</span> <span class="mi">03</span><span class="n">_doubled</span><span class="o">.</span><span class="n">o</span>
+	<span class="n">g</span><span class="o">++</span> <span class="o">-</span><span class="n">c</span> <span class="mi">03</span><span class="n">_library</span><span class="o">.</span><span class="n">cpp</span> <span class="o">-</span><span class="n">o</span> <span class="mi">03</span><span class="n">_library</span><span class="o">.</span><span class="n">o</span>
+	<span class="n">g</span><span class="o">++</span> <span class="o">-</span><span class="n">o</span> <span class="mi">03</span><span class="n">_library</span> <span class="mi">03</span><span class="n">_library</span><span class="o">.</span><span class="n">o</span> <span class="mi">03</span><span class="n">_doubled</span><span class="o">.</span><span class="n">o</span>
+<span class="n">run</span><span class="p">:</span> 
+	<span class="o">./</span><span class="mi">03</span><span class="n">_library</span>
+</pre></div>
+</div>
+</div>
+<input id="180b4666-64b3-438e-8cec-7d656b53b11f" name="69d1a0f7-b553-4249-a4ad-ddf4735d4091" type="radio">
+</input><label class="sd-tab-label" for="180b4666-64b3-438e-8cec-7d656b53b11f">
+Build Output</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<input id="a0736872-b851-41d5-807d-8451c1f1300d" name="69d1a0f7-b553-4249-a4ad-ddf4735d4091" type="radio">
+</input><label class="sd-tab-label" for="a0736872-b851-41d5-807d-8451c1f1300d">
+Run Output</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A small thing to note here is that the include uses ” instead of &lt; and &gt;. This is an old relict and refers to being able to include from the current directory. Libraries to be included from the compiler default location are included with &lt;&gt; and things local to the project with “”.</p>
+<p>Especially the Makefile (*.mk) is interesting here as I spelled out all three steps for you: compiling (-c) the library, then compiling the main program part. Afterwards linking together the object files into an executable.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./files"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="imperative_programming.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Imperative Programming</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="turtlegraphics.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Turtle Graphics Example</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Martin Werner<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

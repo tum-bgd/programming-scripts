@@ -1,0 +1,675 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Task Sheet 1: Basic C and C++ &#8212; Principles of Programming</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Task Sheet 1: Niki the robot" href="tasks_01_niki.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Principles of Programming</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../principles-of-programming_intro.html">
+                    Principles of Programming (2022)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basic Knowledge
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="dos.html">
+   The Disk Operating System (DOS)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="windows.html">
+   Microsoft Windows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix.html">
+   Unix, Linux, and POSIX
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="imperative_programming.html">
+   Imperative Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cppintro.html">
+   The C and C++ Language
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python (only Principles of Programming)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_basics.html">
+   Python basics
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Libraries and Stories
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="libraries_happly.html">
+   Reading and Writing PLY files (point cloud example)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="libraries_happly_boostgeometry.html">
+   happly and boost geometry - Load Point Clouds in C++11
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorial Assignments
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="unit01_tasks.html">
+   Tutorial No. 1 - Check your knowledge
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tasks_01_niki.html">
+   Task Sheet 1: Niki the robot
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Task Sheet 1: Basic C and C++
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts/issues/new?title=Issue%20on%20page%20%2Ffiles/tasks_02_cpp.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts/edit/main/files/tasks_02_cpp.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/files/tasks_02_cpp.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-1-prettyprint">
+   Task 1: PrettyPrint
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-2-prettyprint-2">
+   Task 2: PrettyPrint 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-3-prettyprint3">
+   Task 3: PrettyPrint3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-4-calculus-primer">
+   Task 4: Calculus Primer
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#task-4-1-plot-the-function">
+     Task 4.1 Plot the Function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-4-2-the-riemann-integral">
+   Task 4.2: The Riemann Integral
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-4-3-the-discrete-differential">
+   Task 4.3: The Discrete Differential
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-5-prime-numbers">
+   Task 5: Prime Numbers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-6-more-on-prime-numbers">
+   Task 6: More on prime numbers
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Task Sheet 1: Basic C and C++</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-1-prettyprint">
+   Task 1: PrettyPrint
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-2-prettyprint-2">
+   Task 2: PrettyPrint 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-3-prettyprint3">
+   Task 3: PrettyPrint3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-4-calculus-primer">
+   Task 4: Calculus Primer
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#task-4-1-plot-the-function">
+     Task 4.1 Plot the Function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-4-2-the-riemann-integral">
+   Task 4.2: The Riemann Integral
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-4-3-the-discrete-differential">
+   Task 4.3: The Discrete Differential
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-5-prime-numbers">
+   Task 5: Prime Numbers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-6-more-on-prime-numbers">
+   Task 6: More on prime numbers
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="task-sheet-1-basic-c-and-c">
+<h1>Task Sheet 1: Basic C and C++<a class="headerlink" href="#task-sheet-1-basic-c-and-c" title="Permalink to this headline">#</a></h1>
+<p>C and C++ are important imperative programming languages and we are on our way to master these languages. This task sheet is a collection of a wide range of short programs you are supposed to write in order to gain routine in basic structures such as functions, loop, conditions, input and output.</p>
+<section id="task-1-prettyprint">
+<h2>Task 1: PrettyPrint<a class="headerlink" href="#task-1-prettyprint" title="Permalink to this headline">#</a></h2>
+<p>In the lecture, we have seen the hello world program. Extend this program to draw a frame around. Examples can be found on <a class="reference external" href="https://texteditor.com/ascii-frames/">https://texteditor.com/ascii-frames/</a>.</p>
+<p>Maybe your program should output</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>╔═════════════╗
+║ Hello World ║
+╚═════════════╝
+</pre></div>
+</div>
+</section>
+<section id="task-2-prettyprint-2">
+<h2>Task 2: PrettyPrint 2<a class="headerlink" href="#task-2-prettyprint-2" title="Permalink to this headline">#</a></h2>
+<p>Now extend your program to print a string into a frame.
+A string in C++ is given as a pointer of type char. <code class="docutils literal notranslate"><span class="pre">strlen</span></code> can be used to find the length of a string. Complete the following program snippet:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>void pprint(char *what)
+{
+   printf(&quot;╔&quot;);
+for /*extend this one to print enough of ═ using strlen(what) */
+   printf(&quot;╗&quot;);
+ printf(&quot;║ &quot;);
+ printf(&quot;%s&quot;,what);
+ /*...*/  
+}
+</pre></div>
+</div>
+<p>Make sure that your box wraps the text sensibly (one space character before and after your text)</p>
+</section>
+<section id="task-3-prettyprint3">
+<h2>Task 3: PrettyPrint3<a class="headerlink" href="#task-3-prettyprint3" title="Permalink to this headline">#</a></h2>
+<p>Extend the previous result in the following way:
+For all strings shorter than 50 characeters, draw the box as before. For strings longer than 50 characters, compute a new string in which 47 characters are taken from the parameter and the last three characters are manually set to three dots. In this way, arbitrary long things will be printed as abbreviations into your box code. Node that strings shorter than 50 characters must not be abbreviated.</p>
+</section>
+<section id="task-4-calculus-primer">
+<h2>Task 4: Calculus Primer<a class="headerlink" href="#task-4-calculus-primer" title="Permalink to this headline">#</a></h2>
+<p>As a simple example, consider the logistic curve:
+$<span class="math notranslate nohighlight">\( f(x) = \frac{1}{1+e^{-x}}\)</span>$
+This function plays a crucial role in machine learning, so it is worth having a look at it early in your career.</p>
+<section id="task-4-1-plot-the-function">
+<h3>Task 4.1 Plot the Function<a class="headerlink" href="#task-4-1-plot-the-function" title="Permalink to this headline">#</a></h3>
+<p>As data visualization from C++ is challenging, we will rely on a powerful tool known as gnuplot to show our results. As a preparation, download gnuplot and have a look at <a class="reference external" href="http://www.gnuplotting.org/plotting-data/">http://www.gnuplotting.org/plotting-data/</a></p>
+<p>In this example, gnuplot expects a file to contain your data. Remember that we can redirect the output of programs to files? Your task is to write a C/C++ program that generates a plot of the function as a text file in gnuplots format having always the X coordinate in the first column, the Y coordinate in the second column, and then a newline.</p>
+<p>Write a program that generates a plot. In a first version, take constants in your program for start, stepsize, and end as to have a simple loop do all the work going over the X coordinates. Run the program with redirecting the output as follows:
+<code class="docutils literal notranslate"><span class="pre">yourprogram</span> <span class="pre">&gt;</span> <span class="pre">plot.dat</span></code>
+Then, use gnuplot to inspect the data. Did you do it right?</p>
+</section>
+</section>
+<section id="task-4-2-the-riemann-integral">
+<h2>Task 4.2: The Riemann Integral<a class="headerlink" href="#task-4-2-the-riemann-integral" title="Permalink to this headline">#</a></h2>
+<p>As you know, one way of computing the integral of simple functions of one variable is to decompose the parameter space (x) into multiple locations (<span class="math notranslate nohighlight">\(x_i\)</span>) and replace the true function with a staircase function by using supremum or infimum of the function.
+In our case (except at X=0), there are no singularities and the function is monotonous. Hence, we can replace the supremum (resp. infimum) with maximum and minimum of the function values at the left hand side and right hand side of the interval.
+Given a distance parameter <span class="math notranslate nohighlight">\(\epsilon\)</span>, write a function to compute the upper sum and lower sum (e.g., the one based on maximum and the one based on minimum) of the integral
+$<span class="math notranslate nohighlight">\(\int_1^2 f(x)dx\)</span>$
+Write this function in a single loop looking similar to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">double</span> <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.15</span><span class="p">;</span>
+<span class="n">double</span> <span class="n">US</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="o">//</span> <span class="n">upper</span> <span class="nb">sum</span>
+<span class="n">double</span> <span class="n">LS</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="o">//</span> <span class="n">lower</span> <span class="nb">sum</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">double</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="n">x</span><span class="o">+=</span><span class="n">epsilon</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="o">//...</span>
+  <span class="n">US</span> <span class="o">+=</span> <span class="o">//...</span>
+  <span class="n">LS</span> <span class="o">+=</span> <span class="o">...</span>
+<span class="p">}</span>
+<span class="n">printf</span><span class="p">(</span><span class="s2">&quot;We believe that the integral I follows</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2"> &lt; I &lt;= </span><span class="si">%.2f</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">LS</span><span class="p">,</span><span class="n">US</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Learn that two different things (computing the upper sum and the lower sum) that depend on the same intermediate values can often be combined.</p>
+</section>
+<section id="task-4-3-the-discrete-differential">
+<h2>Task 4.3: The Discrete Differential<a class="headerlink" href="#task-4-3-the-discrete-differential" title="Permalink to this headline">#</a></h2>
+<p>Given a function</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">double</span> <span class="n">f</span><span class="p">(</span><span class="n">double</span> <span class="n">x</span><span class="p">){</span><span class="o">...</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>approximate the differential at x=1 by creating a series of discrete difference quotients. Therefore, look at
+<a class="reference external" href="https://en.wikipedia.org/wiki/Difference_quotient">https://en.wikipedia.org/wiki/Difference_quotient</a>
+and use the central difference formula for varying <span class="math notranslate nohighlight">\(\Delta P\)</span></p>
+<p>Given a real number <span class="math notranslate nohighlight">\(q\)</span>, can you estimate the value of
+<span class="math notranslate nohighlight">\(\frac{\partial f}{\partial x} (q)\)</span></p>
+<p>Note that this approach to calculus lies at the heart of discretizations of partial differential equations and is an essential basic concept related to the method of finite elements which you might already know from simulation.</p>
+</section>
+<section id="task-5-prime-numbers">
+<h2>Task 5: Prime Numbers<a class="headerlink" href="#task-5-prime-numbers" title="Permalink to this headline">#</a></h2>
+<p>Write a function</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">print_primes</span><span class="p">(</span><span class="nb">int</span> <span class="nb">max</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>that outputs all prime numbers smaller or equal than a given parameter <code class="docutils literal notranslate"><span class="pre">max</span></code>. Therefore, first implement a predicate <code class="docutils literal notranslate"><span class="pre">is_prime</span></code> which returns a boolean value if or if not the function is prime. This should be tested by a simple loop. Division can be tested by using the modulo function: an integer value q divies a value p if and only if
+<code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">%</span> <span class="pre">q</span> <span class="pre">==</span> <span class="pre">0</span></code>
+In this expression <code class="docutils literal notranslate"><span class="pre">%</span></code> denotes the modulo operation of taking the remainder of dividing <code class="docutils literal notranslate"><span class="pre">p</span></code> by <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p>
+<p><em>Remember, that a predicate is always a function in terms of some data which returns a boolean value.</em></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Boolean-valued_function">https://en.wikipedia.org/wiki/Boolean-valued_function</a></p>
+</section>
+<section id="task-6-more-on-prime-numbers">
+<h2>Task 6: More on prime numbers<a class="headerlink" href="#task-6-more-on-prime-numbers" title="Permalink to this headline">#</a></h2>
+<p>The following function is one in which there is still a lot of magic and unknown information. In number theory, the function <span class="math notranslate nohighlight">\(\pi(x)\)</span> is the number of prime numbers smaller than <span class="math notranslate nohighlight">\(x\)</span>.
+Compute this number for <span class="math notranslate nohighlight">\(x \in [0,1000]\)</span> and plot it with gnuplot. Look at the staircase pattern, but also at the overall trend. It is growing with a surprising speed, isn’t it? This is the heart of the security of current cryptosystems, hence, of all our online payment, communication, finance systems. If there were not enough prime numbers, it would be ridiculously difficult to find some. But as you might know, one needs prime numbers for some encryption algorithms like RSA. Luckily, prime numbers are so common, that we can quickly generate huge ones (even if they are so large, we will not be able to proof that they are prime).</p>
+<p>In cryptography, we sometimes use random numbers together with a series of tests to find numbers of which we believe they are prime. They are known industiral-grade prime numbers.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Industrial-grade_prime">https://en.wikipedia.org/wiki/Industrial-grade_prime</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./files"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="tasks_01_niki.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Task Sheet 1: Niki the robot</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Martin Werner<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
