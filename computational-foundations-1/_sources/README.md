@@ -5,4 +5,4 @@ The material collections for our programming lectures as Open Educational Resour
 ## Lectures
 
 - [Principles of Prgramming (2022)](https://tum-bgd.github.io/programming-scripts/principles-of-programming/index.html)
-- [Computational Foundations I (2022)](https://tum-bgd.github.io/programming-scripts/computational-foundations-1.html)
+- [Computational Foundations I (2022)](https://tum-bgd.github.io/programming-scripts/computational-foundations-1/index.html)
