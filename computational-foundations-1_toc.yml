@@ -17,3 +17,4 @@ parts:
     - file: files/tasks_01_niki
     - file: files/tasks_02_cpp
     - file: files/tasks_03_loops
+    - file: files/cf2022/learning_tasks
