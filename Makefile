@@ -2,7 +2,7 @@ BOOKS = principles-of-programming computational-foundations-1
 
 all: build deploy
 
-build: build_preprocess build_jupyter_books build_pdflatex build_merge_html
+build: build_jupyter_books build_pdflatex build_merge_html
 
 build_preprocess:
 	./in2md.sh files/cppintro.md.in > files/cppintro.md

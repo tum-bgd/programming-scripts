@@ -3,7 +3,6 @@
 !/**/
 !*.*
 
-# specific extensions
-*out
 *.o
+
 *.ply
