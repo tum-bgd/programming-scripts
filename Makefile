@@ -22,13 +22,13 @@ build_pdflatex:
 	done
 
 build_merge_html:
-	mkdir -p _html
+	rm -rf _html && mkdir -p _html
 	for book in $(BOOKS) ; do \
 		cp -a _build/$${book}/_build/html/. _html/$${book}/ ; \
 	done
 
 deploy:
-	cp _html/* /var/www/html/programming -R
+	rsync -a --delete _html/ /var/www/html/programming
 
 upload:
 	rsync --no-perms --no-owner --no-group -avz --delete-after  _html/* di67nav@webdev02-tum.lrz.de:~/webserver/htdocs/en/teaching/oer/programming

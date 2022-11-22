@@ -71,7 +71,6 @@ First the dates in 2022/23:
 |24.01.2023 | Lecture + Tutorial |
 |31.01.2023 | Lecture + Tutorial |
 |07.02.2023 | Lecture + Tutorial |
-|-----------|--------------------|
 
 ## Modules
 
