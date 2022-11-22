@@ -24,6 +24,7 @@ Principles of Programming is a one-semester master course building on profound k
 
 - Lecture 4:
   - The Bisector of a Line (in Python)
+  - [Notebook](files/prog2022/2022-11-22_Notebook)
 
 Preview Material:
 

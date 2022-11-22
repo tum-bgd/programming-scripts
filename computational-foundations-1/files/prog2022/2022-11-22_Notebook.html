@@ -1,0 +1,931 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Builtin Data Types and Beyond &#8212; Computational Foundations I</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Computational Foundations I</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../computational-foundations-1_intro.html">
+                    Computational Foundations I (2022)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basic Knowledge
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dos.html">
+   The Disk Operating System (DOS)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../windows.html">
+   Microsoft Windows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unix.html">
+   Unix, Linux, and POSIX
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../imperative_programming.html">
+   Imperative Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../cppintro.html">
+   The C and C++ Language
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../turtlegraphics.html">
+   Turtle Graphics Example
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorial Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tasks_01_niki.html">
+   Task Sheet 1: Niki the robot
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tasks_02_cpp.html">
+   Task Sheet 1: Basic C and C++
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tasks_03_loops.html">
+   Task Sheet 2 (Lectures 4-6)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../cf2022/learning_tasks.html">
+   Learning Tasks
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts/issues/new?title=Issue%20on%20page%20%2Ffiles/prog2022/2022-11-22_Notebook.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts/edit/main/files/prog2022/2022-11-22_Notebook.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/files/prog2022/2022-11-22_Notebook.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Builtin Data Types and Beyond
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-role-of-sorting">
+   The role of sorting
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enumeration">
+   Enumeration
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numpy">
+   Numpy
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numpy-data-type">
+   Numpy data type
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrices-as-images">
+   Matrices as images
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rgb-images">
+   RGB Images
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gdal">
+   GDAL
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lambda-expressions">
+   Lambda Expressions
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Builtin Data Types and Beyond</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Builtin Data Types and Beyond
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-role-of-sorting">
+   The role of sorting
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enumeration">
+   Enumeration
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numpy">
+   Numpy
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numpy-data-type">
+   Numpy data type
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrices-as-images">
+   Matrices as images
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rgb-images">
+   RGB Images
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gdal">
+   GDAL
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lambda-expressions">
+   Lambda Expressions
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="builtin-data-types-and-beyond">
+<h1>Builtin Data Types and Beyond<a class="headerlink" href="#builtin-data-types-and-beyond" title="Permalink to this headline">#</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lists: </span>
+<span class="c1"># easy to insert, update, extend, difficult to delete from</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">();</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">];</span> <span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="mi">2</span><span class="p">];</span> <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)];</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+2
+2
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># dicts:</span>
+<span class="c1"># good as indices (finding data for a key) as the sorted nature is used</span>
+<span class="c1"># in good languages, access is sorting, in Python it seems to be shadowed</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">();</span> <span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="c1"># this is the key, not a pair, not the value</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="c1"># this is how to iterate over values</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>3
+key
+3
+age
+20
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{10: &#39;ten&#39;, 5: &#39;five&#39;}
+10
+5
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="the-role-of-sorting">
+<h1>The role of sorting<a class="headerlink" href="#the-role-of-sorting" title="Permalink to this headline">#</a></h1>
+<p>Why is accessing sorted information fast?</p>
+<p>We are looking for some key x; If the data is sorted, we can look at the middle data. If it is larger than x, we look to
+the right. If it is smaller than x, we look to the left.</p>
+<p>Each step, the search space (problem size) is divided by 2.</p>
+<p>This generates a binary tree</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> all data ==&gt; 
+</pre></div>
+</div>
+<p>left half | right half
+lh | rh       lh | rh</p>
+<p>The number of nodes in this tree depends on the depth of the tree (distance from the root to the leaves)
+O(2^n). Hence, given n data entries, the depth it at most log(n) if the tree is balanced</p>
+<p>This is the reason, why dictionaries are faster at finding elements by key. For lists (as a comparison) you would have to
+look at half of the entries on average, hence O(n)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># set</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">set</span><span class="p">();</span> <span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">}</span>
+<span class="c1"># in a set, you only have an element relation. Each element is once in the set or it is not. You can insert and remove elements.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span>  <span class="o">|</span> <span class="nb">set</span><span class="p">((</span><span class="s2">&quot;a&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># you can&#39;t access a set reasonably with an index.</span>
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="c1"># if you want it ordered, you can do so.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;b&#39;, &#39;c&#39;}
+{&#39;b&#39;, &#39;a&#39;, &#39;c&#39;}
+a
+b
+c
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="enumeration">
+<h1>Enumeration<a class="headerlink" href="#enumeration" title="Permalink to this headline">#</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<span class="c1"># let us make all numbers one number larger</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="c1"># Given an iteratable data item (like data below) enumerate generates pairs of an index increasing (counting) </span>
+<span class="c1"># and the value. For us (0,2), (1,3), ...</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">=</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+  <span class="n">data</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">-</span><span class="mi">1</span>
+    
+    
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[2, 3, 5, 7, 9]
+[3, 4, 6, 8, 10]
+[2, 3, 5, 7, 9]
+2 3
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="numpy">
+<h1>Numpy<a class="headerlink" href="#numpy" title="Permalink to this headline">#</a></h1>
+<p>Numpy is a reimplementation of the core functionality of MATLAB for Python. It fast, reliable, efficient, easy to extend.
+It is used in almost all real-world libraries dealing with collections of numbers.</p>
+<p>The key data structure is the NDarray (N-dimensional array, like a list, but with a single data type)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]);</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1"># an ND array is collection of N data elements of the same type togehter with a shape tuple (a,b,c...) such that the product equals N</span>
+<span class="c1"># The number of entries in the shape is called the dimension</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[1 2 3]
+1
+[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+[[1. 2. 3.]
+ [4. 5. 6.]
+ [7. 8. 9.]]
+(3, 3)
+[0 1 2 3 4 5 6 7]
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[[[0 1]
+  [2 3]]
+
+ [[4 5]
+  [6 7]]]
+</pre></div>
+</div>
+<p>This is not a matrix. It is called a 2x2x2 tensor.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">,:,:]</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>array([[4, 5],
+       [6, 7]])
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="numpy-data-type">
+<h1>Numpy data type<a class="headerlink" href="#numpy-data-type" title="Permalink to this headline">#</a></h1>
+<p>The ND array is a collection of values such that they have a certain shape. It is typically a tensor or matrix or a vector</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># vector representing the first column</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+[1 4 7]
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># this is not matrix multiplication, it is broadcasting.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">A</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># Takeaway Warning: Code might look correct, but broadcasting might create very wrong results. </span>
+<span class="c1"># Broadcasting is the procedure of trying best to fit non-fitting things together.</span>
+
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[[1 0 0]
+ [4 0 0]
+ [7 0 0]]
+[1 0 0]
+[4 0 0]
+[7 0 0]
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">A</span>  <span class="o">@</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[1 4 7]
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="matrices-as-images">
+<h1>Matrices as images<a class="headerlink" href="#matrices-as-images" title="Permalink to this headline">#</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span>  <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">i</span><span class="o">/</span><span class="mi">100</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="o">*</span><span class="mi">128</span><span class="p">)])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">128</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">I</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">I</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[[0.0000e+00 1.0000e-02 2.0000e-02 ... 1.2500e+00 1.2600e+00 1.2700e+00]
+ [1.2800e+00 1.2900e+00 1.3000e+00 ... 2.5300e+00 2.5400e+00 2.5500e+00]
+ [2.5600e+00 2.5700e+00 2.5800e+00 ... 3.8100e+00 3.8200e+00 3.8300e+00]
+ ...
+ [1.6000e+02 1.6001e+02 1.6002e+02 ... 1.6125e+02 1.6126e+02 1.6127e+02]
+ [1.6128e+02 1.6129e+02 1.6130e+02 ... 1.6253e+02 1.6254e+02 1.6255e+02]
+ [1.6256e+02 1.6257e+02 1.6258e+02 ... 1.6381e+02 1.6382e+02 1.6383e+02]]
+0.0 163.83
+</pre></div>
+</div>
+<p><img alt="png" src="../../_images/output_18_1.png" /></p>
+<p>Check MATPLOTLIB galleries to find some suitable representations.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="rgb-images">
+<h1>RGB Images<a class="headerlink" href="#rgb-images" title="Permalink to this headline">#</a></h1>
+<p>An RGB image is an image optimized for screen display as the color screen of modern computers expects
+color values in three channels</p>
+<ul class="simple">
+<li><p>red from 0..255</p></li>
+<li><p>green from 0..255</p></li>
+<li><p>blue from 0..255</p></li>
+</ul>
+<p>It is common that RGB images in numpy / matplotlib are autoscaled or given with values ranging from [0,1]</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># I is the monochrome image from before</span>
+<span class="c1"># An RGB image is a NxMx3 tensor</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">I</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">I</span><span class="p">])</span> <span class="c1"># stacking has one argument. It is typically a list. Never write np.stack(A,B)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="c1"># The stack function took the given arguments, created a new axis (to the left) and added the information to each of the </span>
+<span class="c1"># axis layers. So </span>
+<span class="c1"># X[0,:,:] == I</span>
+<span class="c1"># X[1,:,:] == I</span>
+<span class="c1"># X[2,:,:] == I</span>
+
+<span class="c1"># Unfortunately, we don&#39;t like this result, as the tensor shall be 128,128,3</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">I</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">I</span><span class="p">),</span><span class="n">I</span><span class="p">],</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(3, 128, 128)
+(128, 128, 3)
+</pre></div>
+</div>
+<p><img alt="png" src="../../_images/output_21_1.png" /></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># vstack and hstack</span>
+<span class="c1"># Stacking in numpy was creating a new axis. What if we only want to append</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span> <span class="o">+</span> <span class="p">[</span><span class="n">row</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># vice versa one can stack equal-sized columns with hstack (horizontal stack)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+[1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
+[2. 2. 2. 2. 2. 2. 2. 2. 2. 2.]
+[3. 3. 3. 3. 3. 3. 3. 3. 3. 3.]
+[4. 4. 4. 4. 4. 4. 4. 4. 4. 4.]
+[array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]), array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1.]), array([2., 2., 2., 2., 2., 2., 2., 2., 2., 2.]), array([3., 3., 3., 3., 3., 3., 3., 3., 3., 3.]), array([4., 4., 4., 4., 4., 4., 4., 4., 4., 4.])]
+[[0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
+ [2. 2. 2. 2. 2. 2. 2. 2. 2. 2.]
+ [3. 3. 3. 3. 3. 3. 3. 3. 3. 3.]
+ [4. 4. 4. 4. 4. 4. 4. 4. 4. 4.]]
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="gdal">
+<h1>GDAL<a class="headerlink" href="#gdal" title="Permalink to this headline">#</a></h1>
+<p>If you are already interested in working more with images, install GDAL and try to load a Sentinel 2 scene as
+a numpy array</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">gdal</span>
+<span class="c1"># While GDAL is annoyingly complex to maintain and install and full of historic code that you don&#39;t need</span>
+<span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">rasterio</span> 
+<span class="c1"># hopefully not depending on gdal</span>
+
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">rasterio</span>
+
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: rasterio in /opt/conda/lib/python3.10/site-packages (1.3.4)
+Requirement already satisfied: affine in /opt/conda/lib/python3.10/site-packages (from rasterio) (2.3.1)
+Requirement already satisfied: attrs in /opt/conda/lib/python3.10/site-packages (from rasterio) (22.1.0)
+Requirement already satisfied: click-plugins in /opt/conda/lib/python3.10/site-packages (from rasterio) (1.1.1)
+Requirement already satisfied: setuptools in /opt/conda/lib/python3.10/site-packages (from rasterio) (65.5.0)
+Requirement already satisfied: certifi in /opt/conda/lib/python3.10/site-packages (from rasterio) (2022.9.24)
+Requirement already satisfied: click&gt;=4.0 in /opt/conda/lib/python3.10/site-packages (from rasterio) (8.1.3)
+Requirement already satisfied: cligj&gt;=0.5 in /opt/conda/lib/python3.10/site-packages (from rasterio) (0.7.2)
+Requirement already satisfied: snuggs&gt;=1.4.1 in /opt/conda/lib/python3.10/site-packages (from rasterio) (1.4.7)
+Requirement already satisfied: numpy&gt;=1.18 in /opt/conda/lib/python3.10/site-packages (from rasterio) (1.23.4)
+Requirement already satisfied: pyparsing&gt;=2.1.6 in /opt/conda/lib/python3.10/site-packages (from snuggs&gt;=1.4.1-&gt;rasterio) (3.0.9)
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rasterio</span>
+
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="lambda-expressions">
+<h1>Lambda Expressions<a class="headerlink" href="#lambda-expressions" title="Permalink to this headline">#</a></h1>
+<p>If you write code, very often you need to write small functions that are not of genreal usefulness.
+For example comparisons of values that are a bit different than what you expect.</p>
+<p>This can all be done, see the example below</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;Martin&quot;</span><span class="p">,</span><span class="mi">38</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Elise&quot;</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Chuck&quot;</span><span class="p">,</span><span class="mi">20</span><span class="p">]]</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span><span class="n">age</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> is </span><span class="si">%d</span><span class="s2"> years old&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Chuck is 20 years old
+Elise is 3 years old
+Martin is 38 years old
+</pre></div>
+</div>
+<p>But how do we sort by age? We introduce a key function. This function takes a full data entry (e.g., Martin,38) and returns
+the aspect we want to search by</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">getage</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">getage</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span><span class="n">age</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">getage</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> is </span><span class="si">%d</span><span class="s2"> years old&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>38
+Elise is 3 years old
+Chuck is 20 years old
+Martin is 38 years old
+</pre></div>
+</div>
+<p>Now the sorting is correct, but when this is done in a large project, the distance in the source code between getage and the invocation of getage can be very large.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lambda functions to the rescue: It is possible to have simple expression-style functions locally defined in the source code</span>
+<span class="c1"># Explain by example</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span><span class="n">age</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> is </span><span class="si">%d</span><span class="s2"> years old&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Elise is 3 years old
+Chuck is 20 years old
+Martin is 38 years old
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sortbyname</span><span class="o">=</span><span class="kc">True</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">sortbyname</span><span class="p">:</span>
+    <span class="n">sortingkey</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">sortingkey</span> <span class="o">=</span><span class="p">(</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="n">sortingkey</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">age</span><span class="p">)</span>
+    
+<span class="c1"># THe good thing is we can use sortingkey multiple times.</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Chuck 20
+Elise 3
+Martin 38
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./files/prog2022"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Martin Werner<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
