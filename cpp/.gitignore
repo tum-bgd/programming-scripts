@@ -1,3 +1,7 @@
 out.ply
 *out
 *.o
+01_oldhelloworld
+02_functionsignatures
+03_library
+libs_pcl_happly
