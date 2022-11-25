@@ -1,0 +1,768 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>GDAL Primer &#8212; Principles of Programming</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Reading and Writing PLY files (point cloud example)" href="libraries_happly.html" />
+    <link rel="prev" title="Geospatial Raster Images - The GDAL Library" href="libraries_gdal_intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Principles of Programming</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../principles-of-programming_intro.html">
+                    Principles of Programming (2022)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basic Knowledge
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="dos.html">
+   The Disk Operating System (DOS)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="windows.html">
+   Microsoft Windows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix.html">
+   Unix, Linux, and POSIX
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="imperative_programming.html">
+   Imperative Programming
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_basics.html">
+   Python basics
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Geospatial Images
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="libraries_gdal_intro.html">
+   Geospatial Raster Images - The GDAL Library
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   GDAL Primer
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Libraries and Stories
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="libraries_happly.html">
+   Reading and Writing PLY files (point cloud example)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="libraries_happly_boostgeometry.html">
+   happly and boost geometry - Load Point Clouds in C++11
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorial Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="unit01_tasks.html">
+   Tutorial No. 1 - Check your knowledge
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tasks_01_niki.html">
+   Task Sheet 1: Niki the robot
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts/issues/new?title=Issue%20on%20page%20%2Ffiles/libraries_gdal_germany.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts/edit/main/files/libraries_gdal_germany.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/files/libraries_gdal_germany.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   GDAL Primer
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-dataset-object">
+     The Dataset Object
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#raster-bands">
+   Raster Bands
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-from-the-raster">
+   Reading from the Raster
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#true-color-snippet">
+   True Color Snippet
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>GDAL Primer</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   GDAL Primer
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-dataset-object">
+     The Dataset Object
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#raster-bands">
+   Raster Bands
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-from-the-raster">
+   Reading from the Raster
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#true-color-snippet">
+   True Color Snippet
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="gdal-primer">
+<h1>GDAL Primer<a class="headerlink" href="#gdal-primer" title="Permalink to this headline">#</a></h1>
+<p>A dataset in GDAL is a placeholder for the file itself. It does, however, only read the metadata and is rather lightweight. You can explore the projection and the content and very low cost.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">600</span> <span class="c1">#higher resolution of plots</span>
+</pre></div>
+</div>
+<section id="the-dataset-object">
+<h2>The Dataset Object<a class="headerlink" href="#the-dataset-object" title="Permalink to this headline">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;data/germany.tiff&quot;</span><span class="p">,</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GA_ReadOnly</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">dataset</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dataset not found.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Driver: </span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">GetDriver</span><span class="p">()</span><span class="o">.</span><span class="n">ShortName</span><span class="p">,</span>
+                            <span class="n">dataset</span><span class="o">.</span><span class="n">GetDriver</span><span class="p">()</span><span class="o">.</span><span class="n">LongName</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Size is </span><span class="si">{}</span><span class="s2"> x </span><span class="si">{}</span><span class="s2"> x </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">RasterXSize</span><span class="p">,</span>
+                                    <span class="n">dataset</span><span class="o">.</span><span class="n">RasterYSize</span><span class="p">,</span>
+                                    <span class="n">dataset</span><span class="o">.</span><span class="n">RasterCount</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Projection is </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">GetProjection</span><span class="p">()))</span>
+    <span class="n">geotransform</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">GetGeoTransform</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">geotransform</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Origin = (</span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">geotransform</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">geotransform</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pixel Size = (</span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">geotransform</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">geotransform</span><span class="p">[</span><span class="mi">5</span><span class="p">]))</span>
+
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Driver: GTiff/GeoTIFF
+Size is 67235 x 94080 x 3
+Projection is PROJCS[&quot;WGS 84 / Pseudo-Mercator&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Mercator_1SP&quot;],PARAMETER[&quot;central_meridian&quot;,0],PARAMETER[&quot;scale_factor&quot;,1],PARAMETER[&quot;false_easting&quot;,0],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],EXTENSION[&quot;PROJ4&quot;,&quot;+proj=merc +a=6378137 +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +nadgrids=@null +wktext +no_defs&quot;],AUTHORITY[&quot;EPSG&quot;,&quot;3857&quot;]]
+Origin = (641594.9109931737, 7370990.488857678)
+Pixel Size = (15.545613327413848, -15.545613327413848)
+</pre></div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="raster-bands">
+<h1>Raster Bands<a class="headerlink" href="#raster-bands" title="Permalink to this headline">#</a></h1>
+<p>This file-level information fixes projection, georeference, and pixel meaning, and shape. But where is the data? It is accessible from Band objects, which again do not read data, but bandwise metadata only. Let us assume we have at least one band</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">dataset</span><span class="o">.</span><span class="n">RasterCount</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This file has no bands. This is possible, but then we cant access a band&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">RasterCount</span><span class="p">):</span>
+        <span class="n">band</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># unfortunately, raster bands start with index 1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Band Type=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gdal</span><span class="o">.</span><span class="n">GetDataTypeName</span><span class="p">(</span><span class="n">band</span><span class="o">.</span><span class="n">DataType</span><span class="p">)))</span>
+
+        <span class="nb">min</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">GetMinimum</span><span class="p">()</span>
+        <span class="nb">max</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">GetMaximum</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">min</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">max</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Warning: I have to cmopute min and max as they are not given. This can take time&quot;</span><span class="p">)</span>
+            <span class="p">(</span><span class="nb">min</span><span class="p">,</span><span class="nb">max</span><span class="p">)</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">ComputeRasterMinMax</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Min=</span><span class="si">{:.3f}</span><span class="s2">, Max=</span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span><span class="nb">max</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">band</span><span class="o">.</span><span class="n">GetOverviewCount</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Band has </span><span class="si">{}</span><span class="s2"> overviews&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">band</span><span class="o">.</span><span class="n">GetOverviewCount</span><span class="p">()))</span>
+
+        <span class="k">if</span> <span class="n">band</span><span class="o">.</span><span class="n">GetRasterColorTable</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Band has a color table with </span><span class="si">{}</span><span class="s2"> entries&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">band</span><span class="o">.</span><span class="n">GetRasterColorTable</span><span class="p">()</span><span class="o">.</span><span class="n">GetCount</span><span class="p">()))</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Band Type=Byte
+Warning: I have to cmopute min and max as they are not given. This can take time
+Min=0.000, Max=255.000
+Band Type=Byte
+Warning: I have to cmopute min and max as they are not given. This can take time
+Min=0.000, Max=255.000
+Band Type=Byte
+Warning: I have to cmopute min and max as they are not given. This can take time
+Min=0.000, Max=255.000
+</pre></div>
+</div>
+<p>What we can see here is that this file is already quantized and arranged for screen display and/or deep learning with RGB image pretrained models as three bands for red, green, and blue are given and data has been scaled to the range 0..255. This is not common, but for germany.tiff helps us not to learn too much in one step</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="reading-from-the-raster">
+<h1>Reading from the Raster<a class="headerlink" href="#reading-from-the-raster" title="Permalink to this headline">#</a></h1>
+<p>There are now three ways of reading from the raster depending on the context.</p>
+<ul class="simple">
+<li><p>One is to read the whole raster (ReadAsArray), but this won’t work for germany as it is a bit large.</p></li>
+<li><p>Another one is to read certain pixels (TIFF files are organized such that you can read only parts of it)</p></li>
+<li><p>The third one is to rely on the Linux kernel to memory-map the whole file and access it as a numpy array.</p></li>
+</ul>
+<p>We will now use the second one.But as a preparation, we will first localize Munich Airport. We know the GPS coordinates are 11.7854,48.3536. We compute the EPSG 3857 (webmercator) coordinates to be.</p>
+<p>1311798,6165451</p>
+<p>What do we have to do? We need to use the geotransform to find the integer raster coordinates of this.</p>
+<p>A geotransform consists in a set of 6 coefficients (see <a class="reference external" href="https://gdal.org/tutorials/geotransforms_tut.html">https://gdal.org/tutorials/geotransforms_tut.html</a>):</p>
+<ul class="simple">
+<li><p>GT(0) x-coordinate of the upper-left corner of the upper-left pixel.</p></li>
+<li><p>GT(1) w-e pixel resolution / pixel width.</p></li>
+<li><p>GT(2) row rotation (typically zero).</p></li>
+<li><p>GT(3) y-coordinate of the upper-left corner of the upper-left pixel.</p></li>
+<li><p>GT(4) column rotation (typically zero).</p></li>
+<li><p>GT(5) n-s pixel resolution / pixel height (negative value for a north-up image).</p></li>
+</ul>
+<p>Hence taking into account that GT(2) == 0 and GT(4) == 0, we have equations for <span class="math notranslate nohighlight">\(x_p\)</span> (and <span class="math notranslate nohighlight">\(y_p\)</span>) being the point in the projection and <span class="math notranslate nohighlight">\(x_r\)</span> being the point in the raster (integer coordinates)</p>
+<div class="math notranslate nohighlight">
+\[
+x_p = GT(0) + x_r \cdot GT(1)
+\]</div>
+<p>We have to solve for x_r to find the raster coordinates, which is easy:</p>
+<div class="math notranslate nohighlight">
+\[
+x_r = \frac{x_p - GT(0)}{GT(1)}
+\]</div>
+<p>Let us put this into a python function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">world2raster</span> <span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">geotransform</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">point</span> <span class="c1"># increases readability</span>
+    <span class="c1"># u,v will be raster x,y</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">geotransform</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">geotransform</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">geotransform</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">/</span> <span class="n">geotransform</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">u</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">raster2world</span> <span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">geotransform</span><span class="p">):</span>
+    <span class="n">u</span><span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="n">point</span> <span class="c1"># increases readability</span>
+    <span class="c1"># u,v will be raster x,y</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">geotransform</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">u</span> <span class="o">*</span>  <span class="n">geotransform</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">geotransform</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span> <span class="o">*</span>  <span class="n">geotransform</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span>
+
+
+<span class="c1"># let us do a quick test</span>
+<span class="n">munichairport</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1311798</span><span class="p">,</span><span class="mi">6165451</span><span class="p">)</span>
+<span class="n">munichairport_raster</span> <span class="o">=</span> <span class="n">world2raster</span><span class="p">(</span><span class="n">munichairport</span><span class="p">,</span><span class="n">geotransform</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Raster Coordinates:&quot;</span><span class="p">,</span> <span class="n">munichairport_raster</span><span class="p">)</span>
+<span class="c1"># let us do a more advanced test by going down to percentages which we can &quot;test&quot; in QGIS</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;From the topleft, it is in percentages around </span><span class="si">%.1f</span><span class="s2"> </span><span class="si">%.1f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">munichairport_raster</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">dataset</span><span class="o">.</span><span class="n">RasterXSize</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span><span class="n">munichairport_raster</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">dataset</span><span class="o">.</span><span class="n">RasterYSize</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Raster Coordinates: (43112, 77548)
+From the topleft, it is in percentages around 64.1 82.4
+</pre></div>
+</div>
+<p>This makes some sense as Munich is located more in the South of Germany (82%) and east of the middle, but not far east. Let us see later whether it is correct.</p>
+<p>Let us now read an area of 10km by 10km. We first need to compute the number of pixels for about 1km from the geotransform.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">xcount</span><span class="p">,</span> <span class="n">ycount</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">50000</span> <span class="o">/</span> <span class="n">geotransform</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="mi">50000</span><span class="o">/</span><span class="n">geotransform</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">xcount</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">ycount</span><span class="p">)</span>
+<span class="c1"># This shows that Y might be flipped when reading data such that increasing the vertical coordiate in the raster</span>
+<span class="c1"># decreases the vertical coordiante in the world</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The box:&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>3216
+-3216
+The box:
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">struct</span>
+<span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xcount</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ycount</span><span class="p">)</span>
+
+<span class="n">red</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">green</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">blue</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">read_unpack</span><span class="p">(</span><span class="n">theband</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">):</span>
+    <span class="n">imagedata</span> <span class="o">=</span> <span class="n">theband</span><span class="o">.</span><span class="n">ReadRaster</span><span class="p">(</span><span class="n">xoff</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> 
+                            <span class="n">yoff</span><span class="o">=</span><span class="n">y0</span><span class="p">,</span>
+                        <span class="n">xsize</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="n">h</span><span class="p">,</span>
+                        <span class="n">buf_xsize</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">buf_ysize</span><span class="o">=</span><span class="n">h</span><span class="p">,</span>
+                        <span class="n">buf_type</span><span class="o">=</span><span class="n">gdal</span><span class="o">.</span><span class="n">GDT_Float32</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;f&#39;</span> <span class="o">*</span> <span class="n">w</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="n">imagedata</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">w</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ubyte</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">image</span>
+    
+<span class="n">redi</span> <span class="o">=</span> <span class="n">read_unpack</span><span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">munichairport_raster</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">w</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="n">munichairport_raster</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">h</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
+<span class="n">greeni</span> <span class="o">=</span> <span class="n">read_unpack</span><span class="p">(</span><span class="n">green</span><span class="p">,</span> <span class="n">munichairport_raster</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">w</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="n">munichairport_raster</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">h</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
+<span class="n">bluei</span> <span class="o">=</span> <span class="n">read_unpack</span><span class="p">(</span><span class="n">blue</span><span class="p">,</span> <span class="n">munichairport_raster</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">w</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="n">munichairport_raster</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">h</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
+<span class="c1"># imagedata is now some data that is not yet ready for python, we need to parse it</span>
+<span class="c1">#</span>
+
+
+<span class="k">if</span> <span class="kc">False</span><span class="p">:</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">redi</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">greeni</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">bluei</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="true-color-snippet">
+<h1>True Color Snippet<a class="headerlink" href="#true-color-snippet" title="Permalink to this headline">#</a></h1>
+<p>The following figure shows Munich Airport in the center</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now we need to make an RGB out of it</span>
+<span class="n">rgb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">redi</span><span class="p">,</span><span class="n">greeni</span><span class="p">,</span><span class="n">bluei</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rgb</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fd9b8271310&gt;
+</pre></div>
+</div>
+<p><img alt="png" src="../_images/2022-11-24output_13_1.png" /></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusion">
+<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h1>
+<p>This tutorial has shown how to use a 10 GB file to selectively find some satellite image information given a location on Earth. It goes through the coordinate transformations necessary, the conversions between raster and world, the acquisition of data as indivudal bands including the python parsing using the struct package, and the visualization using MATPLOTLIB.</p>
+<p>Maybe, we should store the image as a final step. There are two ways: we can save the plot (the last active figure) or  we just store the image information using the imageio package. Lets do both</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plot.png&quot;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">imageio</span>
+<span class="n">imageio</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s2">&quot;image.png&quot;</span><span class="p">,</span> <span class="n">rgb</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The following files are then available:</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../_downloads/62d693659e091a9d8df129b2ab311e08/2022-11-24output_13_1.png"><code class="xref download docutils literal notranslate"><span class="pre">plot.png</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/d2a4aa25bcc6a6901239afa9b3d70ac7/2022-11-24_germany_munichairport.png"><code class="xref download docutils literal notranslate"><span class="pre">image.png</span></code></a></p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./files"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="libraries_gdal_intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Geospatial Raster Images - The GDAL Library</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="libraries_happly.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Reading and Writing PLY files (point cloud example)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Martin Werner<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,598 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Geospatial Raster Images - The GDAL Library &#8212; Computational Foundations I</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Computational Foundations I</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../computational-foundations-1_intro.html">
+                    Computational Foundations I (2022)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basic Knowledge
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="dos.html">
+   The Disk Operating System (DOS)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="windows.html">
+   Microsoft Windows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix.html">
+   Unix, Linux, and POSIX
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="imperative_programming.html">
+   Imperative Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cppintro.html">
+   The C and C++ Language
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="turtlegraphics.html">
+   Turtle Graphics Example
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorial Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="tasks_01_niki.html">
+   Task Sheet 1: Niki the robot
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tasks_02_cpp.html">
+   Task Sheet 1: Basic C and C++
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tasks_03_loops.html">
+   Task Sheet 2 (Lectures 4-6)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cf2022/learning_tasks.html">
+   Learning Tasks
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts/issues/new?title=Issue%20on%20page%20%2Ffiles/libraries_gdal_intro.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts/edit/main/files/libraries_gdal_intro.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/files/libraries_gdal_intro.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Geospatial Raster Images - The GDAL Library
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-steps">
+   Learning Steps:
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference-information-beyond-the-scope-of-this-lecture">
+   Reference Information beyond the scope of this lecture
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#installation">
+     Installation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#docker-file">
+     Docker File
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#container-run">
+     Container Run
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Geospatial Raster Images - The GDAL Library</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Geospatial Raster Images - The GDAL Library
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-steps">
+   Learning Steps:
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference-information-beyond-the-scope-of-this-lecture">
+   Reference Information beyond the scope of this lecture
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#installation">
+     Installation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#docker-file">
+     Docker File
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#container-run">
+     Container Run
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="geospatial-raster-images-the-gdal-library">
+<h1>Geospatial Raster Images - The GDAL Library<a class="headerlink" href="#geospatial-raster-images-the-gdal-library" title="Permalink to this headline">#</a></h1>
+<p>An image in a computer is typically either a vector-based drawing (e.g., consisting of geometric features like
+points, polygons, polytopes, meshes, triangles) or a raster-based space representation.</p>
+<p>Simply speaking, a raster is an image representation in which the image domain is cut into small equal-sized rectangular areas called the pixels and attributes are assigned to these pixels based on either representing some average (e.g., color is typically some average over the area of the pixel) or center point information.
+In a computational representation, raster images are therefore 2D matrices. The shape is based on the number of
+pixels in the subdivision and the total area covered by the image.</p>
+<p>We have already seen RGB images as (N,M,3)-dimensional tensors, where the last tensor axis is for holding red, green, and blue. In spatial images, we will have the same tensor shape, but the three channels can be replaced with multiple or even many measurement channels.</p>
+<p>Furthermore, the spatial nature of geospatial images is managed through additional attributes that fixes the relation between pixel coordinates (e.g., integer indices for M and N) and world coordinates in a given CRS. Hence, for a spatial image, we are given</p>
+<ul class="simple">
+<li><p>a projection (CRS)</p></li>
+<li><p>a basepoint and two axes in terms of the CRS (that will correspond to the X and Y axis of the tensors)</p></li>
+<li><p>a set of C tensors called image channels</p></li>
+</ul>
+<p>More concretely, the basepoint and two axes are commonly given by</p>
+<ul class="simple">
+<li><p>giving the CRS coordinates of the pixel location (0,0) and</p></li>
+<li><p>giving increments in terms of the CRS in both axes for going one step to the right in the image</p></li>
+</ul>
+<p>This data structure is called geotransform and embedded in many spatial image file formats.</p>
+<p>Experienced spatial data scientists will immediately realize that the orthogonality of the pixel coordinate with the
+possible non-orthogonality of the given CRS will lead to a linear increase in error along the axes such that
+coordinate reference systems (CRS) are better to be chosen to be locally orthogonal like the UTM family of projections.</p>
+<p>Enough theory, let us start exploring such imagery with Python:</p>
+<p>We provide</p>
+<ul class="simple">
+<li><p>A Dockerfile to install GDAL in a data science environment to run Docker containers</p></li>
+<li><p>Spatial Images</p>
+<ul>
+<li><p>an easy RGB cloudfree composite of Germany (10 GB) <a class="reference external" href="https://api.bgd.ed.tum.de/germany.tiff">Download</a></p></li>
+<li><p>an 11-bands wildfire image in the U.S. (830 MB) <a class="reference external" href="https://api.bgd.ed.tum.de/martin_s2a_focus.tif">Download</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="learning-steps">
+<h1>Learning Steps:<a class="headerlink" href="#learning-steps" title="Permalink to this headline">#</a></h1>
+<p>Try to follow up with the following task we demonstrate in the lecture:</p>
+<ul class="simple">
+<li><p>Explore data by installing QGIS and looking closely at the data.</p></li>
+<li><p>Load images, find coordinates, plot small fractions.</p></li>
+<li><p>Implement contrast adjustments to create well-readable images</p></li>
+<li><p>Implement domain-specific RGB composites (false-color images), therefore, read <a class="reference external" href="https://custom-scripts.sentinel-hub.com/custom-scripts/sentinel-2/composites/">Simple Sentinel 2 Composites</a></p></li>
+<li><p>Find the fire (look at where the fire band is non-zero) and plot the surroundings</p></li>
+<li><p>Create random patches (fire or no fire) for deep learning, each patch should be 64 by 64 and written as a PNG</p></li>
+<li><p>Download Sentinel Products (e.g., L1A products); run sen2cor, understand the Scene Classification SCL</p></li>
+<li><p>Build a cloudfree composite of summer images in Europe</p></li>
+<li><p>Learn how to download from AWS usnig aws-cli (other tools are too slow in my experience)</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="reference-information-beyond-the-scope-of-this-lecture">
+<h1>Reference Information beyond the scope of this lecture<a class="headerlink" href="#reference-information-beyond-the-scope-of-this-lecture" title="Permalink to this headline">#</a></h1>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
+<p>The installation for Windows and Mac users should be not too difficult with Anaconda (conda). For Linux,
+install both gdal (system) and the python3 gdal package using pip similar to below Dockerfile</p>
+</section>
+<section id="docker-file">
+<h2>Docker File<a class="headerlink" href="#docker-file" title="Permalink to this headline">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FROM</span> <span class="n">jupyter</span><span class="o">/</span><span class="n">datascience</span><span class="o">-</span><span class="n">notebook</span>
+<span class="n">USER</span> <span class="n">root</span> 
+
+<span class="n">RUN</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="o">-</span><span class="n">y</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">install</span><span class="o">-</span><span class="n">recommends</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">dev</span> <span class="n">software</span><span class="o">-</span><span class="n">properties</span><span class="o">-</span><span class="n">common</span>
+<span class="n">RUN</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="p">:</span><span class="n">ubuntugis</span><span class="o">/</span><span class="n">ubuntugis</span><span class="o">-</span><span class="n">unstable</span>
+
+<span class="n">RUN</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">gdal</span><span class="o">-</span><span class="nb">bin</span> <span class="n">libgdal</span><span class="o">-</span><span class="n">dev</span>
+
+<span class="n">RUN</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">gdal</span>
+</pre></div>
+</div>
+</section>
+<section id="container-run">
+<h2>Container Run<a class="headerlink" href="#container-run" title="Permalink to this headline">#</a></h2>
+<p>The container has been built, pushed to Dockerhub and run as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">docker</span> <span class="n">run</span>  <span class="o">-</span><span class="n">p</span> <span class="mi">8888</span><span class="p">:</span><span class="mi">8888</span> <span class="n">mwernerds</span><span class="o">/</span><span class="n">spatialjupyter</span>
+</pre></div>
+</div>
+<p>You can install Docker to your system and just run this container if you have a Linux-enabled environment (including
+Windows 11 Professional / Education, but typically not Windows Home).</p>
+<p>For Windows Home, you can install a Virtual Machine. I propose</p>
+<ul class="simple">
+<li><p>VirtualBox for Virtualization (runs on Mac, Windows, and Linux)</p></li>
+<li><p>Ubuntu (beginners), Debian (more advanced)</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./files"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Martin Werner<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Reading and Writing PLY files (point cloud example)" href="libraries_happly.html" />
+    <link rel="next" title="Geospatial Raster Images - The GDAL Library" href="libraries_gdal_intro.html" />
     <link rel="prev" title="Imperative Programming" href="imperative_programming.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -144,6 +144,23 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Python basics
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Geospatial Images
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="libraries_gdal_intro.html">
+   Geospatial Raster Images - The GDAL Library
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="libraries_gdal_germany.html">
+   GDAL Primer
   </a>
  </li>
 </ul>
@@ -1930,10 +1947,7 @@ A dictionary is basically a __list of key-value pairs__ where every key is uniqu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Type:  
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> &lt;class &#39;dict&#39;&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Type:   &lt;class &#39;dict&#39;&gt;
 Values: {&#39;a&#39;: 1, &#39;b&#39;: 2.0, 15: &#39;x&#39;}
 </pre></div>
 </div>
@@ -2040,11 +2054,11 @@ Values: {1, 2, 3}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elements in S1:                {1, 2, 4, &#39;a&#39;, &#39;b&#39;, &#39;d&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elements in S1:                {1, 2, 4, &#39;d&#39;, &#39;a&#39;, &#39;b&#39;}
 Elements in S2:                {1, 3, 4, &#39;c&#39;, &#39;a&#39;}
 Elements in S1 and S2:         {1, 4, &#39;a&#39;}
-Elements in S1 or S2:          {1, 2, 3, 4, &#39;b&#39;, &#39;d&#39;, &#39;c&#39;, &#39;a&#39;}
-El. in S1 or S2, not in both:  {&#39;c&#39;, 2, 3, &#39;b&#39;, &#39;d&#39;}
+Elements in S1 or S2:          {1, 2, 3, 4, &#39;c&#39;, &#39;d&#39;, &#39;a&#39;, &#39;b&#39;}
+El. in S1 or S2, not in both:  {2, 3, &#39;c&#39;, &#39;d&#39;, &#39;b&#39;}
 </pre></div>
 </div>
 </div>
@@ -2077,9 +2091,7 @@ El. in S1 or S2, not in both:  {&#39;c&#39;, 2, 3, &#39;b&#39;, &#39;d&#39;}
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;b&#39;, &#39;c&#39;]
+[&#39;b&#39;, &#39;c&#39;]
 [&#39;c&#39;]
 done
 </pre></div>
@@ -2185,9 +2197,7 @@ done
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Element 0: a
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Element 1: b
+Element 1: b
 Element 2: c
 </pre></div>
 </div>
@@ -2374,9 +2384,6 @@ None None None
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15 / 7 = 2 R: 1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 </div>
 <p><strong>Info:</strong> Python already offers this function:</p>
@@ -2389,6 +2396,9 @@ None None None
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15 / 7 = 2 R: 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -2411,6 +2421,9 @@ None None None
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>square(2) was called!
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -2454,7 +2467,10 @@ abs(-2)       = 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>max:         &lt;built-in function max&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>max:        
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> &lt;built-in function max&gt;
 type of max: &lt;class &#39;builtin_function_or_method&#39;&gt;
 max(1,2):    2
 
@@ -2941,10 +2957,10 @@ This is a small collection of additional Python knowledge.
             <p class="prev-next-title">Imperative Programming</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="libraries_happly.html" title="next page">
+    <a class='right-next' id="next-link" href="libraries_gdal_intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Reading and Writing PLY files (point cloud example)</p>
+        <p class="prev-next-title">Geospatial Raster Images - The GDAL Library</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

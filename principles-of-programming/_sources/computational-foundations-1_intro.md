@@ -27,6 +27,7 @@ Computational Foundations is a two-semester course in the aerospace bachelor and
   - [A Set of Loop and Recursive Programming Tasks](./files/tasks_03_loops)
   - {Download}`Whiteboard Riemann Integral<files/cf2022/2022-11-11_WhiteboardRiemann.pdf>`
   - [Learning Tasks](./files/cf2022/learning_tasks.md)
+  - {Download}`Turtle Graphics Project<assets/turtle-graphics.tgz>`
 
 ## Time Plan
 
