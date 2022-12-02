@@ -523,16 +523,16 @@ title="Print to PDF"
 <h1>Written Addition<a class="headerlink" href="#written-addition" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we ignore the table for the moment</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># we ignore the table for the moment
 
-<span class="c1"># N-digit numbers are given as a list</span>
-<span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X=&quot;</span><span class="p">,</span><span class="n">X</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Y=&quot;</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+# N-digit numbers are given as a list
+X = [3,2,3]
+Y = [9,5,8]
+print(&quot;X=&quot;,X)
+print(&quot;Y=&quot;,Y)
 
-<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+N = len(X)
+print(N)
 </pre></div>
 </div>
 </div>
@@ -546,26 +546,26 @@ Y= [9, 5, 8]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;adds two numbers, a and be have to have equal number of digits&quot;&quot;&quot;</span>
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="s2">&quot;This implementation expects equal-length digits&quot;</span>
-    <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">carry</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># Track whether we need to add a one to the next digit</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
-        <span class="n">table_result</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="p">]</span>  <span class="c1"># this is just from right to left</span>
-        <span class="k">if</span> <span class="n">carry</span><span class="p">:</span>
-            <span class="n">table_result</span> <span class="o">=</span> <span class="n">table_result</span> <span class="o">+</span><span class="mi">1</span> <span class="c1"># increment if previous was too large</span>
-            <span class="n">carry</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">if</span> <span class="n">table_result</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span> <span class="c1"># set up carry and correct digit to one digit</span>
-            <span class="n">table_result</span> <span class="o">=</span> <span class="n">table_result</span> <span class="o">-</span> <span class="mi">10</span>
-            <span class="n">carry</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="n">ret</span> <span class="o">=</span> <span class="p">[</span><span class="n">table_result</span><span class="p">,</span> <span class="o">*</span><span class="n">ret</span><span class="p">]</span> <span class="c1"># collect results</span>
-    <span class="k">if</span> <span class="n">carry</span><span class="p">:</span>
-        <span class="n">ret</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="n">ret</span><span class="p">]</span> <span class="c1"># final carry</span>
-    <span class="k">return</span> <span class="n">ret</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def add(a,b):
+    &quot;&quot;&quot;adds two numbers, a and be have to have equal number of digits&quot;&quot;&quot;
+    assert len(a) == len(b), &quot;This implementation expects equal-length digits&quot;
+    ret = []
+    carry = False # Track whether we need to add a one to the next digit
+    for i in range(len(a)):
+        table_result = a[len(a)-1-i] + b[len(b)-1-i]  # this is just from right to left
+        if carry:
+            table_result = table_result +1 # increment if previous was too large
+            carry = False
+        if table_result &gt;= 10: # set up carry and correct digit to one digit
+            table_result = table_result - 10
+            carry = True
+        ret = [table_result, *ret] # collect results
+    if carry:
+        ret = [1, *ret] # final carry
+    return ret
     
-<span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">))</span>
-<span class="mi">323</span><span class="o">+</span><span class="mi">958</span>
+print(add(X,Y))
+323+958
 </pre></div>
 </div>
 </div>
@@ -607,14 +607,14 @@ create the return value.</p>
 <p>$<span class="math notranslate nohighlight">\( 0! = 1! = 1\)</span>$’</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sequential</span>
-<span class="k">def</span> <span class="nf">factorial</span> <span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">ret</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># sequential
+def factorial (n):
+    ret = 1
+    for i in range(n):
+        ret = ret * (i+1)
+    return ret;
 
-<span class="n">factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+factorial(5)
 </pre></div>
 </div>
 </div>
@@ -626,12 +626,12 @@ create the return value.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial2</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial2</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def factorial2(n):
+    if n == 1:
+        return 1
+    return n * factorial2(n-1)
 
-<span class="n">factorial2</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+factorial2(5)
     
 </pre></div>
 </div>
@@ -644,20 +644,20 @@ create the return value.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_factorial_unless_larger_than</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="n">tmp</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span>  <span class="n">compute_factorial_unless_larger_than</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">tmp</span> <span class="o">&gt;</span> <span class="n">t</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span>
-    <span class="k">return</span> <span class="n">tmp</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def compute_factorial_unless_larger_than(n, t):
+    if n == 1:
+        return 1
+    tmp = n *  compute_factorial_unless_larger_than(n-1,t)
+    if tmp &gt; t:
+        return False
+    return tmp
 
-<span class="n">compute_factorial_unless_larger_than</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+compute_factorial_unless_larger_than(5, 100)
 
-<span class="c1"># Inefficient, as we cannot stop the recursion procedure at the moment where we are finding that the treshold is exceeded.</span>
-<span class="c1"># Useless computation is the consequence:</span>
-<span class="c1"># Solution:</span>
-<span class="c1"># - Exceptions are often interpreted as errors, but they can unwind the stack and are sometimes just signals of success.</span>
+# Inefficient, as we cannot stop the recursion procedure at the moment where we are finding that the treshold is exceeded.
+# Useless computation is the consequence:
+# Solution:
+# - Exceptions are often interpreted as errors, but they can unwind the stack and are sometimes just signals of success.
     
 </pre></div>
 </div>
@@ -670,12 +670,12 @@ create the return value.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_factorial_unless_larger_than2</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
-    <span class="n">ret</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">ret</span> <span class="o">&gt;</span> <span class="n">t</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def compute_factorial_unless_larger_than2(n, t):
+    ret = 1
+    for i in range(n):
+        ret = ret * (i+1)
+        if ret &gt; t:
+            return False
     
 </pre></div>
 </div>
@@ -690,14 +690,14 @@ create the return value.</p>
 <h1>Strings with ” vs. ‘<a class="headerlink" href="#strings-with-vs" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The results are the same</span>
-<span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
-<span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># The results are the same
+x = &quot;test&quot;
+y = &#39;test&#39;
+print(x,y)
 
-<span class="c1"># But, the &quot; is being processed by formatting while the other is not</span>
-<span class="c1"># The not case first</span>
-<span class="c1"># NEed to look up on the history of it, it used to be as I tried to explain, but it is not</span>
+# But, the &quot; is being processed by formatting while the other is not
+# The not case first
+# NEed to look up on the history of it, it used to be as I tried to explain, but it is not
 </pre></div>
 </div>
 </div>
@@ -712,32 +712,32 @@ create the return value.</p>
 <h1>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dictionary</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Dictionary
 
-<span class="n">x</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="c1"># Dictionary is key-value</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;TUM&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;university&quot;</span><span class="p">,</span> <span class="s2">&quot;numberofstudents&quot;</span><span class="p">:</span> <span class="mi">42</span> <span class="p">}</span>
-<span class="c1"># accessed using the keys as indices</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> ==&gt; </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">])))</span>
+x = dict()
+print(x)
+x = {}
+print(x)
+# Dictionary is key-value
+data = {&quot;name&quot;: &quot;TUM&quot;, &quot;type&quot;: &quot;university&quot;, &quot;numberofstudents&quot;: 42 }
+# accessed using the keys as indices
+print (data[&quot;name&quot;])
+print(data)
+for x in data:
+    print(&quot;%s ==&gt; %s&quot; % (x, str(data[x])))
     
-<span class="c1"># you can do the same as with list expressions</span>
+# you can do the same as with list expressions
 
-<span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;id_</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="c1"># Dictionaries are quite good at accessing few elements </span>
+x = {&quot;id_%d&quot; %(x): x for x in range(100)}
+print(x)
+# Dictionaries are quite good at accessing few elements 
 
-<span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]]</span>
-<span class="c1"># task is to find a point with Y == 6</span>
-<span class="c1"># good solution (especially if many times you are looking for a specific value of y)</span>
+data = [[1,2],[3,4],[5,6]]
+# task is to find a point with Y == 6
+# good solution (especially if many times you are looking for a specific value of y)
 
-<span class="n">index</span> <span class="o">=</span> <span class="p">{</span><span class="n">y</span><span class="p">:</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="n">data</span><span class="p">}</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found for 6:&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+index = {y:x for x,y in data}
+print(&quot;Found for 6:&quot;, index[6])
 </pre></div>
 </div>
 </div>

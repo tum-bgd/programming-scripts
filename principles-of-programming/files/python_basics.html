@@ -891,11 +891,11 @@ The interpreter acts like a translator of code for the computer. When learning t
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>         <span class="c1"># 1 expression:  &#39;assign the value 1 to variable a!&#39;</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>     <span class="c1"># 2 expressions: &#39;compute the sum of a and 1!&#39; and &#39;assign result to the variable b!&#39; </span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1"># 3 expressions: &#39;a + b&#39; and &#39;X - 1&#39; and c = X</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>      <span class="c1"># 1 expression:  &#39;call function print with argument c!&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>   <span class="c1"># 2 expressions: &#39;c*10&#39; and print(X)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = 1         # 1 expression:  &#39;assign the value 1 to variable a!&#39;
+b = a + 1     # 2 expressions: &#39;compute the sum of a and 1!&#39; and &#39;assign result to the variable b!&#39; 
+c = a + b - 1 # 3 expressions: &#39;a + b&#39; and &#39;X - 1&#39; and c = X
+print(c)      # 1 expression:  &#39;call function print with argument c!&#39;
+print(c*10)   # 2 expressions: &#39;c*10&#39; and print(X)
 </pre></div>
 </div>
 </div>
@@ -909,10 +909,10 @@ The interpreter acts like a translator of code for the computer. When learning t
 <p>In Python the statements are usually separated by <strong>line breaks</strong>. Separating statements with a <strong>semicolon</strong> is also allowed but less common / readable. The following two cells are equal in terms of the statements but differently formatted. The arguments of print are texts (denoted by <code class="docutils literal notranslate"><span class="pre">'</span></code>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">)</span>  <span class="c1"># first statement</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;World&#39;</span><span class="p">)</span>  <span class="c1"># second statement</span>
-<span class="c1"># .. blank lines are ignored</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;!&#39;</span><span class="p">)</span>      <span class="c1"># third statement (.. white spaces between symbols / variables are ignored as well)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&#39;Hello&#39;)  # first statement
+print(&#39;World&#39;)  # second statement
+# .. blank lines are ignored
+print(&#39;!&#39;)      # third statement (.. white spaces between symbols / variables are ignored as well)
 </pre></div>
 </div>
 </div>
@@ -926,8 +926,8 @@ World
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># statements separated be semicolons -&gt; valid but less readable</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;World&#39;</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;!&#39;</span><span class="p">)</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># statements separated be semicolons -&gt; valid but less readable
+print(&#39;Hello&#39;); print(&#39;World&#39;); print(&#39;!&#39;) 
 </pre></div>
 </div>
 </div>
@@ -942,13 +942,13 @@ World
 <p>Multi line statements are less common but also possible in Python. To continue a statement in the next line, we add <code class="docutils literal notranslate"><span class="pre">\</span></code> before the line break. Line continuation is also implied inside parentheses <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">)</span></code>, brackets <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> and braces <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> \
-    <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">5</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = 1 + 2 + \
+    3 + 4 + 5
+print(a)
 
-<span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> 
-     <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+b = (1 + 2 + 
+     3 + 4 + 5)
+print(b)
 </pre></div>
 </div>
 </div>
@@ -963,10 +963,10 @@ World
 <p><strong>A simple indentation rule is:</strong> Whenever a statement ends with a colon, (at least) the next non-blank line has to be indented.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>   <span class="c1"># &#39;if&#39; is here just used to introduce a block. Statements that introduce blocks end with a colon!</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;World&#39;</span><span class="p">)</span> <span class="c1"># two statements inside a block (indented with four spaces / one tab!)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;!&#39;</span><span class="p">)</span> <span class="c1"># outside the block (no indentation) </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>if True:   # &#39;if&#39; is here just used to introduce a block. Statements that introduce blocks end with a colon!
+    print(&#39;Hello&#39;)
+    print(&#39;World&#39;) # two statements inside a block (indented with four spaces / one tab!)
+print(&#39;!&#39;) # outside the block (no indentation) 
 </pre></div>
 </div>
 </div>
@@ -984,13 +984,13 @@ World
 <strong>Note</strong> that variables in Jupyter Notebooks exist <strong>across all cells.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>           <span class="c1"># create x and assign the value 1</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mf">3.5</span>         <span class="c1"># x already exists, so it will be overwritten with 3.5</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">x</span>           <span class="c1"># create y and assign the value of x</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1"># it is valid to assign a value to multiple variables</span>
-<span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">3.5</span> <span class="c1"># or implicitly using tuples (covered later)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 1           # create x and assign the value 1
+x = 3.5         # x already exists, so it will be overwritten with 3.5
+y = x           # create y and assign the value of x
+x = y = z = 1   # it is valid to assign a value to multiple variables
+x,y,z = 1,2,3.5 # or implicitly using tuples (covered later)
 
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>    <span class="c1"># print() can display multiple variables/values, separated by commas</span>
+print(x,y,z)    # print() can display multiple variables/values, separated by commas
 </pre></div>
 </div>
 </div>
@@ -1003,7 +1003,7 @@ World
 <p>To list all variables that are currently in the memory we can call the Python functions <code class="docutils literal notranslate"><span class="pre">dir()</span></code>, <code class="docutils literal notranslate"><span class="pre">locals()</span></code> and <code class="docutils literal notranslate"><span class="pre">globals()</span></code>. However, in Jupyter notebooks the IPython command <code class="docutils literal notranslate"><span class="pre">whos</span></code> gives a more readable view.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">whos</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>whos
 </pre></div>
 </div>
 </div>
@@ -1023,14 +1023,14 @@ z          float    3.5
 <p>To delete a variable we can use the function <code class="docutils literal notranslate"><span class="pre">del()</span></code> or the <em>magic</em> command <code class="docutils literal notranslate"><span class="pre">%reset</span> <span class="pre">-f</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>del(x)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">reset</span> -f
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%reset -f
 </pre></div>
 </div>
 </div>
@@ -1086,14 +1086,14 @@ z          float    3.5
 <p>The Python function <code class="docutils literal notranslate"><span class="pre">type(x)</span></code> will return the data type of a variable <code class="docutils literal notranslate"><span class="pre">x</span></code>. Also the data type is displayed with the command <code class="docutils literal notranslate"><span class="pre">whos</span></code>. Notice that in the following assignments the data type is never given explicitly! Instead Python will <strong>automatically set the data type</strong>, that fits best to the assigned value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">1317</span>         <span class="c1"># Integer (int) [e.g. -1, 0, 1, 2, 3]</span>
-<span class="n">f</span> <span class="o">=</span> <span class="mf">2.31</span>         <span class="c1"># Floating point number (float) [e.g. -1.0, -0.1, 0.0, 3.212, 1235.213, 13.5e2]</span>
-<span class="n">c</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span>       <span class="c1"># Complex number (complex) [e.g. 3 + 2j, cmath.sqrt(-1)]</span>
-<span class="n">b</span> <span class="o">=</span> <span class="kc">True</span>         <span class="c1"># Boolean (bool) [True,False or 0, 1]</span>
-<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;abcd&#39;</span>       <span class="c1"># String (str) [e.g. &#39;Hello World!&#39;, &#39;a name&#39;, &quot;quotation marks used for apostrophes&quot;]</span>
-<span class="n">n</span> <span class="o">=</span> <span class="kc">None</span>         <span class="c1"># None (NoneType) [None]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>i = 1317         # Integer (int) [e.g. -1, 0, 1, 2, 3]
+f = 2.31         # Floating point number (float) [e.g. -1.0, -0.1, 0.0, 3.212, 1235.213, 13.5e2]
+c = 5 + 1j       # Complex number (complex) [e.g. 3 + 2j, cmath.sqrt(-1)]
+b = True         # Boolean (bool) [True,False or 0, 1]
+s = &#39;abcd&#39;       # String (str) [e.g. &#39;Hello World!&#39;, &#39;a name&#39;, &quot;quotation marks used for apostrophes&quot;]
+n = None         # None (NoneType) [None]
 
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>   <span class="c1"># example usage of type(). However the command &#39;whos&#39; will show the data type as well. </span>
+print(type(i))   # example usage of type(). However the command &#39;whos&#39; will show the data type as well. 
 </pre></div>
 </div>
 </div>
@@ -1105,7 +1105,7 @@ z          float    3.5
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">whos</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>whos
 </pre></div>
 </div>
 </div>
@@ -1134,17 +1134,17 @@ s          str         abcd
 <p>Try to use names that are <strong>meaningful and not longer than necessary</strong>. Some examples are given in the following cell.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># GOOD NAMES</span>
-<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>            <span class="c1"># single letters are okay in a small context</span>
-<span class="n">max_value</span> <span class="o">=</span> <span class="mi">255</span>  <span class="c1"># meaningful and self explaining name </span>
-<span class="n">PI</span> <span class="o">=</span> <span class="mf">3.141</span>       <span class="c1"># big letters for constant values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># GOOD NAMES
+i = 1            # single letters are okay in a small context
+max_value = 255  # meaningful and self explaining name 
+PI = 3.141       # big letters for constant values
 
-<span class="c1"># BAD NAMES</span>
-<span class="n">l</span> <span class="o">=</span> <span class="mi">1</span>            <span class="c1"># l and O are similar to 1 and 0</span>
-<span class="n">O</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">λ</span> <span class="o">=</span> <span class="mi">7</span>            <span class="c1"># don&#39;t use other alphabets!</span>
-<span class="n">ﮙ</span> <span class="o">=</span> <span class="mi">8</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ﮙ</span><span class="p">)</span>         <span class="c1"># even if it&#39;s valid</span>
+# BAD NAMES
+l = 1            # l and O are similar to 1 and 0
+O = 0
+λ = 7            # don&#39;t use other alphabets!
+ﮙ = 8
+print(ﮙ)         # even if it&#39;s valid
 </pre></div>
 </div>
 </div>
@@ -1164,7 +1164,7 @@ s          str         abcd
 <p>These are applied to numbers (integers, floats or complex). Usually we would assign the result a variable. If the result of the last expression in a cell is not assigned, it will be printed directly. We use this to make the examples cleaner.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span>       <span class="c1"># addition</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>1 + 3       # addition
 </pre></div>
 </div>
 </div>
@@ -1176,7 +1176,7 @@ s          str         abcd
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">-</span> <span class="mi">2</span>       <span class="c1"># subtraction</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>3 - 2       # subtraction
 </pre></div>
 </div>
 </div>
@@ -1188,7 +1188,7 @@ s          str         abcd
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">*</span> <span class="mi">2</span>       <span class="c1"># multiplication</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>2 * 2       # multiplication
 </pre></div>
 </div>
 </div>
@@ -1200,7 +1200,7 @@ s          str         abcd
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">/</span> <span class="mi">2</span>       <span class="c1"># division (x will be a float because dividing two Integers will always return a float)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>4 / 2       # division (x will be a float because dividing two Integers will always return a float)
 </pre></div>
 </div>
 </div>
@@ -1212,7 +1212,7 @@ s          str         abcd
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">9</span> <span class="o">//</span> <span class="mi">2</span>      <span class="c1"># floor division (returns the quotient of the euclidian devision)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>9 // 2      # floor division (returns the quotient of the euclidian devision)
 </pre></div>
 </div>
 </div>
@@ -1224,7 +1224,7 @@ s          str         abcd
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">9</span> <span class="o">%</span> <span class="mi">2</span>       <span class="c1"># modulo (returns the remainder of the euclidian devision)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>9 % 2       # modulo (returns the remainder of the euclidian devision)
 </pre></div>
 </div>
 </div>
@@ -1236,7 +1236,7 @@ s          str         abcd
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**</span><span class="mi">3</span>        <span class="c1"># exponentiation</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>2**3        # exponentiation
 </pre></div>
 </div>
 </div>
@@ -1248,7 +1248,7 @@ s          str         abcd
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">9</span><span class="o">**</span><span class="mf">0.5</span>      <span class="c1"># root (using the exponentiation operator)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>9**0.5      # root (using the exponentiation operator)
 </pre></div>
 </div>
 </div>
@@ -1263,9 +1263,9 @@ s          str         abcd
 <p>The execution order of operations depends on the precedence of the involved operations. Operations with same precedence will be executed from left to right (except for the ‘power’ operator). A detailed overview of the precedences is available <a class="reference external" href="http://www.informit.com/articles/article.aspx?p=459269&amp;seqNum=11%3E">here</a>. Below two examples:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span><span class="o">**</span><span class="mi">2</span>  <span class="c1"># exponents before multiplication before addition</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># multiplication and division have same precedence (usually left to right, but parentheses used here)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = 1 + 2 * 3**2  # exponents before multiplication before addition
+x = 1 / (2 * 2)   # multiplication and division have same precedence (usually left to right, but parentheses used here)
+print(a, x)
 </pre></div>
 </div>
 </div>
@@ -1282,24 +1282,24 @@ s          str         abcd
 <p>Boolean operations are applied to booleans. The essential operations are <strong>and (&amp;)</strong>, <strong>or (|)</strong>, <em>xor</em> <strong>(^)</strong> and <strong>not</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b1</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">b2</span> <span class="o">=</span> <span class="kc">True</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b1 = True
+b2 = True
 
-<span class="c1"># and (result is true, if both conditions are true)</span>
-<span class="n">b3</span> <span class="o">=</span> <span class="n">b1</span> <span class="ow">and</span> <span class="n">b2</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b1 and b2 = &#39;</span><span class="p">,</span> <span class="n">b3</span><span class="p">)</span>
+# and (result is true, if both conditions are true)
+b3 = b1 and b2
+print(&#39;b1 and b2 = &#39;, b3)
 
-<span class="c1"># or (result is true, if at least one condition is true)</span>
-<span class="n">b3</span> <span class="o">=</span> <span class="n">b1</span> <span class="ow">or</span> <span class="n">b2</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; b1 or b2 = &#39;</span><span class="p">,</span> <span class="n">b3</span><span class="p">)</span>
+# or (result is true, if at least one condition is true)
+b3 = b1 or b2
+print(&#39; b1 or b2 = &#39;, b3)
 
-<span class="c1"># xor (result is true, if exactly one condition is true)</span>
-<span class="n">b3</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">^</span> <span class="n">b2</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  b1 ^ b2 = &#39;</span><span class="p">,</span> <span class="n">b3</span><span class="p">)</span>
+# xor (result is true, if exactly one condition is true)
+b3 = b1 ^ b2
+print(&#39;  b1 ^ b2 = &#39;, b3)
 
-<span class="c1"># not (will negate the boolean value)</span>
-<span class="n">b3</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">b1</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   not b1 = &#39;</span><span class="p">,</span> <span class="n">b3</span><span class="p">)</span>
+# not (will negate the boolean value)
+b3 = not b1
+print(&#39;   not b1 = &#39;, b3)
 </pre></div>
 </div>
 </div>
@@ -1319,8 +1319,8 @@ s          str         abcd
 <p>Note that in the following examples the result of the comparison is assigned to the variable <code class="docutils literal notranslate"><span class="pre">b</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="mi">5</span>       <span class="c1"># greater, smaller, greater or equal, smaller or equal</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b = 1 &lt;= 5       # greater, smaller, greater or equal, smaller or equal
+print(b)
 </pre></div>
 </div>
 </div>
@@ -1332,8 +1332,8 @@ s          str         abcd
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">==</span> <span class="mf">1.0</span>     <span class="c1"># equal (here true because same value after implicit cast)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b = 1 == 1.0     # equal (here true because same value after implicit cast)
+print(b)
 </pre></div>
 </div>
 </div>
@@ -1345,8 +1345,8 @@ s          str         abcd
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;aa&#39;</span> <span class="o">&lt;</span> <span class="s1">&#39;ab&#39;</span>  <span class="c1"># comparing strings is valid (result depends on alphabetic order)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b = &#39;aa&#39; &lt; &#39;ab&#39;  # comparing strings is valid (result depends on alphabetic order)
+print(b)
 </pre></div>
 </div>
 </div>
@@ -1358,8 +1358,8 @@ s          str         abcd
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="kc">True</span> <span class="o">&gt;</span> <span class="mi">0</span>     <span class="c1"># booleans can be seen as 1 (True) and 0 (False) </span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>         <span class="c1"># -&gt; comparison with integers is valid</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b = True &gt; 0     # booleans can be seen as 1 (True) and 0 (False) 
+print(b)         # -&gt; comparison with integers is valid
 </pre></div>
 </div>
 </div>
@@ -1380,32 +1380,32 @@ Conversion or casting means changing the data type of a variable. This can happe
 <p>where <code class="docutils literal notranslate"><span class="pre">v</span></code> is the variable to convert, <code class="docutils literal notranslate"><span class="pre">newtype</span></code> the new data type (e.g. <code class="docutils literal notranslate"><span class="pre">str</span></code> for string, <code class="docutils literal notranslate"><span class="pre">int</span></code> for integer or <code class="docutils literal notranslate"><span class="pre">bool</span></code> for booleans) and <code class="docutils literal notranslate"><span class="pre">v2</span></code> the variable, the result should be assigned to. Between the primitive data types, almost any conversion is valid. The following cell shows some examples:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>   <span class="c1"># integer to float</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;float(123) =&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>f = float(123)   # integer to float
+print(&#39;float(123) =&#39;, f)
 
-<span class="n">f</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;5.1&#39;</span><span class="p">)</span> <span class="c1"># string to float (scientific notations like &#39;2.3e3&#39; or &#39;-13.5e-5&#39; are also convertable)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;float(&#39;5.1&#39;) =&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+f = float(&#39;5.1&#39;) # string to float (scientific notations like &#39;2.3e3&#39; or &#39;-13.5e-5&#39; are also convertable)
+print(&quot;float(&#39;5.1&#39;) =&quot;, f)
 
-<span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">141.6</span><span class="p">)</span>   <span class="c1"># float to integer (this will drop decimals e.g. 1.9 -&gt; 1 and -2.9 -&gt; -2)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;int(141.6) =&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+i = int(141.6)   # float to integer (this will drop decimals e.g. 1.9 -&gt; 1 and -2.9 -&gt; -2)
+print(&#39;int(141.6) =&#39;, i)
 
-<span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;-2341&#39;</span><span class="p">)</span> <span class="c1"># string to integer </span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;int(&#39;-2341&#39;) =&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+i = int(&#39;-2341&#39;) # string to integer 
+print(&quot;int(&#39;-2341&#39;) =&quot;, i)
 
-<span class="n">s</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="mf">15.3</span><span class="p">)</span>    <span class="c1"># float or integer to string</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;str(15.3) =&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+s = str(15.3)    # float or integer to string
+print(&quot;str(15.3) =&quot;, s)
 
-<span class="n">b</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="o">-</span><span class="mf">100.3</span><span class="p">)</span> <span class="c1"># float or integer to boolean (every number that is not zero or minus zero will be converted to &#39;True&#39;)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;bool(-100.3) =&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+b = bool(-100.3) # float or integer to boolean (every number that is not zero or minus zero will be converted to &#39;True&#39;)
+print(&#39;bool(-100.3) =&#39;, b)
 
-<span class="n">i</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># boolean to float or integer (&#39;True&#39; will be converted to 1.0, &#39;False&#39; to 0.0) </span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;float(True) =&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+i = float(True)  # boolean to float or integer (&#39;True&#39; will be converted to 1.0, &#39;False&#39; to 0.0) 
+print(&#39;float(True) =&#39;, i)
 
-<span class="n">c</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span> <span class="c1"># float to complex</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;complex(1.5) =&#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+c = complex(1.5) # float to complex
+print(&#39;complex(1.5) =&#39;, c)
 
-<span class="n">c</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="s1">&#39;1.5+1j&#39;</span><span class="p">)</span> <span class="c1"># string to complex</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;complex(&#39;1.5+1j&#39;) =&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+c = complex(&#39;1.5+1j&#39;) # string to complex
+print(&quot;complex(&#39;1.5+1j&#39;) =&quot;, c)
 </pre></div>
 </div>
 </div>
@@ -1426,7 +1426,7 @@ complex(&#39;1.5+1j&#39;) = (1.5+1j)
 <p>Invalid conversions will raise a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#float(1.5+1j)   # this would raise a TypeError</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#float(1.5+1j)   # this would raise a TypeError
 </pre></div>
 </div>
 </div>
@@ -1434,7 +1434,7 @@ complex(&#39;1.5+1j&#39;) = (1.5+1j)
 <p>Nested casts are also possible:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="nb">complex</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mi">1</span><span class="p">)))))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>int(bool(complex(float(str(1)))))
 </pre></div>
 </div>
 </div>
@@ -1450,21 +1450,21 @@ complex(&#39;1.5+1j&#39;) = (1.5+1j)
 <p>At some points conversions happen implicitly e.g. when the program requires a specific data type but gets another one, or when performing operations using variables of different data types:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># adding float and integer will result in float (even if the result has no decimals)</span>
-<span class="n">f</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">1.0</span>           
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1 + 1.0 =&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># adding float and integer will result in float (even if the result has no decimals)
+f = 1 + 1.0           
+print(&quot;1 + 1.0 =&quot;, f)
 
-<span class="c1"># booleans can implicitly be converted to Floats or Integers</span>
-<span class="n">f</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">+</span> <span class="kc">True</span>        
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1.5 + True =&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
-<span class="n">i</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="kc">False</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5 * False =&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+# booleans can implicitly be converted to Floats or Integers
+f = 1.5 + True        
+print(&quot;1.5 + True =&quot;, f)
+i = 5 * False
+print(&quot;5 * False =&quot;, i)
 
-<span class="c1"># vice versa can floats and integers also be converted to booleans if they are connected by a boolean operation</span>
-<span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span> <span class="ow">and</span> <span class="kc">True</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-5 and True =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="ow">not</span> <span class="mf">0.0</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;not 0.0 =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+# vice versa can floats and integers also be converted to booleans if they are connected by a boolean operation
+b = -5 and True
+print(&quot;-5 and True =&quot;, b)
+b = not 0.0
+print(&quot;not 0.0 =&quot;, b)
 </pre></div>
 </div>
 </div>
@@ -1481,11 +1481,11 @@ not 0.0 = True
 <p><strong>Note</strong> that with both, explicid and impicid conversions we <strong>will not not modify</strong> a casted variable <code class="docutils literal notranslate"><span class="pre">v</span></code>, but instead create a temporary value, that represents <code class="docutils literal notranslate"><span class="pre">v</span></code> as a specific data type:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>                <span class="c1"># x is an integer</span>
-<span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>         <span class="c1"># we assign y the float repr. of the value of x</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 1                # x is an integer
+y = float(x)         # we assign y the float repr. of the value of x
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x:&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="c1"># x is still an integer</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y:&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="c1"># y is a float</span>
+print(&#39;x:&#39;, type(x)) # x is still an integer
+print(&#39;y:&#39;, type(y)) # y is a float
 </pre></div>
 </div>
 </div>
@@ -1504,11 +1504,11 @@ Decisions and conditions are an essential part of programs. They are used to con
 <p>The most simple usage is the <strong>if</strong> statement, followed by a condition and a colon. The conditional statements follow in a block. The statements inside the block are only executed, when the condition is (evaluated to) <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">condition</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="k">if</span> <span class="n">condition</span><span class="p">:</span>                   
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;condition is True!&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;still inside block!&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;outside block!&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>condition = True
+if condition:                   
+    print(&#39;condition is True!&#39;)
+    print(&#39;still inside block!&#39;)
+print(&#39;outside block!&#39;)
 </pre></div>
 </div>
 </div>
@@ -1523,12 +1523,12 @@ outside block!
 <p>The following example has a more complex condition which will be evaluated to a boolean value. We use the <strong>else</strong> keyword to introduce another block, that is only executed, when the condition is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">7</span>     
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 7     
 
-<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">x</span><span class="o">%</span><span class="k">2</span> == 0:       # statement will be evaluated to a boolean value
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is greater than 5 and odd!&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is smaller/equal to 5 or even!&#39;</span><span class="p">)</span>
+if x &gt; 5 and not x%2 == 0:       # statement will be evaluated to a boolean value
+    print(&#39;x is greater than 5 and odd!&#39;)
+else:
+    print(&#39;x is smaller/equal to 5 or even!&#39;)
 </pre></div>
 </div>
 </div>
@@ -1541,19 +1541,19 @@ outside block!
 <p><strong>Note</strong> that all kind of blocks can be nested. For example the condition in the example above can be separated. The result of the conditional expressions can be stored to improve readability (but this also adds two more lines to read):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">7</span>     
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 7     
 
-<span class="n">is_greater_5</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span>
-<span class="n">is_odd</span>       <span class="o">=</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span>
+is_greater_5 = x &gt; 5
+is_odd       = x % 2 == 1
 
-<span class="k">if</span> <span class="n">is_greater_5</span><span class="p">:</span> 
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is greater than 5&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">is_odd</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;and odd!&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;and even!&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is smaller/equal to 5!&#39;</span><span class="p">)</span>
+if is_greater_5: 
+    print(&#39;x is greater than 5&#39;, end=&#39; &#39;)
+    if is_odd:
+        print(&#39;and odd!&#39;)
+    else:
+        print(&#39;and even!&#39;)
+else:
+    print(&#39;x is smaller/equal to 5!&#39;)
 </pre></div>
 </div>
 </div>
@@ -1569,23 +1569,26 @@ outside block!
 <p>More complex structures can be built with the <strong>elif</strong> (short for else if) and <strong>else</strong> keywords. The conditions are checked, top-down untill one condition is <code class="docutils literal notranslate"><span class="pre">True</span></code>. If no condition is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the else-block is executed (if it exists). The following cell demonstrates the usage.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cond1</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># some boolean variables used as conditions</span>
-<span class="n">cond2</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">cond3</span> <span class="o">=</span> <span class="kc">False</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cond1 = False  # some boolean variables used as conditions
+cond2 = True
+cond3 = False
 
-<span class="k">if</span> <span class="n">cond1</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cond1 is True&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">cond2</span><span class="p">:</span>                 <span class="c1"># will be checked if first condition is False</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cond2 is True, cond1 is False&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">cond3</span><span class="p">:</span>                 <span class="c1"># will be checked if 1st and 2nd condition are False</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cond3 is True , cond1 is False, cond2 is False&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;no condition is True&#39;</span><span class="p">)</span>
+if cond1:
+    print(&#39;cond1 is True&#39;)
+elif cond2:                 # will be checked if first condition is False
+    print(&#39;cond2 is True, cond1 is False&#39;)
+elif cond3:                 # will be checked if 1st and 2nd condition are False
+    print(&#39;cond3 is True , cond1 is False, cond2 is False&#39;)
+else:
+    print(&#39;no condition is True&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cond2 is True, cond1 is False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1596,10 +1599,10 @@ outside block!
 <p>This expression can be used for single line if-else statements.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># possible implementation to get the sign of a value</span>
-<span class="n">v</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
-<span class="n">s</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;=</span><span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># possible implementation to get the sign of a value
+v = -3
+s = 1 if v &gt;=0 else -1
+print(s)
 </pre></div>
 </div>
 </div>
@@ -1614,10 +1617,10 @@ Besides the primitive data types presented before, Python offers many built-in d
 <h3 style="color: #ffffff; background-color: #00509B; padding: 1%" >Lists<a id='lists'></a> </h3><br>
 A list is a ordered collection of elements. The elements data types can vary. A list is created using __brackets__:<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>list1 = [1.0, &#39;name&#39;, 15, True]
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type:  &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">list1</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Values:&#39;</span><span class="p">,</span> <span class="n">list1</span><span class="p">)</span>
+print(&#39;Type:  &#39;, type(list1))
+print(&#39;Values:&#39;, list1)
 </pre></div>
 </div>
 </div>
@@ -1634,16 +1637,16 @@ Values: [1.0, &#39;name&#39;, 15, True]
 <p>The elements of a list are accessed by typing the name of the variable, followed by the index in brackets. Note that the <strong>first element has the index 0</strong> which is usual for most programming languages but not matlab. Python supports negative indices, where -1 will give the last element of the list, -2 the second last and so on.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#     0    1    2    3    4    5    &lt;- indices</span>
-<span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#     0    1    2    3    4    5    &lt;- indices
+L = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;]
 
-<span class="n">first_element</span>  <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>   <span class="c1"># access first element of L</span>
-<span class="n">second_element</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>   <span class="c1"># access second element of L</span>
-<span class="n">last_element</span>   <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># access last element of L (in this case equiv. to L[5])</span>
+first_element  = L[0]   # access first element of L
+second_element = L[1]   # access second element of L
+last_element   = L[-1]  # access last element of L (in this case equiv. to L[5])
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;first: &#39;</span><span class="p">,</span> <span class="n">first_element</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;second:&#39;</span><span class="p">,</span> <span class="n">second_element</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;last:  &#39;</span><span class="p">,</span> <span class="n">last_element</span><span class="p">)</span>
+print(&#39;first: &#39;, first_element)
+print(&#39;second:&#39;, second_element)
+print(&#39;last:  &#39;, last_element)
 </pre></div>
 </div>
 </div>
@@ -1658,7 +1661,7 @@ last:   f
 <p>Trying to access any element after the last one will <strong>raise an IndexError</strong>. <br>For example our created list has currently 6 elements, so the last element has the index 5. Trying to access the element at index 6 will fail:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print(L[6])       # this would rise an IndexError</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># print(L[6])       # this would rise an IndexError
 </pre></div>
 </div>
 </div>
@@ -1672,11 +1675,11 @@ last:   f
 When <code class="docutils literal notranslate"><span class="pre">start</span></code> is omitted, the slice will start from the first element. Omitting <code class="docutils literal notranslate"><span class="pre">end</span></code> will make the slice end with the last element. Omitting <code class="docutils literal notranslate"><span class="pre">step</span></code> will result in a step width of 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#     0    1    2    3    4    5    &lt;- indices</span>
-<span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#     0    1    2    3    4    5    &lt;- indices
+L = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;]
 
-<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>     <span class="c1"># access elements from index 1 to 3 </span>
-<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>   <span class="c1"># access all elements from 1 up to 5 with step width 2</span>
+print(L[1:3])     # access elements from index 1 to 3 
+print(L[1:5:2])   # access all elements from 1 up to 5 with step width 2
 </pre></div>
 </div>
 </div>
@@ -1689,8 +1692,8 @@ When <code class="docutils literal notranslate"><span class="pre">start</span></
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>      <span class="c1"># access all elements up to index 3 </span>
-<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">3</span><span class="p">:])</span>      <span class="c1"># access all elements from index 3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(L[:3])      # access all elements up to index 3 
+print(L[3:])      # access all elements from index 3
 </pre></div>
 </div>
 </div>
@@ -1703,8 +1706,8 @@ When <code class="docutils literal notranslate"><span class="pre">start</span></
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[:])</span>       <span class="c1"># access all elements (creates a copy of L)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>    <span class="c1"># access all elements with reversed order</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(L[:])       # access all elements (creates a copy of L)
+print(L[::-1])    # access all elements with reversed order
 </pre></div>
 </div>
 </div>
@@ -1721,14 +1724,14 @@ When <code class="docutils literal notranslate"><span class="pre">start</span></
 <p>Editing means changing values of a list without changing its shape.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>list2 = [1, 1, 1, 1]
+print(list2)
 
-<span class="n">list2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>         <span class="c1"># assign a new value to the first element</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
+list2[0] = 0         # assign a new value to the first element
+print(list2)
 
-<span class="n">list2</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1"># slices can be edited as well</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
+list2[2:4] = [2, 3]  # slices can be edited as well
+print(list2)
 </pre></div>
 </div>
 </div>
@@ -1746,23 +1749,23 @@ When <code class="docutils literal notranslate"><span class="pre">start</span></
 <p>A list can be manipulated using <strong>append</strong>, <strong>extend</strong>, <strong>del</strong> or <strong>remove</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list2</span> <span class="o">=</span> <span class="p">[]</span>              <span class="c1"># create an empty list</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>list2 = []              # create an empty list
+print(list2)
 
-<span class="n">list2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>         <span class="c1"># appends one element</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
+list2.append(1)         # appends one element
+print(list2)
 
-<span class="n">list2</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span> <span class="c1"># appends a sequence</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
+list2.extend([2, 3, 4]) # appends a sequence
+print(list2)
 
-<span class="n">list2</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>      <span class="c1"># inserts 0 at index 2</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
+list2.insert(2, 0)      # inserts 0 at index 2
+print(list2)
 
-<span class="k">del</span><span class="p">(</span><span class="n">list2</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>           <span class="c1"># removes the element at index 2</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
+del(list2[2])           # removes the element at index 2
+print(list2)
 
-<span class="n">list2</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>         <span class="c1"># removes the first element that is equal to the argument.. </span>
-<span class="nb">print</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>            <span class="c1"># .. raises an error if argument not in list</span>
+list2.remove(1)         # removes the first element that is equal to the argument.. 
+print(list2)            # .. raises an error if argument not in list
 </pre></div>
 </div>
 </div>
@@ -1783,8 +1786,8 @@ When <code class="docutils literal notranslate"><span class="pre">start</span></
 <p>The following cells should give an overview about the usage and capabilities of lists. In general it is better to learn what is possible first and then focus on the details (because the details can be quikly looked up).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span>                       <span class="c1"># repeats the given list 4 times</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>L = [1, 2] * 4                       # repeats the given list 4 times
+print(L)
 </pre></div>
 </div>
 </div>
@@ -1796,8 +1799,8 @@ When <code class="docutils literal notranslate"><span class="pre">start</span></
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>         <span class="c1"># the + operator can be used to concatenate lists</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>L = [1, 2] + [3, 4] + [5, 6]         # the + operator can be used to concatenate lists
+print(L)
 </pre></div>
 </div>
 </div>
@@ -1805,13 +1808,16 @@ When <code class="docutils literal notranslate"><span class="pre">start</span></
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 5, 6]
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">L</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>                          <span class="c1"># reverse the elements in the list</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>L = [1, 2, 3]
+L.reverse()                          # reverse the elements in the list
+print(L)
 </pre></div>
 </div>
 </div>
@@ -1819,13 +1825,16 @@ When <code class="docutils literal notranslate"><span class="pre">start</span></
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3, 2, 1]
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">n</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                       <span class="c1"># count occurences of a value</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>L = [1, 2, 1, 3]
+n = L.count(1)                       # count occurences of a value
+print(n)
 </pre></div>
 </div>
 </div>
@@ -1837,9 +1846,9 @@ When <code class="docutils literal notranslate"><span class="pre">start</span></
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
-<span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="n">L</span>                         <span class="c1"># x in L returns true if x matches at least one element in L</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>L = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
+b = &#39;a&#39; in L                         # x in L returns true if x matches at least one element in L
+print(b)
 </pre></div>
 </div>
 </div>
@@ -1851,9 +1860,9 @@ When <code class="docutils literal notranslate"><span class="pre">start</span></
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">L</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>                             <span class="c1"># sort list (only possible if values are comparable)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>L = [5,8,2,6,4,2.5,1]
+L.sort()                             # sort list (only possible if values are comparable)
+print(L)
 </pre></div>
 </div>
 </div>
@@ -1865,13 +1874,13 @@ When <code class="docutils literal notranslate"><span class="pre">start</span></
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">min_v</span>  <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>                      <span class="c1"># min(L) / max(L) will return minimum / maximum value in L</span>
-<span class="n">max_v</span>  <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
-<span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>                      <span class="c1"># len(L) will return the number of elements in L </span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;minimum =&#39;</span><span class="p">,</span> <span class="n">min_v</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;maximum =&#39;</span><span class="p">,</span> <span class="n">max_v</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; length =&#39;</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>L = [5,8,2,6,4,2.5,1]
+min_v  = min(L)                      # min(L) / max(L) will return minimum / maximum value in L
+max_v  = max(L)
+length = len(L)                      # len(L) will return the number of elements in L 
+print(&#39;minimum =&#39;, min_v)
+print(&#39;maximum =&#39;, max_v)
+print(&#39; length =&#39;, length)
 </pre></div>
 </div>
 </div>
@@ -1887,9 +1896,9 @@ maximum = 8
 <h3 style="color: #ffffff; background-color: #00509B; padding: 1%" >Tuples<a id='tuples'></a> </h3><br>
 Tuples are very similar to lists with the essential difference, that they are __not mutable__. A tuple is created with the values in parentheses:<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>      <span class="c1"># creation of a tuple</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type:  &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Values:&#39;</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>T = (False, 1.0, &#39;2&#39;, 3)      # creation of a tuple
+print(&#39;Type:  &#39;, type(T))
+print(&#39;Values:&#39;, T)
 </pre></div>
 </div>
 </div>
@@ -1903,8 +1912,8 @@ Values: (False, 1.0, &#39;2&#39;, 3)
 <p>Once a tuple is initialized, it is neither valid to change its values nor to add/remove elements. E.g. trying to assign a new value to the first element in <code class="docutils literal notranslate"><span class="pre">T</span></code> will raise a <strong>TypeError</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>                   <span class="c1"># accessing elements is valid</span>
-<span class="c1">#T[0] = 1.0                   # will raise a TypeError</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(T[0])                   # accessing elements is valid
+#T[0] = 1.0                   # will raise a TypeError
 </pre></div>
 </div>
 </div>
@@ -1923,9 +1932,9 @@ Values: (False, 1.0, &#39;2&#39;, 3)
 <p><strong>Note:</strong> In many cases the parentheses are not required to create a tuple, but it is best practice to <strong>use perenthesis</strong>. Nevertheless the following cell is valid.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="mi">3</span>        <span class="c1"># no parenthesis used to create the tuple</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Values:&#39;</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>T = False, 1.0, &#39;2&#39;, 3        # no parenthesis used to create the tuple
+print(T, type(T))
+print(&#39;Values:&#39;, T)
 </pre></div>
 </div>
 </div>
@@ -1940,9 +1949,9 @@ Values: (False, 1.0, &#39;2&#39;, 3)
 <h3 style="color: #ffffff; background-color: #00509B; padding: 1%" >Dictionaries<a id='dictionaries'></a> </h3><br>
 A dictionary is basically a __list of key-value pairs__ where every key is unique and points to exactly one value. Like with lists and tuples the data type of both the keys and the values can vary. A dictionary is constructed using __braces__. Inside the braces the keys and values are separated by a colon, the key-value pairs are separated by commas:<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mf">2.0</span><span class="p">,</span> <span class="mi">15</span><span class="p">:</span><span class="s1">&#39;x&#39;</span><span class="p">}</span>   <span class="c1"># a dictionary with 3 key-value pairs</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type:  &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Values:&#39;</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>D = {&#39;a&#39;:1, &#39;b&#39;:2.0, 15:&#39;x&#39;}   # a dictionary with 3 key-value pairs
+print(&#39;Type:  &#39;, type(D))
+print(&#39;Values:&#39;, D)
 </pre></div>
 </div>
 </div>
@@ -1956,9 +1965,9 @@ Values: {&#39;a&#39;: 1, &#39;b&#39;: 2.0, 15: &#39;x&#39;}
 <p>The value for a specific key in a dictionary <code class="docutils literal notranslate"><span class="pre">D</span></code> is accessed using the syntax <code class="docutils literal notranslate"><span class="pre">D[k]</span></code>, where k is the key. An error will be raised if the key is not in the dictionary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
-<span class="n">v</span> <span class="o">=</span> <span class="n">D</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>         <span class="c1"># access the value that corresponds to the key &#39;b&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>D = {&#39;a&#39;:1,&#39;b&#39;:2}
+v = D[&#39;b&#39;]         # access the value that corresponds to the key &#39;b&#39;
+print(v)
 </pre></div>
 </div>
 </div>
@@ -1971,17 +1980,19 @@ Values: {&#39;a&#39;: 1, &#39;b&#39;: 2.0, 15: &#39;x&#39;}
 <p>Modifying values of existing keys and adding new key-value pairs works in the same way:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
-<span class="n">D</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>         <span class="c1"># add a new key &#39;c&#39; with the value 3</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
-<span class="n">D</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>         <span class="c1"># change the value of key &#39;c&#39; to 5</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>D = {&#39;a&#39;:1,&#39;b&#39;:2}
+D[&#39;c&#39;] = 3         # add a new key &#39;c&#39; with the value 3
+print(D)
+D[&#39;c&#39;] = 5         # change the value of key &#39;c&#39; to 5
+print(D)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3}
-{&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 5}
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 5}
 </pre></div>
 </div>
 </div>
@@ -1989,8 +2000,8 @@ Values: {&#39;a&#39;: 1, &#39;b&#39;: 2.0, 15: &#39;x&#39;}
 <p>The <code class="docutils literal notranslate"><span class="pre">items()</span></code> method of dictionaries can be used to iterate over each key value pair. Alternatively it can be used to convert a dictionary to a list of tuples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">D</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for d in D.items():
+    print(d)
 </pre></div>
 </div>
 </div>
@@ -2004,8 +2015,8 @@ Values: {&#39;a&#39;: 1, &#39;b&#39;: 2.0, 15: &#39;x&#39;}
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D_as_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">D_as_list</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>D_as_list = list(D.items())
+print(D_as_list)
 </pre></div>
 </div>
 </div>
@@ -2020,9 +2031,9 @@ Values: {&#39;a&#39;: 1, &#39;b&#39;: 2.0, 15: &#39;x&#39;}
 <p>A set contains <strong>unique</strong> elements in an <strong>unordered</strong> fashion (varying data types allowed). Unique means, that every element will not occur more than one time in the set. Adding a element to a set, that already contains such a element will not modify the set. Unordered means, that the elements in a set don’t have indices and though indexing or slicing is not possible. Sets are created similar to dictionarys but without colons:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>     <span class="c1"># the element 1 will only be once in S, because sets do not allow dublicate entries </span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type:  &#39;</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="n">S</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Values:&#39;</span><span class="p">,</span><span class="n">S</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>S = {1,2,3,1}     # the element 1 will only be once in S, because sets do not allow dublicate entries 
+print(&#39;Type:  &#39;,type(S))
+print(&#39;Values:&#39;,S)
 </pre></div>
 </div>
 </div>
@@ -2036,29 +2047,29 @@ Values: {1, 2, 3}
 <p>Albeit sets don’t support indexing, they allow some useful operations like computing the intersection, the union or the disjoints:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
-<span class="n">S2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">))</span>   <span class="c1"># alternative constructor (same as casting a tuple to a set)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>S1 = {&#39;a&#39;, &#39;b&#39;, &#39;d&#39;, 1, 2, 4}
+S2 = set((1, 3, 4, &#39;a&#39;, &#39;c&#39;))   # alternative constructor (same as casting a tuple to a set)
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Elements in S1:               &#39;</span><span class="p">,</span> <span class="n">S1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Elements in S2:               &#39;</span><span class="p">,</span> <span class="n">S2</span><span class="p">)</span>
+print(&#39;Elements in S1:               &#39;, S1)
+print(&#39;Elements in S2:               &#39;, S2)
 
-<span class="n">S_intersect</span> <span class="o">=</span> <span class="n">S1</span> <span class="o">&amp;</span> <span class="n">S2</span> <span class="c1"># = S1.intersection(S2)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Elements in S1 and S2:        &#39;</span><span class="p">,</span> <span class="n">S_intersect</span><span class="p">)</span>
+S_intersect = S1 &amp; S2 # = S1.intersection(S2)
+print(&#39;Elements in S1 and S2:        &#39;, S_intersect)
 
-<span class="n">S_union</span> <span class="o">=</span> <span class="n">S1</span> <span class="o">|</span> <span class="n">S2</span> <span class="c1"># = S1.union(S2)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Elements in S1 or S2:         &#39;</span><span class="p">,</span> <span class="n">S_union</span><span class="p">)</span>
+S_union = S1 | S2 # = S1.union(S2)
+print(&#39;Elements in S1 or S2:         &#39;, S_union)
 
-<span class="n">S_xor</span> <span class="o">=</span> <span class="n">S1</span> <span class="o">^</span> <span class="n">S2</span> <span class="c1"># = S1.difference(S2).union(S2.difference(S1)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;El. in S1 or S2, not in both: &#39;</span><span class="p">,</span> <span class="n">S_xor</span><span class="p">)</span>
+S_xor = S1 ^ S2 # = S1.difference(S2).union(S2.difference(S1)))
+print(&#39;El. in S1 or S2, not in both: &#39;, S_xor)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elements in S1:                {1, 2, 4, &#39;d&#39;, &#39;a&#39;, &#39;b&#39;}
-Elements in S2:                {1, 3, 4, &#39;c&#39;, &#39;a&#39;}
-Elements in S1 and S2:         {1, 4, &#39;a&#39;}
-Elements in S1 or S2:          {1, 2, 3, 4, &#39;c&#39;, &#39;d&#39;, &#39;a&#39;, &#39;b&#39;}
-El. in S1 or S2, not in both:  {2, 3, &#39;c&#39;, &#39;d&#39;, &#39;b&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elements in S1:                {1, &#39;a&#39;, 2, 4, &#39;b&#39;, &#39;d&#39;}
+Elements in S2:                {1, &#39;a&#39;, 3, 4, &#39;c&#39;}
+Elements in S1 and S2:         {1, &#39;a&#39;, 4}
+Elements in S1 or S2:          {1, &#39;a&#39;, 2, 4, 3, &#39;c&#39;, &#39;b&#39;, &#39;d&#39;}
+El. in S1 or S2, not in both:  {2, 3, &#39;c&#39;, &#39;b&#39;, &#39;d&#39;}
 </pre></div>
 </div>
 </div>
@@ -2079,13 +2090,13 @@ El. in S1 or S2, not in both:  {2, 3, &#39;c&#39;, &#39;d&#39;, &#39;b&#39;}
 <p>Where <code class="docutils literal notranslate"><span class="pre">cond</span></code> is a condition. The loop will repeat until the condition is evaluated to <code class="docutils literal notranslate"><span class="pre">False</span></code>. The following example runs a while-loop until there are no more elements in the list <code class="docutils literal notranslate"><span class="pre">L</span></code>. In each iteration the first element of <code class="docutils literal notranslate"><span class="pre">L</span></code> is removed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>  <span class="c1"># create a list with 3 elements</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>L = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]  # create a list with 3 elements
 
-<span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>    <span class="c1"># iterate as long as L is not empty (number of elements greater than zero)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>         <span class="c1"># print whole list</span>
-    <span class="k">del</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>        <span class="c1"># delete the first element in L</span>
+while len(L) &gt; 0:    # iterate as long as L is not empty (number of elements greater than zero)
+    print(L)         # print whole list
+    del(L[0])        # delete the first element in L
     
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;done&#39;</span><span class="p">)</span>
+print(&#39;done&#39;)
 </pre></div>
 </div>
 </div>
@@ -2111,9 +2122,9 @@ done
 <p>Here <code class="docutils literal notranslate"><span class="pre">B</span></code> is a collection of elements (like a list, set, tuple etc.) and <code class="docutils literal notranslate"><span class="pre">a</span></code> the variable that will take the values of the elements in <code class="docutils literal notranslate"><span class="pre">B</span></code>. The indented lines after the colon are executed in every loop. In the next cell we will use a for loop to iterate over the elements in a list and print each element:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;e1&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">]</span>  <span class="c1"># creating a list</span>
-<span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">L</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>     <span class="c1"># elem will take the value of each element in L</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>L = [&#39;e1&#39;, 2, 3.5]  # creating a list
+for elem in L:
+    print(elem)     # elem will take the value of each element in L
 </pre></div>
 </div>
 </div>
@@ -2128,12 +2139,12 @@ done
 <p>For loops can also be used to execute a block <code class="docutils literal notranslate"><span class="pre">n</span></code> times, having a variable that holds the number of the iteration. To create such a loop, we can use Pythons <code class="docutils literal notranslate"><span class="pre">range()</span></code> method, which will create something similar to a list:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>    <span class="c1"># range(3) creates the sequence [0, 1, 2]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;inside the loop..&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;i =&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n = 3
+for i in range(n):    # range(3) creates the sequence [0, 1, 2]
+    print(&#39;inside the loop..&#39;)
+    print(&#39;i =&#39;, i)
     
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;done&#39;</span><span class="p">)</span>
+print(&#39;done&#39;)
 </pre></div>
 </div>
 </div>
@@ -2152,10 +2163,10 @@ done
 <p>If <code class="docutils literal notranslate"><span class="pre">range(x)</span></code> is called with only one argument, the loop will start at 0 and incrementing up to x (not included) with a stepwith of 1. More general, one can call <code class="docutils literal notranslate"><span class="pre">range()</span></code> with up to three arguments, which denote the start, stop and step with of the sequence. Two arguments denote start and stop (step width will be 1).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">stop</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>start = 1; stop = 6; step = 2
 
-<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+for j in range(start, stop, step):
+    print(j)
 </pre></div>
 </div>
 </div>
@@ -2172,8 +2183,8 @@ done
 <p>The following example demonstrates a powerful feature in Python which uses the for-in syntax called list comprehension. More information available <a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions">here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lst_sq</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span> <span class="c1"># &#39;for&#39; inside brackets used to create a list</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lst_sq</span><span class="p">)</span>                              
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>lst_sq = [x**2 for x in range(1, 11)] # &#39;for&#39; inside brackets used to create a list
+print(lst_sq)                              
 </pre></div>
 </div>
 </div>
@@ -2189,9 +2200,9 @@ done
 <p>The <strong>enumerate()</strong> function is very helpful when iterating over sequences and keeping track of the index</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Element </span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">elem</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>L = [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]
+for index, elem in enumerate(L):
+    print(&#39;Element {}: {}&#39;.format(index, elem))
 </pre></div>
 </div>
 </div>
@@ -2209,12 +2220,12 @@ Element 2: c
 <p>When it is necessary to iterate over two lists simultaneously one can use the built-in <strong>zip()</strong> function. It takes multiple lists as arguments and creates a list-like object of touples, holding the corresponding elements of all lists. This is demonstrated in the next cell:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
-<span class="n">L2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">L3</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;II&#39;</span><span class="p">,</span> <span class="s1">&#39;III&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>L1 = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
+L2 = [1, 2, 3]
+L3 = [&#39;I&#39;, &#39;II&#39;, &#39;III&#39;]
 
-<span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">L1</span><span class="p">,</span> <span class="n">L2</span><span class="p">,</span> <span class="n">L3</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+for x,y,z in zip(L1, L2, L3):
+    print(x, y, z)
 </pre></div>
 </div>
 </div>
@@ -2238,14 +2249,14 @@ c 3 III
 <p>The following cells will demonstrate the usage of these keywords.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>                <span class="c1"># create an empty List</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>L = []                # create an empty List
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>   <span class="c1"># i will have the values [0,1,...,9]</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>    <span class="c1"># if i is even..</span>
-        <span class="k">continue</span>      <span class="c1"># ..jump to the next iteration</span>
-    <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>       <span class="c1"># append the current value of i to L</span>
+for i in range(10):   # i will have the values [0,1,...,9]
+    if i % 2 == 0:    # if i is even..
+        continue      # ..jump to the next iteration
+    L.append(i)       # append the current value of i to L
     
-<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+print(L)
 </pre></div>
 </div>
 </div>
@@ -2257,16 +2268,16 @@ c 3 III
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example for getting the index of a specific value</span>
-<span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">]</span>  
-<span class="n">t</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span>
-<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>           <span class="c1"># no condition (would run till infinity)</span>
-    <span class="k">if</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">t</span><span class="p">:</span>     <span class="c1"># check if we found the value</span>
-        <span class="k">break</span>         <span class="c1"># leave the loop</span>
-    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>            <span class="c1"># increment search index pos</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># example for getting the index of a specific value
+L = [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;]  
+t = &#39;d&#39;
+i = 0
+while True:           # no condition (would run till infinity)
+    if L[i] == t:     # check if we found the value
+        break         # leave the loop
+    i += 1            # increment search index pos
     
-<span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+print(i)
 </pre></div>
 </div>
 </div>
@@ -2279,8 +2290,8 @@ c 3 III
 <p>Of course the example above is not a good way to get the index of an element, because it would result in an error, if <code class="docutils literal notranslate"><span class="pre">t</span></code> is not in <code class="docutils literal notranslate"><span class="pre">L</span></code>. Besides that, Python has already a solution for this task:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>   <span class="c1"># to be fair, this also raises an error if t is not in L</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>i = L.index(t)   # to be fair, this also raises an error if t is not in L
+print(i)
 </pre></div>
 </div>
 </div>
@@ -2293,15 +2304,15 @@ c 3 III
 <h3 style="color: #ffffff; background-color: #00509B; padding: 1%" >Functions<a id='functions'></a> </h3><br>
 A function is a piece of code that can be used/called multiple times. A function is declared with the keyword __def__, followed by the functions name and the parameters in parentheses. It is followed by a colon and the function body. Functions can have a varying number of parameters (including zero parameters) which can be used for whatever computation in the body of the function. In the following cell, a function is defined and then used two times.<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#---------------DEFINITION OF say()--------------</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#---------------DEFINITION OF say()--------------
 
-<span class="k">def</span> <span class="nf">say</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>      <span class="c1"># definition of a function with one parameter </span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>     <span class="c1"># calling print()</span>
+def say(text):      # definition of a function with one parameter 
+    print(text)     # calling print()
     
-<span class="c1">#------------------USAGE OF say()----------------</span>
+#------------------USAGE OF say()----------------
 
-<span class="n">say</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>        <span class="c1"># calling say() </span>
-<span class="n">say</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>        <span class="c1"># calling say() again with a different argument</span>
+say(&#39;hello&#39;)        # calling say() 
+say(&#39;world&#39;)        # calling say() again with a different argument
 </pre></div>
 </div>
 </div>
@@ -2315,18 +2326,18 @@ world
 <p>In general, functions are used to take some arguments, do some computation with them and then return a value. Python functions will always <strong>return exactly one value</strong>. The following function takes two arguments and returns the absolute distance of them. We declare, which value should be returned with the keyword <strong>return</strong> followed by the variable name.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#---------------DEFINITION--------------</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#---------------DEFINITION--------------
 
-<span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>    <span class="c1"># definition of a function with two parameters</span>
-    <span class="n">dist</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">)</span>    <span class="c1"># abs() is a python built-in function that returns the absolute value</span>
-    <span class="k">return</span> <span class="n">dist</span>        <span class="c1"># return the value of &#39;dist&#39;</span>
+def distance(x, y):    # definition of a function with two parameters
+    dist = abs(x-y)    # abs() is a python built-in function that returns the absolute value
+    return dist        # return the value of &#39;dist&#39;
 
-<span class="c1">#------------------USAGE----------------</span>
+#------------------USAGE----------------
 
-<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.5</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mf">12.7</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>   <span class="c1"># calling distance() with arguments a and b. The result is assigned to c</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+a = -1.5
+b = 12.7
+c = distance(a,b)   # calling distance() with arguments a and b. The result is assigned to c
+print(c)
 </pre></div>
 </div>
 </div>
@@ -2339,20 +2350,20 @@ world
 <p>You may wonder what the function say() returned, because we did not use <strong>return</strong> at all. By default any function will return the special value <strong>None</strong>. The following implementations are equivalent to the previous say() function. All of them return None.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">say1</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>   <span class="c1"># first implementation, no return statement</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def say1(text):   # first implementation, no return statement
+    print(text)
     
-<span class="k">def</span> <span class="nf">say2</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>   <span class="c1"># 2nd implementation, return without value</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-    <span class="k">return</span>
+def say2(text):   # 2nd implementation, return without value
+    print(text)
+    return
     
-<span class="k">def</span> <span class="nf">say3</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>   <span class="c1"># 3rd implementation, explicitly returning None</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-    <span class="k">return</span> <span class="kc">None</span>
+def say3(text):   # 3rd implementation, explicitly returning None
+    print(text)
+    return None
 
-<span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">say1</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">),</span> <span class="n">say</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">),</span> <span class="n">say</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">)</span> <span class="c1"># storing the return values of all functions</span>
+r1, r2, r3 = say1(&#39;1&#39;), say(&#39;2&#39;), say(&#39;3&#39;) # storing the return values of all functions
 
-<span class="nb">print</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span><span class="n">r2</span><span class="p">,</span><span class="n">r3</span><span class="p">)</span>
+print(r1,r2,r3)
 </pre></div>
 </div>
 </div>
@@ -2370,13 +2381,13 @@ None None None
 <p>Functions can return multiple elements by implicitly using tuples (here one usually doesn’t use the parentheses to declare tuples).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">divide_euclidian</span><span class="p">(</span><span class="n">dividend</span><span class="p">,</span><span class="n">divisor</span><span class="p">):</span>
-    <span class="n">quotient</span> <span class="o">=</span> <span class="n">dividend</span> <span class="o">//</span> <span class="n">divisor</span>
-    <span class="n">remainder</span> <span class="o">=</span> <span class="n">dividend</span> <span class="o">%</span> <span class="n">divisor</span>
-    <span class="k">return</span> <span class="n">quotient</span><span class="p">,</span> <span class="n">remainder</span>         <span class="c1"># same as: return (quotient, remainder)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def divide_euclidian(dividend,divisor):
+    quotient = dividend // divisor
+    remainder = dividend % divisor
+    return quotient, remainder         # same as: return (quotient, remainder)
 
-<span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">divide_euclidian</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>         <span class="c1"># same as: (q, r) = divide_euclidian(15,7)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;15 / 7 = </span><span class="si">{}</span><span class="s1"> R: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">r</span><span class="p">))</span>
+q, r = divide_euclidian(15, 7)         # same as: (q, r) = divide_euclidian(15,7)
+print(&#39;15 / 7 = {} R: {}&#39;.format(q, r))
 </pre></div>
 </div>
 </div>
@@ -2389,16 +2400,13 @@ None None None
 <p><strong>Info:</strong> Python already offers this function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;15 / 7 = </span><span class="si">{}</span><span class="s1"> R: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">r</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>q, r = divmod(15,7)
+print(&#39;15 / 7 = {} R: {}&#39;.format(q, r))
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15 / 7 = 2 R: 1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -2409,21 +2417,18 @@ None None None
 <p>Functions can have optional keyword parameters. These keyword parameters are always the last (rightmost) parameters of all. They are declared by a following equal sign and the default value. The following function has one obligatory and one optional parameters. In this example the optional parameter is used as a so called ‘flag’ (like an on-off switch). In general keyword arguments can have any type.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>     <span class="c1"># optional keyword parameter (here a bool)</span>
-    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;square(</span><span class="si">{}</span><span class="s1">) was called!&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def square(a, verbose=False):     # optional keyword parameter (here a bool)
+    if verbose:
+        print(&#39;square({}) was called!&#39;.format(a))
+    return a**2
 
-<span class="n">sq1</span> <span class="o">=</span> <span class="n">square</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                   <span class="c1"># nothing will be printed</span>
-<span class="n">sq2</span> <span class="o">=</span> <span class="n">square</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>     <span class="c1"># will print the message</span>
+sq1 = square(1)                   # nothing will be printed
+sq2 = square(2, verbose=True)     # will print the message
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>square(2) was called!
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -2432,9 +2437,9 @@ None None None
 <p>Python provides many built-in functions. Some essential functions are used in the next cell. A complete list is available at <a class="reference external" href="https://www.programiz.com/python-programming/methods">programiz.com</a>. Note that different Python versions may provide more/less built-in functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;max(1, 9, -5) =&#39;</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">))</span>    <span class="c1"># max(a, b, ..) returns the biggest value</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;min(-3, 3, 0) =&#39;</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>    <span class="c1"># min(a, b, ..) returns the smallest value</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;abs(-2)       =&#39;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>          <span class="c1"># abs(x)        returns the absolute value</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&#39;max(1, 9, -5) =&#39;, max(1, 9, -5))    # max(a, b, ..) returns the biggest value
+print(&#39;min(-3, 3, 0) =&#39;, min(-3, 3, 0))    # min(a, b, ..) returns the smallest value
+print(&#39;abs(-2)       =&#39;, abs(-2))          # abs(x)        returns the absolute value
 </pre></div>
 </div>
 </div>
@@ -2449,28 +2454,25 @@ abs(-2)       = 2
 <p><strong>Note</strong> that there are built-in functions like <code class="docutils literal notranslate"><span class="pre">del()</span></code> which are Python keywords and others like <code class="docutils literal notranslate"><span class="pre">max()</span></code>, which are no keywords. Unlike keyword built-ins, the <strong>non-keyword built-ins can be overwritten</strong>! This is demonstrated in the following cell:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example, that built-ins can be overwritten!</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Example, that built-ins can be overwritten!
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;max:        &#39;</span><span class="p">,</span> <span class="nb">max</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type of max:&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="nb">max</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;max(1,2):   &#39;</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-<span class="c1">#del(max)                             # ERROR (name &#39;max&#39; is not defined)</span>
+print(&#39;max:        &#39;, max)
+print(&#39;type of max:&#39;, type(max))
+print(&#39;max(1,2):   &#39;, max(1,2))
+#del(max)                             # ERROR (name &#39;max&#39; is not defined)
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">overwriting max!</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">max</span> <span class="o">=</span> <span class="mi">12345</span>
+print(&#39;\noverwriting max!\n&#39;)
+max = 12345
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;max:        &#39;</span><span class="p">,</span> <span class="nb">max</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type of max:&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="nb">max</span><span class="p">))</span>
-<span class="c1">#print(&#39;max(1,2):   &#39;, max(1,2))      # ERROR (&#39;int&#39; object is not callable)</span>
-<span class="k">del</span><span class="p">(</span><span class="nb">max</span><span class="p">)</span>
+print(&#39;max:        &#39;, max)
+print(&#39;type of max:&#39;, type(max))
+#print(&#39;max(1,2):   &#39;, max(1,2))      # ERROR (&#39;int&#39; object is not callable)
+del(max)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>max:        
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> &lt;built-in function max&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>max:         &lt;built-in function max&gt;
 type of max: &lt;class &#39;builtin_function_or_method&#39;&gt;
 max(1,2):    2
 
@@ -2489,8 +2491,8 @@ type of max: &lt;class &#39;int&#39;&gt;
 <p>We can additionally import modules like the <code class="docutils literal notranslate"><span class="pre">math</span></code> module to have access to the functionalities of that module. We can use the <code class="docutils literal notranslate"><span class="pre">dir()</span></code> function to list the available functionalities.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>     <span class="c1"># import the math module to use its features</span>
-<span class="c1">#dir(math)      # list functionalities of a module</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import math     # import the math module to use its features
+#dir(math)      # list functionalities of a module
 </pre></div>
 </div>
 </div>
@@ -2499,14 +2501,14 @@ type of max: &lt;class &#39;int&#39;&gt;
 function or class, to show additional information and the documentation about it (alternatively click on a function press [SHIFT]+[TAB]):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>math.log10<span class="o">?</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>math.log10?
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>math.pi<span class="o">?</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>math.pi?
 </pre></div>
 </div>
 </div>
@@ -2514,14 +2516,14 @@ function or class, to show additional information and the documentation about it
 <p>To access / use a functionality we use the dot-operator (a dot between the module name and the function / variable).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span> <span class="c1"># logarithm with base 10</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = math.log10(10000) # logarithm with base 10
+print(x)
 
-<span class="n">p</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>           <span class="c1"># the constant pi</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+p = math.pi           # the constant pi
+print(p)
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+y = math.cos(2*math.pi)
+print(y)
 </pre></div>
 </div>
 </div>
@@ -2540,19 +2542,19 @@ Classes can be seen as definitions of particular objects including constructors,
 <p>The following cell defines the class <code class="docutils literal notranslate"><span class="pre">dog</span></code>. The class contains multiple methods (methods are functions of a class).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">dog</span><span class="p">:</span>                        <span class="c1"># the definition of a class starts with the class keyword and the name of the class</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>     <span class="c1"># the init method defines the creation of an instance of this class</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>      
-        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">0</span>              <span class="c1"># our dogs will have two attributes: name and age. &#39;self&#39; refers to the new dog-object</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class dog:                        # the definition of a class starts with the class keyword and the name of the class
+    def __init__(self, name):     # the init method defines the creation of an instance of this class
+        self.name = name      
+        self.age = 0              # our dogs will have two attributes: name and age. &#39;self&#39; refers to the new dog-object
         
-    <span class="k">def</span> <span class="nf">celebrate_birthday</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># this method will increase the age of the corresponding object by one</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">+=</span> <span class="mi">1</span>
+    def celebrate_birthday(self): # this method will increase the age of the corresponding object by one
+        self.age += 1
     
-    <span class="k">def</span> <span class="nf">rename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_name</span><span class="p">):</span>   <span class="c1"># this method takes a new name as argument and assignes it to the dogs name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">new_name</span>
+    def rename(self, new_name):   # this method takes a new name as argument and assignes it to the dogs name
+        self.name = new_name
     
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>            <span class="c1"># definition how to cast a dog to a printable string</span>
-        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1"> years old&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
+    def __str__(self):            # definition how to cast a dog to a printable string
+        return &#39;{}, {} years old&#39;.format(self.name, self.age)
 </pre></div>
 </div>
 </div>
@@ -2563,19 +2565,19 @@ Classes can be seen as definitions of particular objects including constructors,
 <p>Now we will create two instances of that class and use some of their methods.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dog1</span> <span class="o">=</span> <span class="n">dog</span><span class="p">(</span><span class="s1">&#39;Bonny&#39;</span><span class="p">)</span>               <span class="c1"># initialization of a dog. Note that only one argument is given (the name)</span>
-<span class="n">dog2</span> <span class="o">=</span> <span class="n">dog</span><span class="p">(</span><span class="s1">&#39;Clyde&#39;</span><span class="p">)</span>               <span class="c1"># &#39;self&#39; is always passed implicitly</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dog1 = dog(&#39;Bonny&#39;)               # initialization of a dog. Note that only one argument is given (the name)
+dog2 = dog(&#39;Clyde&#39;)               # &#39;self&#39; is always passed implicitly
 
-<span class="n">dog1</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;Bonnie&#39;</span><span class="p">)</span>             <span class="c1"># call of dog1s rename method with dot operator </span>
+dog1.rename(&#39;Bonnie&#39;)             # call of dog1s rename method with dot operator 
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="n">dog1</span><span class="o">.</span><span class="n">celebrate_birthday</span><span class="p">()</span>
-    <span class="n">dog2</span><span class="o">.</span><span class="n">celebrate_birthday</span><span class="p">()</span>     <span class="c1"># call celebrate_birthday() 5 times for both dogs</span>
+for i in range(5):
+    dog1.celebrate_birthday()
+    dog2.celebrate_birthday()     # call celebrate_birthday() 5 times for both dogs
 
-<span class="nb">print</span><span class="p">(</span><span class="n">dog1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dog2</span><span class="p">)</span>                       <span class="c1"># print will implicitly use our implemented string conversion</span>
+print(dog1)
+print(dog2)                       # print will implicitly use our implemented string conversion
 
-<span class="nb">print</span><span class="p">(</span><span class="n">dog1</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>                   <span class="c1"># access attribute of dog1 with dot operator</span>
+print(dog1.age)                   # access attribute of dog1 with dot operator
 </pre></div>
 </div>
 </div>
@@ -2597,9 +2599,9 @@ Where the `statement` is a variable or expression, that can be evaluated to a si
 <p>The division example could be implemented like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">dividend</span><span class="p">,</span> <span class="n">divisor</span><span class="p">):</span>
-    <span class="k">assert</span> <span class="n">divisor</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Division by zero not valid!&quot;</span>
-    <span class="k">return</span> <span class="n">dividend</span><span class="o">/</span><span class="n">divisor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def divide(dividend, divisor):
+    assert divisor != 0, &quot;Division by zero not valid!&quot;
+    return dividend/divisor
 </pre></div>
 </div>
 </div>
@@ -2607,17 +2609,17 @@ Where the `statement` is a variable or expression, that can be evaluated to a si
 <p>Let us now try to call that function with an invalid divisor:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">divide</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>result = divide(1, 0)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">87</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">87</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">result</span> <span class="o">=</span> <span class="n">divide</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
-<span class="nn">Cell In [86], line 2,</span> in <span class="ni">divide</span><span class="nt">(dividend, divisor)</span>
+<span class="nn">Cell In[86], line 2,</span> in <span class="ni">divide</span><span class="nt">(dividend, divisor)</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">dividend</span><span class="p">,</span> <span class="n">divisor</span><span class="p">):</span>
 <span class="ne">----&gt; </span><span class="mi">2</span>     <span class="k">assert</span> <span class="n">divisor</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Division by zero not valid!&quot;</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="k">return</span> <span class="n">dividend</span><span class="o">/</span><span class="n">divisor</span>
@@ -2635,21 +2637,21 @@ This chapter provides some code examples that raise different errors. Understand
 <h3>SyntaxError<a class="headerlink" href="#syntaxerror" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span>                      <span class="c1"># incomplete statement</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>y =                      # incomplete statement
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="mi">3</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span>   <span class="c1"># additional parentheses</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = (1+2) * ((3+5)/3))   # additional parentheses
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="mi">3</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span>     <span class="c1"># missing parentheses</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = (1+2) * ((3+5)/3     # missing parentheses
 </pre></div>
 </div>
 </div>
@@ -2659,16 +2661,16 @@ This chapter provides some code examples that raise different errors. Understand
 <h3>IndentationError<a class="headerlink" href="#indentationerror" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>                    <span class="c1"># missing indentation</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>if True:
+x = 1                    # missing indentation
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
- <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>                   <span class="c1"># invalid indentation</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = 1
+ b = 2                   # invalid indentation
 </pre></div>
 </div>
 </div>
@@ -2678,30 +2680,30 @@ This chapter provides some code examples that raise different errors. Understand
 <h3>TypeError<a class="headerlink" href="#typeerror" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">()</span>                    <span class="c1"># calling abs() with no arguments (one argument required)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>abs()                    # calling abs() with no arguments (one argument required)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>             <span class="c1"># trying to assign the result of abs() to a tuple (only one return value)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a,b = abs(1)             # trying to assign the result of abs() to a tuple (only one return value)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>                     <span class="c1"># trying to access first element of integer (non sequence object)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = 1
+a[0]                     # trying to access first element of integer (non sequence object)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">a</span><span class="p">()</span>                      <span class="c1"># parentheses indicate that a() is a method, but it is not</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = 1
+a()                      # parentheses indicate that a() is a method, but it is not
 </pre></div>
 </div>
 </div>
@@ -2711,7 +2713,7 @@ This chapter provides some code examples that raise different errors. Understand
 <h3>ValueError<a class="headerlink" href="#valueerror" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;1.5&#39;</span><span class="p">)</span>               <span class="c1"># string cannot be converted to int</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>int(&#39;1.5&#39;)               # string cannot be converted to int
 </pre></div>
 </div>
 </div>
@@ -2719,15 +2721,15 @@ This chapter provides some code examples that raise different errors. Understand
 <h3 style="color: #ffffff; background-color: #00509B; padding: 1%" >Catching errors<a id='catching-errors'></a> </h3><br>
 Programs (or functions) that cause errors are not always _wrong_. E.g. imagine a program that tries to download some content from the Internet. The connection could be interrupted which could result in an unavoidable error. In that case it would be necessary to have a program that expects and such errors. In Python this is done via the _try-catch-finally_ blocks.<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>                     
-    <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>              <span class="c1"># the try block contains statements that may raise an error</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
-<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;conv. failed&#39;</span><span class="p">)</span>   <span class="c1"># if the declared error occurs, the statements in the except block are executed</span>
-<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;division by 0&#39;</span><span class="p">)</span>  <span class="c1"># multiple different errors can be excepted</span>
-<span class="k">finally</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;don&#39;t care!&quot;</span><span class="p">)</span>    <span class="c1"># the finally block (optional) contains statements, that are ALWAYS executed after the try-except</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>try:                     
+    int(&#39;1.0&#39;)              # the try block contains statements that may raise an error
+    a = 1/0
+except ValueError:
+    print(&#39;conv. failed&#39;)   # if the declared error occurs, the statements in the except block are executed
+except ZeroDivisionError:
+    print(&#39;division by 0&#39;)  # multiple different errors can be excepted
+finally:
+    print(&quot;don&#39;t care!&quot;)    # the finally block (optional) contains statements, that are ALWAYS executed after the try-except
 </pre></div>
 </div>
 </div>
@@ -2741,16 +2743,16 @@ Lambda expressions are used to create anonymous functions. These can be useful t
 <p>The following cell shows the usage of lambda expression to define a function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>          <span class="c1"># common way to define a function</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def add(x, y):          # common way to define a function
+    return x + y
 
-<span class="n">addL</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>  <span class="c1"># using lambda to define a function</span>
+addL = lambda x,y : x+y  # using lambda to define a function
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type of add: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">add</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type of addL:&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">addL</span><span class="p">))</span>
+print(&#39;Type of add: &#39;, type(add))
+print(&#39;Type of addL:&#39;, type(addL))
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Result of add(1,2): &#39;</span><span class="p">,</span> <span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Result of addL(1,2):&#39;</span><span class="p">,</span> <span class="n">addL</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+print(&#39;\nResult of add(1,2): &#39;, add(1,2))
+print(&#39;Result of addL(1,2):&#39;, addL(1,2))
 </pre></div>
 </div>
 </div>
@@ -2758,10 +2760,10 @@ Lambda expressions are used to create anonymous functions. These can be useful t
 <p>Usually lambda functions are not stored in variables, but instead directly passed as arguments. E.g. the built-in function <code class="docutils literal notranslate"><span class="pre">max()</span></code> has the keyword parameter <code class="docutils literal notranslate"><span class="pre">key</span></code> of type function. We can e.g. use this keyword, to make the function search for the biggest absolute value:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>values = [-3, 8, -15, 2]
 
-<span class="n">abs_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> has the highest absolute value in </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">abs_max</span><span class="p">,</span> <span class="n">values</span><span class="p">))</span>
+abs_max = max(values, key = lambda x: abs(x))
+print(&#39;{} has the highest absolute value in {}.&#39;.format(abs_max, values))
 </pre></div>
 </div>
 </div>
@@ -2774,16 +2776,16 @@ This is a small collection of additional Python knowledge.
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">a </span>
-<span class="sd">multi-line</span>
-<span class="sd">comment</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;a </span>
-<span class="s2">multi-line</span>
-<span class="s2">string&quot;&quot;&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>&#39;&#39;&#39;
+a 
+multi-line
+comment
+&#39;&#39;&#39;
+s = &quot;&quot;&quot;a 
+multi-line
+string&quot;&quot;&quot;
 
-<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+print(s)
 </pre></div>
 </div>
 </div>
@@ -2793,10 +2795,10 @@ This is a small collection of additional Python knowledge.
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;xyz&#39;</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s = (&#39;xyz&#39;*5)
+print(s)
+print(s[:5])
+print(s[-1])
 </pre></div>
 </div>
 </div>
@@ -2806,24 +2808,24 @@ This is a small collection of additional Python knowledge.
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mh">0xFF</span>        <span class="c1"># hexadecimal</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s1">&#39;=&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 0xFF        # hexadecimal
+print(hex(x),&#39;=&#39;,x)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mb">0b1000</span>       <span class="c1"># binary</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">b</span><span class="p">),</span><span class="s1">&#39;=&#39;</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b = 0b1000       # binary
+print(bin(b),&#39;=&#39;,b)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">o</span> <span class="o">=</span> <span class="mo">0o11</span>         <span class="c1"># octal</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">oct</span><span class="p">(</span><span class="n">o</span><span class="p">),</span><span class="s1">&#39;=&#39;</span><span class="p">,</span><span class="n">o</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>o = 0o11         # octal
+print(oct(o),&#39;=&#39;,o)
 </pre></div>
 </div>
 </div>
@@ -2833,12 +2835,12 @@ This is a small collection of additional Python knowledge.
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="mf">2.0</span><span class="o">**</span><span class="mi">1023</span>   <span class="c1"># limit of float value</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>f = 2.0**1023   # limit of float value
+print(f)
 
-<span class="n">i</span> <span class="o">=</span> <span class="mi">3</span><span class="o">**</span><span class="mi">5000</span>     <span class="c1"># int has no limit</span>
-<span class="c1"># print(i)</span>
-<span class="c1"># print(bin(i)) # simple way to produce many zeros and ones</span>
+i = 3**5000     # int has no limit
+# print(i)
+# print(bin(i)) # simple way to produce many zeros and ones
 </pre></div>
 </div>
 </div>
@@ -2848,8 +2850,8 @@ This is a small collection of additional Python knowledge.
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lmbda</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\u03BB</span><span class="s1">&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lmbda</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>lmbda = &#39;\u03BB&#39;
+print(lmbda)
 </pre></div>
 </div>
 </div>
@@ -2859,8 +2861,8 @@ This is a small collection of additional Python knowledge.
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heart</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="o">+</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">heart</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>heart = chr(60) + chr(51)
+print(heart)
 </pre></div>
 </div>
 </div>
@@ -2870,14 +2872,14 @@ This is a small collection of additional Python knowledge.
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>L = [1,2]
 
-<span class="n">L</span> <span class="o">=</span> <span class="n">L</span> <span class="o">+</span> <span class="p">[</span><span class="mi">42</span><span class="p">]</span>   <span class="c1"># impl 1   VERY SLOW !!</span>
-<span class="n">L</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">42</span><span class="p">]</span>      <span class="c1"># impl 2</span>
-<span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>   <span class="c1"># impl 3</span>
-<span class="n">L</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">42</span><span class="p">])</span> <span class="c1"># impl 4</span>
+L = L + [42]   # impl 1   VERY SLOW !!
+L += [42]      # impl 2
+L.append(42)   # impl 3
+L.extend([42]) # impl 4
 
-<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+print(L)
 </pre></div>
 </div>
 </div>
@@ -2887,14 +2889,14 @@ This is a small collection of additional Python knowledge.
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-<span class="k">while</span> <span class="n">i</span> <span class="o">!=</span> <span class="s1">&#39;exit&#39;</span><span class="p">:</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;enter exit or break: &#39;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;break&#39;</span><span class="p">:</span>
-        <span class="k">break</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;else block&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;done&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>i = &#39;&#39;
+while i != &#39;exit&#39;:
+    i = input(&#39;enter exit or break: &#39;)
+    if i == &#39;break&#39;:
+        break
+else:
+    print(&#39;else block&#39;)
+print(&#39;done&#39;)
 </pre></div>
 </div>
 </div>
@@ -2903,8 +2905,8 @@ This is a small collection of additional Python knowledge.
 <p>Following code-cell removes <code class="docutils literal notranslate"><span class="pre">In[]</span></code> / <code class="docutils literal notranslate"><span class="pre">Out[]</span></code> prompts left to code cells.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%HTML</span>
-<span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span><span class="nt">div</span><span class="p">.</span><span class="nc">prompt</span><span class="w"> </span><span class="p">{</span><span class="k">display</span><span class="p">:</span><span class="kc">none</span><span class="p">}&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%HTML
+&lt;style&gt;div.prompt {display:none}&lt;/style&gt;
 </pre></div>
 </div>
 </div>

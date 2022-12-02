@@ -1,0 +1,610 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>OpenGL - The Core Computer Graphics API &#8212; Computational Foundations I</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Task Sheet 1: Niki the robot" href="tasks_01_niki.html" />
+    <link rel="prev" title="Turtle Graphics Example" href="turtlegraphics.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Computational Foundations I</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../computational-foundations-1_intro.html">
+                    Computational Foundations I (2022)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basic Knowledge
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="dos.html">
+   The Disk Operating System (DOS)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="windows.html">
+   Microsoft Windows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix.html">
+   Unix, Linux, and POSIX
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="imperative_programming.html">
+   Imperative Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cppintro.html">
+   The C and C++ Language
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="turtlegraphics.html">
+   Turtle Graphics Example
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   OpenGL - The Core Computer Graphics API
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorial Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="tasks_01_niki.html">
+   Task Sheet 1: Niki the robot
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tasks_02_cpp.html">
+   Task Sheet 1: Basic C and C++
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tasks_03_loops.html">
+   Task Sheet 2 (Lectures 4-6)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cf2022/learning_tasks.html">
+   Learning Tasks
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts/issues/new?title=Issue%20on%20page%20%2Ffiles/libraries_opengl_glut.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tum-bgd/programming-scripts/edit/main/files/libraries_opengl_glut.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/files/libraries_opengl_glut.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-glut-windows-example">
+   Installing GLUT (Windows Example)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-glut-linux">
+   Installing GLUT (Linux)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#our-first-project-visual-studio">
+   Our first project (Visual Studio)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-reasonable-example">
+   A Reasonable Example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-reading">
+   Further Reading
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>OpenGL - The Core Computer Graphics API</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-glut-windows-example">
+   Installing GLUT (Windows Example)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-glut-linux">
+   Installing GLUT (Linux)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#our-first-project-visual-studio">
+   Our first project (Visual Studio)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-reasonable-example">
+   A Reasonable Example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-reading">
+   Further Reading
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="opengl-the-core-computer-graphics-api">
+<h1>OpenGL - The Core Computer Graphics API<a class="headerlink" href="#opengl-the-core-computer-graphics-api" title="Permalink to this headline">#</a></h1>
+<p>Though I would today not recommend using glut or
+even using DirectX, OpenGL, or Vulkan directly, some experience is helpful when working with realtime 3D graphics on higher levels. For now, we will be using glut as it provides the traditional API-based OpenGL model still and is portable between Linux and Windows, hence runs on all our target systems easily.</p>
+<p>If you ask me for the current library to go to for reasonably working with modern OpenGL, I would point you to glfw for API management and glad for extension management. Google these two terms, but be warned: there is typically no classical rendering anymore, but everything is done in terms of matrices, vertex shaders, fragment shaders and the like. This might require a lot of background knowledge on rendering pipelines and modern OpenGL. Find a long and detailed tutorial and invest some time, if you want.</p>
+<section id="installing-glut-windows-example">
+<h2>Installing GLUT (Windows Example)<a class="headerlink" href="#installing-glut-windows-example" title="Permalink to this headline">#</a></h2>
+<p><img alt="" src="../_images/upload_0a5a2df9937f0f7adfc2e173aa8f3ed6.png" /></p>
+<p>With GLUT 3.7, glut for Windows and glut for Linux have been merged. Download two ZIP files from <a class="reference external" href="http://opengl.org">opengl.org</a> (see screenshot) and compile them.</p>
+<p>Or you just download (Intel platforms only) the provided binary distribution <code class="docutils literal notranslate"><span class="pre">glutdlls37beta</span></code> (recommended as building glut is tricky).</p>
+<p>I will assume you have this file. It contains only a few files (uncompress it somewhere, but remember where).</p>
+</section>
+<section id="installing-glut-linux">
+<h2>Installing GLUT (Linux)<a class="headerlink" href="#installing-glut-linux" title="Permalink to this headline">#</a></h2>
+<p>In this lecture, we only support Debian-based distributions (including Ubuntu). In all of these</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">freeglut</span>
+</pre></div>
+</div>
+<p>should be sufficient. However, it might be a bit tricky to set up OpenGL and hardware accelleartion correctly.</p>
+</section>
+<section id="our-first-project-visual-studio">
+<h2>Our first project (Visual Studio)<a class="headerlink" href="#our-first-project-visual-studio" title="Permalink to this headline">#</a></h2>
+<p>First, create a new C++ console project.</p>
+<p>Create a first integration test C++ file calling a single glut function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
+<span class="n">This</span> <span class="n">mini</span><span class="o">-</span><span class="n">program</span> <span class="n">accesses</span> <span class="n">the</span> <span class="n">glut</span> <span class="n">header</span> <span class="ow">and</span> <span class="n">tries</span> <span class="n">to</span> <span class="n">initialize</span> <span class="n">glut</span><span class="o">.</span>
+<span class="n">It</span> <span class="n">serves</span> <span class="k">as</span> <span class="n">a</span> <span class="n">test</span> <span class="n">that</span> <span class="n">your</span> <span class="n">project</span> <span class="n">has</span> <span class="n">been</span> <span class="nb">set</span> <span class="n">up</span> <span class="n">correctly</span><span class="o">.</span>
+<span class="o">*/</span>
+
+<span class="c1">#include &lt;glut.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">glutInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Compilation is expected to fail on this one. We did not yet tell the compilers where to look for the file glut.h. In Visual Studio, open the project properties. This brings a dialog looking (except translation) like this:</p>
+<p><img alt="" src="../_images/upload_ed05bc43e68624d70c6d76bde35220c6.png" /></p>
+<p>Be careful: Visual Studio can have different settings for all platforms and configurations (e.g., Debug, Release, etc.). But for now, we want to change all platforms at once. Hence, make sure that in the top line there is all configurations (like in mine) but as well all platforms selected.</p>
+<p>Then Open the C++ tab and find Additional Include Directories (for me it is on top of General). As I was putting it into my Documents folder and my account is named <code class="docutils literal notranslate"><span class="pre">marti</span></code>, I had to write <code class="docutils literal notranslate"><span class="pre">C:\Users\marti\Documents\glut\glutdlls37beta</span></code> into this line.</p>
+<p>If you did it right and you compile, you will see different errors now: only linker errors left. This can be seen as the error message starts with LINK:</p>
+<p>For me, it tells me that it would like to find a file called glut32.lib. Let us tell the system where this one is. Open the preferences again, remember to edit all configurations at once. You can use ALT-F7 as a shortcut typically.</p>
+<p>The second group of options is named linker and there we will most likely be able to add the library directory. In the general tab somehow in the middle, there is Additional Library Directories. Point to the lib subdirectory of your decompressed binary distributed library, for me <code class="docutils literal notranslate"><span class="pre">C:\Users\marti\Documents\glut\glutdlls37beta</span></code>.</p>
+<p><em>Now be patient, if this compiles, you are done and there is nothing tricky coming. Keep trying. Do you have the right files? Did you point the compiler and header to find the right files?</em></p>
+</section>
+<section id="a-reasonable-example">
+<h2>A Reasonable Example<a class="headerlink" href="#a-reasonable-example" title="Permalink to this headline">#</a></h2>
+<p>Now, just replace the source code with the following exapmle taken from Stanford CS248. It should compile and run and maybe you see something…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;glut.h&gt;</span>
+
+<span class="n">void</span> <span class="n">display</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span><span class="p">);</span>
+
+    <span class="n">glBegin</span><span class="p">(</span><span class="n">GL_POLYGON</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.75</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">glColor3f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">glVertex3f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">glEnd</span><span class="p">();</span>
+
+    <span class="n">glFlush</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="n">glutInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+    <span class="n">glutInitDisplayMode</span><span class="p">(</span><span class="n">GLUT_SINGLE</span> <span class="o">|</span> <span class="n">GLUT_RGB</span><span class="p">);</span>
+    <span class="n">glutInitWindowSize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span><span class="mi">600</span><span class="p">);</span>
+    <span class="n">glutCreateWindow</span><span class="p">(</span><span class="s2">&quot;Triangle&quot;</span><span class="p">);</span>
+    <span class="n">glutDisplayFunc</span><span class="p">(</span><span class="n">display</span><span class="p">);</span>
+    <span class="n">glutMainLoop</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</pre></div>
+</div>
+<p>When I run this code, however, it does not work: It shows a messagebox like this:
+<img alt="" src="../_images/upload_7590925ed92857e236534ee95246e546.png" /></p>
+<p>which translates essentially to that the file <code class="docutils literal notranslate"><span class="pre">glut32.dll</span></code> could not be found. During runtime, you must ensure that the dynamic parts of your libraries are available. Fortunately, the file <code class="docutils literal notranslate"><span class="pre">glut32.dll</span></code> is available in the binary distribution and we can copy it into both the Release and Debug folder of our project. When you distirbute your executable to friends, remember to put this file into the same directory as the <code class="docutils literal notranslate"><span class="pre">.exe</span></code> file. To do this, you can open the folder of your project by right-clicking the project in the left navigator bar and clicking “Open in File Browser”.</p>
+<p>When you copied the DLL to the folder of your release, the program will finally run and show a triangle with three different colors and color interpolation for the surface of the triangle.</p>
+<p><img alt="" src="../_images/upload_c364fe400e241ad0fad04dab111768cd.png" /></p>
+<p>Now we can start writing more fancy visualizations, for example, some of our turtle graphics can be definitely ported to OpenGL. Note that OpenGL immediately supports 3D, so there is now a lot we can do.</p>
+</section>
+<section id="further-reading">
+<h2>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">#</a></h2>
+<p>OpenGL is a complex library and the history of OpenGL is full of advice that is just not correct today. Hence, it is difficult for novice users to navigate Internet resources. Some of them are very good, but outdated, others are very bad, but state-of-the-art, and finally, video tutorials on Youtube steal your time as it is just not working on your computer as it does on the presenters computer.</p>
+<p><img alt="" src="../_images/upload_a44adb4451576fd87e3135ce7b51d33b.png" /></p>
+<p>Though it is nearly 1,000 pages, it is always fun to read.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./files"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="turtlegraphics.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Turtle Graphics Example</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="tasks_01_niki.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Task Sheet 1: Niki the robot</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Martin Werner<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
