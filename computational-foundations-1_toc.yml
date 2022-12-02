@@ -12,6 +12,8 @@ parts:
     - file: files/imperative_programming
     - file: files/cppintro
     - file: files/turtlegraphics
+    - file: files/libraries_opengl_glut
+  
   - caption: Tutorial Assignments
     chapters:
     - file: files/tasks_01_niki
