@@ -20,10 +20,17 @@ Computational Foundations is a two-semester course in the aerospace bachelor and
   - {Download}`Slides Algorithms<./pdf/03_AlgorithmSlice.pdf>`
   - {Download}`Slides C/C++<./pdf/2022_v06_CandCpp.pdf>`
   - {Download}`Solution to Riemann Integral<./cpp/integral.cpp>`
+  - {Download}`Whiteboard Complexity<./files/cf2022/2022-11-04_WhiteboardComplexity.pdf>`
   - [A Selection of Introductory Programming Challenges](./files/tasks_02_cpp)
   - *Note that pointers are not yet taught.*
 - Lecture 4: Loops and Recursion
   - [A Set of Loop and Recursive Programming Tasks](./files/tasks_03_loops)
+  - {Download}`Whiteboard Riemann Integral<files/cf2022/2022-11-11_WhiteboardRiemann.pdf>`
+  - [Learning Tasks](./files/cf2022/learning_tasks.md)
+  - {Download}`Turtle Graphics Project<./assets/turtle-example.tgz>`
+- Lecture 5: More Loops, Recursion, and some Graphics
+  - [OpenGL and Libraries Example](./files/libraries_opengl_glut)
+  - {Download}`Recursive Fractal Turtle Graphics<./assets/fractal.cpp>`
 
 ## Time Plan
 
@@ -38,7 +45,7 @@ First the dates in 2022/23:
 |25.10.2022 | Lecture  |
 |01.11.2022 | Public Holiday    |
 |08.11.2022 | Lecture  |
-|15.11.2022 | Conflict (in resolution) |
+|15.11.2022 | No Lecture (TUM regulation) |
 |22.11.2022 | Lecture  |
 |29.11.2022 | Lecture  |
 |06.12.2022 | Lecture  |

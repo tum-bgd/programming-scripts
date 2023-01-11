@@ -13,6 +13,10 @@ parts:
   - caption: Python 
     chapters:
     - file: files/python_basics
+  - caption: Geospatial Images
+    chapters:
+    - file: files/libraries_gdal_intro.md
+    - file: files/libraries_gdal_germany.md
   - caption: Libraries and Stories
     chapters:
     - file: files/libraries_happly

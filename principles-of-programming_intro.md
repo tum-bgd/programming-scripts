@@ -23,11 +23,11 @@ Principles of Programming is a one-semester master course building on profound k
   - *Completion of Python Syntax and Data Structures, material above*
 
 - Lecture 4:
-  - The Bisector of a Line (in Python)
-
-Preview Material:
-
-- [The Notion of an Algorithm](files/algorithm.md)
+  - [Notebook](files/prog2022/2022-11-22_Notebook)
+- Lecture 5: Geospatial Images
+  - [GDAL Introduction](libraries_gdal_intro.md)
+  - [GDAL for a Cloudfree Cover of Germany](libraries_gdal_germany.md)
+  - [Download Link (Germany) - needs to be fixed](https://api.bgd.ed.tum.de/germany.tiff)
 
 ## Background and Context
 
