@@ -74,7 +74,7 @@ Now, with having ports, we can observe aspects of the surroundings (information 
 
 As we are still looking for a minimal programming language, we could imagine that our robot is supposed not to crash with the surroudings, so maybe we just need to be able to make instructions like move **conditional** to the value of the port.
 
-This control structure is often nown as if .. then .. else ..
+This control structure is often known as if .. then .. else ..
 More concretely, we enable the following snippet of source code:
 
 ```
